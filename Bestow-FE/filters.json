@@ -1,0 +1,11 @@
+{
+    "filters": [
+        "Age", 
+        "Gender",
+        "Relationship",
+        "Price Range", 
+        "Occasion", 
+        "Gift Type", 
+        "Interests"
+    ]  
+}
