@@ -32,10 +32,28 @@ const Filters = () => {
             <h1>Bestow</h1>
             <p>Age</p>
                 <button>
-                    <h5>0-10</h5>
+                    <h5>0-5</h5>
                 </button>
                 <button>
-                    <h5>11-20</h5>
+                    <h5>6-12</h5>
+                </button>
+                <button>
+                    <h5>13-20-</h5>
+                </button>
+                <button>
+                    <h5>21-30</h5>
+                </button>
+                <button>
+                    <h5>31-40</h5>
+                </button>
+                <button>
+                    <h5>41-50</h5>
+                </button>
+                <button>
+                    <h5>51-65</h5>
+                </button>
+                <button>
+                    <h5>65+</h5>
                 </button>
             <p>Gender</p>
             <p>Relationship</p>
