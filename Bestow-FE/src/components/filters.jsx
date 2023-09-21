@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useState} from "react";
-import data from "/filters.json"; 
+import ParameterComponent from "./parameterComponent";
+import data from "/filters.json";
 
 const Filters = () => {
     const [age, setAge] = useState(""); 
@@ -10,6 +11,7 @@ const Filters = () => {
     const [occasion, setOccasion] = useState(""); 
     const [giftType, setGiftType] = useState(""); 
     const [interests, setInterests] = useState("");
+    const [activeElement, setActiveElement] = useState("age");
 
     const handlePost = () => {
         axios 
@@ -22,75 +24,137 @@ const Filters = () => {
                 gift_type: giftType, 
                 interest: interests, 
             })
-            .then (() => {
-
+            .then ((response) => {
+                console.log("Response from backend:", response.data);
             })
-            console.log(handlePost)
     }
 
-    const handleAge = (selectedAge) => {
+    const handleAgeChange = (selectedAge) => {
         setAge(selectedAge)
         console.log(selectedAge)
     }
 
-    const handleGender = (selectedGender) => {
+    const handleGenderChange = (selectedGender) => {
         setGender(selectedGender)
         console.log(selectedGender)
     }
 
-    const handleRelationship = (selectedRelationship) => {
+    const handleRelationshipChange = (selectedRelationship) => {
         setRelationship(selectedRelationship)
         console.log(selectedRelationship)
     }
 
-    const handlePriceRange = (selectedPriceRange) => {
+    const handlePriceRangeChange = (selectedPriceRange) => {
         setPriceRange(selectedPriceRange)
         console.log(selectedPriceRange)
     }
 
-    const handleOccasion = (selectedOccasion) => {
+    const handleOccasionChange = (selectedOccasion) => {
         setOccasion(selectedOccasion)
         console.log(selectedOccasion)
     }   
 
-    const handleGiftType = (selectedGiftType) => {
+    const handleGiftTypeChange = (selectedGiftType) => {
         setGiftType(selectedGiftType)
         console.log(selectedGiftType)
     }
 
-    const handleInterests = (selectedInterests) => {
+    const handleInterestsChange = (selectedInterests) => {
         setInterests(selectedInterests)
         console.log(selectedInterests)
     }
 
+    const handleGenerate = (selectedGenerate) => {
+        setGenerate(selectedGenerate);
+      };
+
+    const handleActiveNav = (newValue) => {
+    const newState = navData.map((datum) => {
+      if (datum.isActive) {
+        datum.isActive = false;
+        return datum;
+      }
+
+      if (datum.title.toLowerCase() === newValue) {
+        datum.isActive = true;
+        return datum;
+      }
+
+      return datum;
+    });
+
+    setNavData(newState);
+  };
+//   console.log("navData", navData);
+
+    const handleStateSet = (key, value) => {
+        console.log("key", key);
+        if (key === "Age") {
+          handleAgeChange(value);
+          const newActiveElement = "gender";
+          setActiveElement(newActiveElement);
+          handleActiveNav(newActiveElement);
+        }
+        if (key === "Gender") {
+          handleGenderChange(value);
+          const newActiveElement = "relationship";
+          setActiveElement(newActiveElement);
+          handleActiveNav(newActiveElement);
+        }
+        if (key === "Relationship") {
+          handleRelationshipChange(value);
+          const newActiveElement = "priceRange";
+          setActiveElement(newActiveElement);
+          handleActiveNav(newActiveElement);
+        }
+        if (key === "Price Range") {
+          handlePriceRangeChange(value);
+          const newActiveElement = "occasion";
+          setActiveElement(newActiveElement);
+          handleActiveNav("length");
+        }
+        if (key === "Occassion") {
+          handleOccasionLength(value);
+          const newActiveElement = "giftType";
+          setActiveElement(newActiveElement);
+          setGenerateButton(true);
+          handleActiveNav(newActiveElement);
+        }
+        if (key === "Gift Type") {
+            handleGiftTypeChange(value);
+            const newActiveElement = "interests";
+            setActiveElement(newActiveElement);
+            setGenerateButton(true);
+            handleActiveNav(newActiveElement);
+          }
+        if (key === "Interests") {
+        handleInterestsChange(value);
+        const newActiveElement = "generate";
+        setActiveElement(newActiveElement);
+        setGenerateButton(true);
+        handleActiveNav(newActiveElement);
+        }
+    
+        if (key === "generateButton") {
+          handleGenerate(value);
+        }
+      };
+    
+      const keys = ["age", "gender", "relationship", "priceRange", "occasion", "giftType", "interests"];
+
     return (
         <>
+
             <h1>Bestow</h1>
-            <p>Age</p>
-                <button onClick={() => handleAge("0-5")}>
-                    <h5>0-5</h5>
-                </button>
-                <button>
-                    <h5>6-12</h5>
-                </button>
-                <button>
-                    <h5>13-20</h5>
-                </button>
-                <button>
-                    <h5>21-30</h5>
-                </button>
-                <button>
-                    <h5>31-40</h5>
-                </button>
-                <button>
-                    <h5>41-50</h5>
-                </button>
-                <button>
-                    <h5>51-65</h5>
-                </button>
-                <button>
-                    <h5>65+</h5>
-                </button>
+
+
+            <div>
+                <ParameterComponent
+                  key={activeElement}
+                  data={data[activeElement]}
+                  handler={handleStateSet}/>
+              </div>
+
             <p>Gender</p>
             <button onClick={() => handleGender("male")}>
                     <h5>male</h5>

@@ -1,11 +1,107 @@
 {
-    "filters": [
-        "Age", 
-        "Gender",
-        "Relationship",
-        "Price Range", 
-        "Occasion", 
-        "Gift Type", 
-        "Interests"
-    ]  
+    "age": {
+      "title": "Age",
+      "data":
+      [
+        "0-10",
+        "11-20",
+        "21-30",
+        "31-40",
+        "41-50",
+        "51-60",
+        "61-70",
+        "71-80",
+        "81+"
+      ]},
+
+
+    "gender": {
+      "title": "Gender",
+      "data":
+      [
+        "Male",
+        "Female", 
+        "Non-Binary"
+    ]},
+
+    "relationship": {
+      "title": "Relationship",
+      "data":
+      [
+        "Friend",
+        "Partner", 
+	      "Boyfriend", 
+        "Girlfriend",
+        "Husband", 
+        "Wife",
+        "Son",
+        "Daughter",
+        "Family friend",
+        "Aunt",
+        "Uncle",
+        "Grandparent" 
+    ]},
+    "priceRange": {
+      "title": "Price Range",
+      "data":
+      [
+        "$10-$20",
+        "$21-$50",
+        "$51-$100",
+        "$101-$200",
+        "$201-$500",
+        "$501-$1,000",
+        "$1,000-$2,000"
+    ]},
+
+    "occasion": {
+        "title": "Occasion",
+        "data":
+        [
+          "Birthday",
+          "Christmas",
+          "Anniversary",
+          "Wedding",
+          "Graduation",
+          "Valentine's Day",
+          "House Warming",
+          "Mother's Day",
+          "Father's Day",
+          "Just Because"
+      ]},
+    
+    "giftType": {
+      "title": "Gift Type",
+      "data":
+      [
+      "Jewellery & Accessories",
+      "Clothing & Shoes",
+      "Home & Living",
+      "Wedding & Party",
+      "Toys & Entertainment",
+      "Art & Collectibles",
+      "Craft Supplies & Tools"
+    ]},
+
+    "interests":{
+      "title": "Interests",
+      "data":
+      [
+			"Sports", 
+			"DIY",
+			"Crafts", 
+			"Fashion",
+			"Travel",
+			"Cooking",
+            "Music",
+            "Gaming",
+            "Pets"
+    ]},
+
+    "generate":{
+      "title": "Generate Button",
+      "data":[
+        ""
+      ]
+    }
 }
