@@ -113,12 +113,12 @@ const Filters = () => {
           setActiveElement(newActiveElement);
           handleActiveNav("length");
         }
-        if (key === "Occassion") {
-          handleOccasionLength(value);
-          const newActiveElement = "giftType";
-          setActiveElement(newActiveElement);
-          setGenerateButton(true);
-          handleActiveNav(newActiveElement);
+        if (key === "Occasion") {
+            handleOccasionChange(value);
+            const newActiveElement = "giftType";
+            setActiveElement(newActiveElement);
+            setGenerateButton(true);
+            handleActiveNav(newActiveElement);
         }
         if (key === "Gift Type") {
             handleGiftTypeChange(value);
@@ -128,11 +128,11 @@ const Filters = () => {
             handleActiveNav(newActiveElement);
           }
         if (key === "Interests") {
-        handleInterestsChange(value);
-        const newActiveElement = "generate";
-        setActiveElement(newActiveElement);
-        setGenerateButton(true);
-        handleActiveNav(newActiveElement);
+            handleInterestsChange(value);
+            const newActiveElement = "generate";
+            setActiveElement(newActiveElement);
+            setGenerateButton(true);
+            handleActiveNav(newActiveElement);
         }
     
         if (key === "generateButton") {
@@ -147,7 +147,6 @@ const Filters = () => {
 
             <h1>Bestow</h1>
 
-
             <div>
                 <ParameterComponent
                   key={activeElement}
@@ -155,30 +154,6 @@ const Filters = () => {
                   handler={handleStateSet}/>
               </div>
 
-            <p>Gender</p>
-            <button onClick={() => handleGender("male")}>
-                    <h5>male</h5>
-                </button>
-            <p>Relationship</p>
-            <button onClick={() => handleRelationship("partner")}>
-                    <h5>partner</h5>
-                </button>
-            <p>Price Range</p>
-            <button onClick={() => handlePriceRange("$10-$15")}>
-                    <h5>$10-$15</h5>
-                </button>
-            <p>Occasion</p>
-            <button onClick={() => handleOccasion("Christmas")}>
-                    <h5>Christmas</h5>
-                </button>
-            <p>Gift Type</p>
-            <button onClick={() => handleGiftType("Product")}>
-                    <h5>Product</h5>
-                </button>
-            <p>Interests</p>
-            <button onClick={() => handleInterests("Cooking")}>
-                    <h5>Cooking</h5>
-                </button>
         <button onClick={handlePost}>Generate</button>
         </>
     )
