@@ -2,6 +2,7 @@ import axios from "axios";
 import {useState} from "react";
 import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
+import getFilterResponse from "./getfilter";
 
 const Filters = () => {
     const [age, setAge] = useState(""); 
@@ -12,6 +13,9 @@ const Filters = () => {
     const [giftType, setGiftType] = useState(""); 
     const [interests, setInterests] = useState("");
     const [activeElement, setActiveElement] = useState("age");
+    const [isGenerated, setIsGenerated] = useState(false);
+    const [output, setOutput] = useState("");
+
 
     const handlePost = () => {
         axios 
@@ -23,9 +27,11 @@ const Filters = () => {
                 occasion: occasion, 
                 gift_type: giftType, 
                 interest: interests, 
+                output_text: output,
             })
             .then ((response) => {
                 console.log("Response from backend:", response.data);
+                setOutput(response.data.output);
             })
     }
 
@@ -145,6 +151,8 @@ const Filters = () => {
               </div>
 
         <button onClick={handlePost}>Generate</button>
+        <div>{output}</div>
+        
         </>
     )
 }; 
