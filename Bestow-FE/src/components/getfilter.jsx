@@ -1,0 +1,13 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const getFilterResponse = ({ }) => {
+
+    return(
+        <>
+
+        </>
+    );
+};
+
+export default getFilterResponse
