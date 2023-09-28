@@ -93,46 +93,36 @@ const Filters = () => {
           handleAgeChange(value);
           const newActiveElement = "gender";
           setActiveElement(newActiveElement);
-          handleActiveNav(newActiveElement);
         }
         if (key === "Gender") {
           handleGenderChange(value);
           const newActiveElement = "relationship";
           setActiveElement(newActiveElement);
-          handleActiveNav(newActiveElement);
         }
         if (key === "Relationship") {
           handleRelationshipChange(value);
           const newActiveElement = "priceRange";
           setActiveElement(newActiveElement);
-          handleActiveNav(newActiveElement);
         }
         if (key === "Price Range") {
           handlePriceRangeChange(value);
           const newActiveElement = "occasion";
           setActiveElement(newActiveElement);
-          handleActiveNav("length");
         }
         if (key === "Occasion") {
             handleOccasionChange(value);
             const newActiveElement = "giftType";
             setActiveElement(newActiveElement);
-            setGenerateButton(true);
-            handleActiveNav(newActiveElement);
         }
         if (key === "Gift Type") {
             handleGiftTypeChange(value);
             const newActiveElement = "interests";
             setActiveElement(newActiveElement);
-            setGenerateButton(true);
-            handleActiveNav(newActiveElement);
           }
         if (key === "Interests") {
             handleInterestsChange(value);
             const newActiveElement = "generate";
             setActiveElement(newActiveElement);
-            setGenerateButton(true);
-            handleActiveNav(newActiveElement);
         }
     
         if (key === "generateButton") {
