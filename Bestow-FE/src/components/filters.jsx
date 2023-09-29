@@ -27,11 +27,10 @@ const Filters = () => {
                 occasion: occasion, 
                 gift_type: giftType, 
                 interest: interests, 
-                output_text: output,
             })
             .then ((response) => {
                 console.log("Response from backend:", response.data);
-                setOutput(response.data.output);
+                setOutput(response.data.output_text);
             })
     }
 
@@ -94,7 +93,6 @@ const Filters = () => {
 //   console.log("navData", navData);
 
     const handleStateSet = (key, value) => {
-        console.log("key", key);
         if (key === "Age") {
           handleAgeChange(value);
           const newActiveElement = "gender";
@@ -130,9 +128,9 @@ const Filters = () => {
             const newActiveElement = "generate";
             setActiveElement(newActiveElement);
         }
-    
         if (key === "generateButton") {
           handleGenerate(value);
+          console.log("key", key);
         }
       };
     
@@ -157,4 +155,4 @@ const Filters = () => {
     )
 }; 
 
-export default Filters
+export default Filters;
