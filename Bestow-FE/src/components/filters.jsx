@@ -93,7 +93,6 @@ const Filters = () => {
 //   console.log("navData", navData);
 
     const handleStateSet = (key, value) => {
-        console.log("key", key);
         if (key === "Age") {
           handleAgeChange(value);
           const newActiveElement = "gender";
@@ -129,9 +128,9 @@ const Filters = () => {
             const newActiveElement = "generate";
             setActiveElement(newActiveElement);
         }
-    
         if (key === "generateButton") {
           handleGenerate(value);
+          console.log("key", key);
         }
       };
     
