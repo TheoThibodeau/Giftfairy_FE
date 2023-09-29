@@ -27,11 +27,10 @@ const Filters = () => {
                 occasion: occasion, 
                 gift_type: giftType, 
                 interest: interests, 
-                output_text: output,
             })
             .then ((response) => {
                 console.log("Response from backend:", response.data);
-                setOutput(response.data.output);
+                setOutput(response.data.output_text);
             })
     }
 
@@ -157,4 +156,4 @@ const Filters = () => {
     )
 }; 
 
-export default Filters
+export default Filters;
