@@ -4,6 +4,8 @@ import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
 import getFilterResponse from "./getfilter";
 
+// const respArr = new Array (10);
+
 const Filters = () => {
     const [age, setAge] = useState(""); 
     const [gender, setGender] = useState("");
@@ -15,7 +17,7 @@ const Filters = () => {
     const [activeElement, setActiveElement] = useState("age");
     const [isGenerated, setIsGenerated] = useState(false);
     const [output, setOutput] = useState("");
-
+    const [respArr, setRespArr] = useState([]);
 
     const handlePost = () => {
         axios 
@@ -30,7 +32,7 @@ const Filters = () => {
             })
             .then ((response) => {
                 console.log("Response from backend:", response.data);
-                const respArr = response.data.output_text.split("\n\n")
+                setRespArr(response.data.output_text.split("\n\n"))
                 console.log(respArr[9])
                 setOutput(response.data.output_text)
             })
@@ -141,17 +143,24 @@ const Filters = () => {
     return (
         <>
 
-            <h1>Bestow</h1>
+          <h1>Bestow</h1>
 
             <div>
                 <ParameterComponent
                   key={activeElement}
                   data={data[activeElement]}
                   handler={handleStateSet}/>
-              </div>
+            </div>
 
-        <button onClick={handlePost}>Generate</button>
-        <div>{output}</div>
+          <button onClick={handlePost}>Generate</button>
+
+          <div>
+            {respArr.map((response, index) => (
+              <div key={index}>
+                <p>{response}</p>
+              </div>
+            ))}
+          </div>
         
         </>
     )
