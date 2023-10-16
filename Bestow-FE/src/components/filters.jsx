@@ -30,7 +30,9 @@ const Filters = () => {
             })
             .then ((response) => {
                 console.log("Response from backend:", response.data);
-                setOutput(response.data.output_text);
+                const respArr = response.data.output_text.split("\n\n")
+                console.log(respArr[9])
+                setOutput(response.data.output_text)
             })
     }
 
