@@ -18,6 +18,7 @@ const Filters = () => {
     const [isGenerated, setIsGenerated] = useState(false);
     const [output, setOutput] = useState("");
     const [respArr, setRespArr] = useState([]);
+    const [responseHeaderArr, setRespHeaderArr] = useState([]);
 
     const handlePost = () => {
         axios 
@@ -33,7 +34,8 @@ const Filters = () => {
             .then ((response) => {
                 console.log("Response from backend:", response.data);
                 setRespArr(response.data.output_text.split("\n\n"))
-                console.log(respArr[9])
+                setRespHeaderArr(response.data.output_text.split(":"))
+                console.log(responseHeaderArr)
                 setOutput(response.data.output_text)
             })
     }
