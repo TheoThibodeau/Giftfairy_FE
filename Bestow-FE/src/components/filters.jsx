@@ -18,7 +18,6 @@ const Filters = () => {
     const [isGenerated, setIsGenerated] = useState(false);
     const [output, setOutput] = useState("");
     const [respArr, setRespArr] = useState([]);
-    const [responseHeaderArr, setRespHeaderArr] = useState([]);
 
     const handlePost = () => {
         axios 
