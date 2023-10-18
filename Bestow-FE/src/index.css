@@ -4,7 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(244, 111, 111, 0.87);
+  /* color: rgba(244, 111, 111, 0.87); */
+  color: black;
   background-color:lightblue;
 
   font-synthesis: none;
@@ -57,5 +58,28 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+
+@media only screen and (max-width: 475px) {
+  .container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    padding-top: 5rem;
+    justify-content: center;
+  }
+
+  .individual-responses-container {
+    width: 46%;
+    height: 250px;
+    border: 1px solid black;
+    padding: 2px;
+    margin: 2px 1px;
+    font-size: 12px;
+    border-radius: 5px;
+    overflow: scroll;
   }
 }

@@ -33,8 +33,7 @@ const Filters = () => {
             .then ((response) => {
                 console.log("Response from backend:", response.data);
                 setRespArr(response.data.output_text.split("\n\n"))
-                console.log(respArr[9])
-                setOutput(response.data.output_text)
+                console.log(respArr)
             })
     }
 
@@ -154,9 +153,9 @@ const Filters = () => {
 
           <button onClick={handlePost}>Generate</button>
 
-          <div>
+          <div className="container">
             {respArr.map((response, index) => (
-              <div key={index}>
+              <div key={index} className="individual-responses-container">
                 <p>{response}</p>
               </div>
             ))}
