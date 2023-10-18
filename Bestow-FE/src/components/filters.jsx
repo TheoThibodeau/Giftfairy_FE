@@ -154,9 +154,9 @@ const Filters = () => {
 
           <button onClick={handlePost}>Generate</button>
 
-          <div>
+          <div className="container">
             {respArr.map((response, index) => (
-              <div key={index}>
+              <div key={index} className="individual-responses-container">
                 <p>{response}</p>
               </div>
             ))}
