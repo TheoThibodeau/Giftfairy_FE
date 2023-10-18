@@ -80,5 +80,6 @@ button:focus-visible {
     margin: 2px 1px;
     font-size: 12px;
     border-radius: 5px;
+    overflow: scroll;
   }
 }
