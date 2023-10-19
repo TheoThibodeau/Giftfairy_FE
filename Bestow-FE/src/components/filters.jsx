@@ -151,8 +151,6 @@ const Filters = () => {
                   handler={handleStateSet}/>
             </div>
 
-          <button onClick={handlePost}>Generate</button>
-
           <div className="container">
             {respArr.map((response, index) => (
               <div key={index} className="individual-responses-container">
@@ -160,6 +158,10 @@ const Filters = () => {
               </div>
             ))}
           </div>
+
+          {activeElement === "generate" && !isGenerated && (
+        <button onClick={handlePost}>Generate</button>
+      )}
         
         </>
     )
