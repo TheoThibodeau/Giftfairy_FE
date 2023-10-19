@@ -35,7 +35,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: whitesmoke;
+  color: black;
   cursor: pointer;
   transition: border-color 0.25s;
   margin: 5px;
@@ -78,8 +79,9 @@ button:focus-visible {
     border: 1px solid black;
     padding: 2px;
     margin: 2px 1px;
-    font-size: 12px;
+    font-size: 14px;
     border-radius: 5px;
     overflow: scroll;
+    color: black;
   }
 }

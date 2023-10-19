@@ -153,15 +153,17 @@ const Filters = () => {
 
           <div className="container">
             {respArr.map((response, index) => (
-              <div key={index} className="individual-responses-container">
+            // <a key={index} href="https://www.amazon.com/">  
+              <div className="individual-responses-container">
                 <p>{response}</p>
               </div>
+            // </a>
             ))}
           </div>
 
           {activeElement === "generate" && !isGenerated && (
-        <button onClick={handlePost}>Generate</button>
-      )}
+            <button onClick={handlePost}>Generate</button>
+          )}
         
         </>
     )
