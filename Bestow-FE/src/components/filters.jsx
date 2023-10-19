@@ -18,6 +18,7 @@ const Filters = () => {
     const [isGenerated, setIsGenerated] = useState(false);
     const [output, setOutput] = useState("");
     const [respArr, setRespArr] = useState([]);
+    const [generate, setGenerate] = useState(false);
 
     const handlePost = () => {
         axios 
@@ -33,7 +34,7 @@ const Filters = () => {
             .then ((response) => {
                 console.log("Response from backend:", response.data);
                 setRespArr(response.data.output_text.split("\n\n"))
-                console.log(respArr)
+                setIsGenerated(true)
             })
     }
 
@@ -130,6 +131,7 @@ const Filters = () => {
             handleInterestsChange(value);
             const newActiveElement = "generate";
             setActiveElement(newActiveElement);
+            console.log(isGenerated)
         }
         if (key === "generateButton") {
           handleGenerate(value);
@@ -163,6 +165,9 @@ const Filters = () => {
 
           {activeElement === "generate" && !isGenerated && (
             <button onClick={handlePost}>Generate</button>
+          )}
+          {activeElement === "generate" && isGenerated && (
+            <button onClick={handlePost}>Re-Generate</button>
           )}
         
         </>
