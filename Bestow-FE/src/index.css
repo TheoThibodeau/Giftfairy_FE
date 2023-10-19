@@ -82,6 +82,7 @@ button:focus-visible {
     font-size: 14px;
     border-radius: 5px;
     overflow: scroll;
-    color: black;
+    color: whitesmoke;
+    background-color: darkblue;
   }
 }
