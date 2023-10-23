@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
 
@@ -17,6 +18,9 @@ const Landing = () => {
             shopping companion – thoughtful, 
             personalized, and just one click 
             away!</h4>
+            <Link to="/selections" className="landingBegin">
+                <button>Let's Begin</button>
+            </Link>
         </>
     )
 };
