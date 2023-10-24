@@ -7,6 +7,7 @@ const ParameterComponent = ({ data, handler }) => {
   console.log(data);
 
   return (
+    
         entries.map((entry) => (
           <div
             key={entry}
@@ -21,6 +22,7 @@ const ParameterComponent = ({ data, handler }) => {
             </button>  
           </div>
         ))
+        
   );
 };
 export default ParameterComponent;
