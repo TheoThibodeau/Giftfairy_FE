@@ -3,6 +3,7 @@ import {useState} from "react";
 import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
 import getFilterResponse from "./getfilter";
+import NavBar from "./navbar";
 
 // const respArr = new Array (10);
 
@@ -143,8 +144,9 @@ const Filters = () => {
 
     return (
         <>
-
-          <h1>Bestow</h1>
+            <div>
+              <NavBar />
+            </div>
 
             <div>
                 <ParameterComponent
