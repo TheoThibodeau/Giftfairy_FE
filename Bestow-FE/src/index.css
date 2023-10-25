@@ -85,4 +85,9 @@ button:focus-visible {
     color: whitesmoke;
     background-color: darkblue;
   }
+
+  .blue-button {
+    background-color: blue;
+    color: white;
+  }
 }
