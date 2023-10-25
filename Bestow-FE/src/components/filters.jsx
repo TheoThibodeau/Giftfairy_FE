@@ -20,6 +20,7 @@ const Filters = () => {
     const [output, setOutput] = useState("");
     const [respArr, setRespArr] = useState([]);
     const [generate, setGenerate] = useState(false);
+    
 
     const handlePost = () => {
         axios 
@@ -142,6 +143,24 @@ const Filters = () => {
     
       const keys = ["age", "gender", "relationship", "priceRange", "occasion", "giftType", "interests"];
 
+      const handlePreviousElement = () => {
+        // Define the mapping of previous states here
+        const previousStateMap = {
+          "gender": "age",
+          "relationship": "gender",
+          "priceRange": "relationship",
+          "occasion": "priceRange",
+          "giftType": "occasion",
+          "interests": "giftType",
+          "generate": "interests"
+        };
+    
+        if (activeElement !== "age" && previousStateMap[activeElement]) {
+          const previousElement = previousStateMap[activeElement];
+          setActiveElement(previousElement);
+        }
+      };
+
     return (
         <>
             <div>
@@ -171,8 +190,11 @@ const Filters = () => {
           {activeElement === "generate" && isGenerated && (
             <button onClick={handlePost}>Re-Generate</button>
           )}
-        
-        </>
+
+        {activeElement !== "age" && (
+          <a onClick={handlePreviousElement}>Previous</a>
+        )}        
+    </>
     )
 }; 
 
