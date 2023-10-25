@@ -6,7 +6,15 @@
   color-scheme: light dark;
   /* color: rgba(244, 111, 111, 0.87); */
   color: black;
-  background-color:lightblue;
+  background: hsla(233, 93%, 57%, 1);
+
+  background: linear-gradient(135deg, hsla(233, 93%, 57%, 1) 0%, hsla(211, 88%, 75%, 1) 50%, hsla(199, 82%, 71%, 1) 100%);
+
+  background: -moz-linear-gradient(135deg, hsla(233, 93%, 57%, 1) 0%, hsla(211, 88%, 75%, 1) 50%, hsla(199, 82%, 71%, 1) 100%);
+
+  background: -webkit-linear-gradient(135deg, hsla(233, 93%, 57%, 1) 0%, hsla(211, 88%, 75%, 1) 50%, hsla(199, 82%, 71%, 1) 100%);
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#2A42F7", endColorstr="#86BDF7", GradientType=1 );
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,10 +31,20 @@ body {
   min-height: 100vh;
 }
 
+/* Headings */
+
 h1 {
+  font-family: 'Noto Sans Osmanya', sans-serif;
   font-size: 3.2em;
   line-height: 1.1;
+  margin-bottom: 60px;
 }
+
+h4 {
+  margin-bottom: 60px;
+}
+
+/* Body */
 
 button {
   border-radius: 8px;
@@ -41,9 +59,11 @@ button {
   transition: border-color 0.25s;
   margin: 5px;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
