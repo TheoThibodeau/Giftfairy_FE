@@ -15,7 +15,7 @@ const Filters = () => {
     const [occasion, setOccasion] = useState(""); 
     const [giftType, setGiftType] = useState(""); 
     const [interests, setInterests] = useState("");
-    const [activeElement, setActiveElement] = useState("age");
+    const [activeElement, setActiveElement] = useState("gender");
     const [isGenerated, setIsGenerated] = useState(false);
     const [output, setOutput] = useState("");
     const [respArr, setRespArr] = useState([]);
@@ -99,12 +99,12 @@ const Filters = () => {
 //   console.log("navData", navData);
 
     const handleStateSet = (key, value) => {
-        if (key === "Age") {
+        if (key === "Gender") {
           handleAgeChange(value);
-          const newActiveElement = "gender";
+          const newActiveElement = "age";
           setActiveElement(newActiveElement);
         }
-        if (key === "Gender") {
+        if (key === "Age") {
           handleGenderChange(value);
           const newActiveElement = "relationship";
           setActiveElement(newActiveElement);
@@ -146,8 +146,8 @@ const Filters = () => {
       const handlePreviousElement = () => {
         // Define the mapping of previous states here
         const previousStateMap = {
-          "gender": "age",
-          "relationship": "gender",
+          "age": "gender",
+          "relationship": "age",
           "priceRange": "relationship",
           "occasion": "priceRange",
           "giftType": "occasion",
@@ -155,7 +155,7 @@ const Filters = () => {
           "generate": "interests"
         };
     
-        if (activeElement !== "age" && previousStateMap[activeElement]) {
+        if (activeElement !== "gender" && previousStateMap[activeElement]) {
           const previousElement = previousStateMap[activeElement];
           setActiveElement(previousElement);
         }
@@ -191,7 +191,7 @@ const Filters = () => {
             <button onClick={handlePost}>Re-Generate</button>
           )}
 
-        {activeElement !== "age" && (
+        {activeElement !== "gender" && (
           <a onClick={handlePreviousElement}>Previous</a>
         )}        
     </>
