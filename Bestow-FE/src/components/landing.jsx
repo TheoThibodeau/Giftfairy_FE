@@ -13,7 +13,7 @@ const Landing = () => {
     return(
         <>
             <h1>GIFTFaiRY</h1>
-            <h4>giftfAIry selects the perfect gift for every 
+            <h4>GIFTFaiRY selects the perfect gift for every 
             personality with our AI-powered 
             shopping companion – thoughtful, 
             personalized, and just one click 
