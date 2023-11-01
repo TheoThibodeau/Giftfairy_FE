@@ -28,16 +28,11 @@
       [
         "Friend",
         "Partner", 
-	      "Boyfriend", 
-        "Girlfriend",
-        "Husband", 
-        "Wife",
-        "Son",
-        "Daughter",
-        "Family friend",
-        "Aunt",
-        "Uncle",
-        "Grandparent" 
+        "Spouse",
+        "Child",
+        "Relative",
+        "Grandparent",
+        "Other" 
     ]},
     "priceRange": {
       "title": "Price Range",
@@ -60,12 +55,9 @@
           "Christmas",
           "Anniversary",
           "Wedding",
-          "Graduation",
-          "Valentine's Day",
-          "House Warming",
           "Mother's Day",
           "Father's Day",
-          "Just Because"
+          "Other"
       ]},
     
     "giftType": {
@@ -86,14 +78,12 @@
       "data":
       [
 			"Sports", 
-			"DIY",
 			"Crafts", 
 			"Fashion",
 			"Travel",
 			"Cooking",
-            "Music",
-            "Gaming",
-            "Pets"
+      "Music",
+      "Other"
     ]},
 
     "generate":{
