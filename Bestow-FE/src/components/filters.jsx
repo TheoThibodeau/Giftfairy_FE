@@ -20,6 +20,7 @@ const Filters = () => {
     const [output, setOutput] = useState("");
     const [respArr, setRespArr] = useState([]);
     const [generate, setGenerate] = useState(false);
+    const [itemTitle, setItemTitle] = useState("");
     
 
     const handlePost = () => {
@@ -32,11 +33,13 @@ const Filters = () => {
                 occasion: occasion, 
                 gift_type: giftType, 
                 interest: interests, 
+                item_title_array: itemTitle,
             })
             .then ((response) => {
                 console.log("Response from backend:", response.data);
                 setRespArr(response.data.output_text.split("\n\n"))
                 setIsGenerated(true)
+                setItemTitle(response.data.item_title_array)
             })
     }
 
@@ -178,7 +181,8 @@ const Filters = () => {
             {respArr.map((response, index) => (
             // <a key={index} href="https://www.amazon.com/">  
               <div className="individual-responses-container">
-                <p>{response}</p>
+                {/* <p>{response}</p> */}
+                <p>{itemTitle}</p>
               </div>
             // </a>
             ))}
