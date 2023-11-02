@@ -20,7 +20,9 @@ const Filters = () => {
     const [output, setOutput] = useState(""); //Delete this line??? Doesn't seem like it's getting used. 
     const [respArr, setRespArr] = useState([]);
     const [generate, setGenerate] = useState(false);
-    const [itemTitle, setItemTitle] = useState("");
+    const [itemTitle, setItemTitle] = useState([]);
+    const [itemDescrip, setItemDescrip] = useState([]);
+    const [openaiDescrip, setOpenaiDescrip] = useState([]);
     
 
     const handlePost = () => {
@@ -33,19 +35,22 @@ const Filters = () => {
                 occasion: occasion, 
                 gift_type: giftType, 
                 interest: interests, 
-                item_title_array: itemTitle,
             })
             .then ((response) => {
                 console.log("Response from backend:", response.data);
                 setRespArr(response.data.output_text.split("\n\n"))
                 //Toggle boolean value to true for re-generate button use
                 setIsGenerated(true)
+                //Reset the arrays on the front-end
+                setItemDescrip([])
+                setItemTitle([])
+                setOpenaiDescrip([])
                 //Set response.data.item_descrip_string
-
+                setItemDescrip(response.data.item_descrip_string.split(","))
                 //Set response.data.item_title_string
-
+                setItemTitle(response.data.item_title_string.split(","))
                 //Set response.data.openai_descrip_string
-                
+                setOpenaiDescrip(response.data.openai_descrip_string.split(","))
             })
     }
 
@@ -184,13 +189,15 @@ const Filters = () => {
             </div>
 
           <div className="container">
-            {respArr.map((response, index) => (
-            // <a key={index} href="https://www.amazon.com/">  
-              <div className="individual-responses-container">
-                {/* <p>{response}</p> */}
-                <p>{itemTitle}</p>
+            <p>{openaiDescrip}</p>
+            {itemTitle.map((title, index) => (
+              <div className="individual-responses-container" key={index}>
+                <h2>{title}</h2>
+                <p>{itemDescrip[index]}</p>
+              <a key={index} href="https://www.amazon.com/">  
+                <button>Buy Product</button>
+              </a>
               </div>
-            // </a>
             ))}
           </div>
 
