@@ -17,7 +17,7 @@ const Filters = () => {
     const [interests, setInterests] = useState("");
     const [activeElement, setActiveElement] = useState("gender");
     const [isGenerated, setIsGenerated] = useState(false);
-    const [output, setOutput] = useState("");
+    const [output, setOutput] = useState(""); //Delete this line??? Doesn't seem like it's getting used. 
     const [respArr, setRespArr] = useState([]);
     const [generate, setGenerate] = useState(false);
     
@@ -36,7 +36,14 @@ const Filters = () => {
             .then ((response) => {
                 console.log("Response from backend:", response.data);
                 setRespArr(response.data.output_text.split("\n\n"))
+                //Toggle boolean value to true for re-generate button use
                 setIsGenerated(true)
+                //Set response.data.item_descrip_string
+
+                //Set response.data.item_title_string
+
+                //Set response.data.openai_descrip_string
+                
             })
     }
 
@@ -79,7 +86,7 @@ const Filters = () => {
         setGenerate(selectedGenerate);
       };
 
-    const handleActiveNav = (newValue) => {
+    const handleActiveNav = (newValue) => {   //Delete this function??? Doesn't seem like it's getting used. 
     const newState = navData.map((datum) => {
       if (datum.isActive) {
         datum.isActive = false;
@@ -141,7 +148,7 @@ const Filters = () => {
         }
       };
     
-      const keys = ["age", "gender", "relationship", "priceRange", "occasion", "giftType", "interests"];
+      const keys = ["age", "gender", "relationship", "priceRange", "occasion", "giftType", "interests"]; //Delete this line??? Doesn't seem like it's getting used. 
 
       const handlePreviousElement = () => {
         // Define the mapping of previous states here
