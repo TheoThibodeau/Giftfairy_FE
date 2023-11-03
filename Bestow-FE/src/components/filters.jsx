@@ -194,9 +194,9 @@ const Filters = () => {
               <div className="individual-responses-container" key={index}>
                 <h2>{title}</h2>
                 <p>{itemDescrip[index]}</p>
-              <a key={index} href="https://www.amazon.com/">  
-                <button>Buy Product</button>
-              </a>
+                <a key={index} href={`https://www.amazon.com/s?k=${encodeURIComponent(title)}`} target="_blank">
+                  <button>Buy Product</button>
+                </a>
               </div>
             ))}
           </div>
