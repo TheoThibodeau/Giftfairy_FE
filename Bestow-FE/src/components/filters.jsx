@@ -46,7 +46,7 @@ const Filters = () => {
                 setItemTitle([])
                 setOpenaiDescrip([])
                 //Set response.data.item_descrip_string
-                setItemDescrip(response.data.item_descrip_string.split(","))
+                setItemDescrip(response.data.item_descrip_string.split("*"))
                 //Set response.data.item_title_string
                 setItemTitle(response.data.item_title_string.split(","))
                 //Set response.data.openai_descrip_string
