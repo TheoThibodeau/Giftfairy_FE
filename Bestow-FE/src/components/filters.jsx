@@ -177,7 +177,7 @@ const Filters = () => {
 
     return (
         <>
-            <div>
+            <div className="navbarContainer">
               <NavBar />
             </div>
 
@@ -189,7 +189,7 @@ const Filters = () => {
             </div>
 
           <div className="container">
-            <p>{openaiDescrip}</p>
+            <p className="openaiDescrip">{openaiDescrip}</p>
             {itemTitle.map((title, index) => (
               <div className="individual-responses-container" key={index}>
                 <h2>{title}</h2>

@@ -47,9 +47,13 @@ h4 {
 }
 
 /* Nav bar - home button */
-  .navbar-brand {
+  .navbarContainer {
     position: fixed;
-    top: 15px;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    background-color: hsl(199, 61%, 88%)
   }
 
 /* Body */
@@ -94,7 +98,7 @@ button:focus-visible {
     flex-wrap: wrap;
     width: 100%;
     height: auto;
-    padding-top: 2rem;
+    padding: .5rem 0;
     justify-content: center;
   }
 
@@ -125,6 +129,10 @@ button:focus-visible {
     justify-content: center;
     align-items: center;
     width: 100%;
+  }
+
+  .openaiDescrip {
+    padding-top: 1.5em;
   }
   
 }
