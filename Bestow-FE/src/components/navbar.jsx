@@ -11,7 +11,10 @@ function NavBar() {
     <>
         <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
             <Container>
-                <Link to="/" className="navbar-brand">
+            <div className="d-flex align-items-start">
+            <h3 className="titleHeader">GIFTFaiRY</h3>
+          </div>
+            <Link to="/" className="navbar-brand">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="48"

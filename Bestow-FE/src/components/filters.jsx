@@ -4,6 +4,7 @@ import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
 import getFilterResponse from "./getfilter";
 import NavBar from "./navbar";
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 // const respArr = new Array (10);
 
@@ -23,6 +24,7 @@ const Filters = () => {
     const [itemTitle, setItemTitle] = useState([]);
     const [itemDescrip, setItemDescrip] = useState([]);
     const [openaiDescrip, setOpenaiDescrip] = useState([]);
+    const [progress, setProgress] = useState(0);
     
 
     const handlePost = () => {
@@ -112,45 +114,72 @@ const Filters = () => {
   };
 //   console.log("navData", navData);
 
+    const progressValues = {
+      "gender": 10,
+      "age": 20,
+      "relationship": 30,
+      "priceRange": 40,
+      "occasion": 50,
+      "giftType": 60,
+      "interests": 70,
+      "generate": 100,
+    };
+
     const handleStateSet = (key, value) => {
         if (key === "Gender") {
           handleAgeChange(value);
           const newActiveElement = "age";
           setActiveElement(newActiveElement);
+          const newProgress = progressValues[newActiveElement];
+          setProgress(newProgress);
         }
         if (key === "Age") {
           handleGenderChange(value);
           const newActiveElement = "relationship";
           setActiveElement(newActiveElement);
+          const newProgress = progressValues[newActiveElement];
+          setProgress(newProgress);
         }
         if (key === "Relationship") {
           handleRelationshipChange(value);
           const newActiveElement = "priceRange";
           setActiveElement(newActiveElement);
+          const newProgress = progressValues[newActiveElement];
+          setProgress(newProgress);
         }
         if (key === "Price Range") {
           handlePriceRangeChange(value);
           const newActiveElement = "occasion";
           setActiveElement(newActiveElement);
+          const newProgress = progressValues[newActiveElement];
+          setProgress(newProgress);
         }
         if (key === "Occasion") {
             handleOccasionChange(value);
             const newActiveElement = "giftType";
             setActiveElement(newActiveElement);
+            const newProgress = progressValues[newActiveElement];
+            setProgress(newProgress);
         }
         if (key === "Gift Type") {
             handleGiftTypeChange(value);
             const newActiveElement = "interests";
             setActiveElement(newActiveElement);
+            const newProgress = progressValues[newActiveElement];
+            setProgress(newProgress);
           }
         if (key === "Interests") {
             handleInterestsChange(value);
             const newActiveElement = "generate";
             setActiveElement(newActiveElement);
+            const newProgress = progressValues[newActiveElement];
+            setProgress(newProgress);
             console.log(isGenerated)
         }
         if (key === "generateButton") {
           handleGenerate(value);
+          const newProgress = progressValues[newActiveElement];
+          setProgress(newProgress);
           console.log("key", key);
         }
       };
@@ -175,11 +204,20 @@ const Filters = () => {
         }
       };
 
+
     return (
         <>
             <div className="navbarContainer">
               <NavBar />
             </div>
+
+            <ProgressBar now={progressValues[activeElement]} label={`${progressValues[activeElement]}%`} style={{ backgroundColor: 'lightgray' }}>
+                <ProgressBar variant="success" now={progressValues[activeElement]} label={`${progressValues[activeElement]}%`} style={{ backgroundColor: 'lightblue' }} />
+            </ProgressBar>
+
+            {activeElement !== "gender" && (
+             <a onClick={handlePreviousElement} className="backButton">&lt;</a>
+            )}  
 
             <div>
                 <ParameterComponent
@@ -206,11 +244,7 @@ const Filters = () => {
           )}
           {activeElement === "generate" && isGenerated && (
             <button onClick={handlePost}>Re-Generate</button>
-          )}
-
-        {activeElement !== "gender" && (
-          <a onClick={handlePreviousElement}>Previous</a>
-        )}        
+          )}      
     </>
     )
 }; 
