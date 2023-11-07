@@ -115,13 +115,13 @@ const Filters = () => {
 //   console.log("navData", navData);
 
     const progressValues = {
-      "gender": 10,
-      "age": 20,
-      "relationship": 30,
-      "priceRange": 40,
-      "occasion": 50,
-      "giftType": 60,
-      "interests": 70,
+      "gender": 0,
+      "age": 10,
+      "relationship": 20,
+      "priceRange": 30,
+      "occasion": 40,
+      "giftType": 50,
+      "interests": 60,
       "generate": 100,
     };
 
@@ -209,11 +209,10 @@ const Filters = () => {
         <>
             <div className="navbarContainer">
               <NavBar />
-            </div>
-
-            <ProgressBar now={progressValues[activeElement]} label={`${progressValues[activeElement]}%`} style={{ backgroundColor: 'lightgray' }}>
+              <ProgressBar now={progressValues[activeElement]} label={`${progressValues[activeElement]}%`} style={{ backgroundColor: 'lightgray' }}>
                 <ProgressBar variant="success" now={progressValues[activeElement]} label={`${progressValues[activeElement]}%`} style={{ backgroundColor: 'lightblue' }} />
-            </ProgressBar>
+              </ProgressBar>
+            </div>
 
             {activeElement !== "gender" && (
              <a onClick={handlePreviousElement} className="backButton">&lt;</a>
