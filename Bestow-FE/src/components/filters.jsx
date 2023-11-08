@@ -6,7 +6,6 @@ import getFilterResponse from "./getfilter";
 import NavBar from "./navbar";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
-// const respArr = new Array (10);
 
 const Filters = () => {
     const [age, setAge] = useState(""); 
@@ -18,13 +17,12 @@ const Filters = () => {
     const [interests, setInterests] = useState("");
     const [activeElement, setActiveElement] = useState("gender");
     const [isGenerated, setIsGenerated] = useState(false);
-    const [output, setOutput] = useState(""); //Delete this line??? Doesn't seem like it's getting used. 
-    const [respArr, setRespArr] = useState([]);
     const [generate, setGenerate] = useState(false);
     const [itemTitle, setItemTitle] = useState([]);
     const [itemDescrip, setItemDescrip] = useState([]);
     const [openaiDescrip, setOpenaiDescrip] = useState([]);
     const [progress, setProgress] = useState(0);
+    const [promptMess, setPromptMess] = useState("");   
     
 
     const handlePost = () => {
@@ -40,19 +38,21 @@ const Filters = () => {
             })
             .then ((response) => {
                 console.log("Response from backend:", response.data);
-                setRespArr(response.data.output_text.split("\n\n"))
                 //Toggle boolean value to true for re-generate button use
                 setIsGenerated(true)
                 //Reset the arrays on the front-end
                 setItemDescrip([])
                 setItemTitle([])
                 setOpenaiDescrip([])
+                //Clear prompt message before items are done being generated. 
+                setPromptMess("");
                 //Set response.data.item_descrip_string
                 setItemDescrip(response.data.item_descrip_string.split("*"))
                 //Set response.data.item_title_string
                 setItemTitle(response.data.item_title_string.split(","))
                 //Set response.data.openai_descrip_string
                 setOpenaiDescrip(response.data.openai_descrip_string.split(","))
+                //Set up variable to hold next prompt message depending on next active element 
             })
     }
 
@@ -125,6 +125,18 @@ const Filters = () => {
       "generate": 100,
     };
 
+    //Object containing messages for each selection page
+    const promptMessages = {
+      gender: "Hey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for. What is their gender?",
+      age: "How old are they?", 
+      relationship: "What is your relationship with the person?", 
+      priceRange: "What is your price range?", 
+      occasion: "What's the occasion?",
+      giftType: "What type of gift do you think they would best be interested in?",
+      interests: "What are their interests?",
+      generate: "Ok, thanks for the help! I think I have enough information to generate some great gift ideas for you! Click the generate button down below"
+    }
+
     const handleStateSet = (key, value) => {
         if (key === "Gender") {
           handleAgeChange(value);
@@ -132,6 +144,9 @@ const Filters = () => {
           setActiveElement(newActiveElement);
           const newProgress = progressValues[newActiveElement];
           setProgress(newProgress);
+          //Set up variable to hold next prompt message depending on next active element 
+          const newPrompt = promptMessages[newActiveElement];
+          setPromptMess(newPrompt);
         }
         if (key === "Age") {
           handleGenderChange(value);
@@ -139,6 +154,9 @@ const Filters = () => {
           setActiveElement(newActiveElement);
           const newProgress = progressValues[newActiveElement];
           setProgress(newProgress);
+          //Set up variable to hold next prompt message depending on next active element 
+          const newPrompt = promptMessages[newActiveElement];
+          setPromptMess(newPrompt);
         }
         if (key === "Relationship") {
           handleRelationshipChange(value);
@@ -146,6 +164,9 @@ const Filters = () => {
           setActiveElement(newActiveElement);
           const newProgress = progressValues[newActiveElement];
           setProgress(newProgress);
+          //Set up variable to hold next prompt message depending on next active element 
+          const newPrompt = promptMessages[newActiveElement];
+          setPromptMess(newPrompt);
         }
         if (key === "Price Range") {
           handlePriceRangeChange(value);
@@ -153,6 +174,9 @@ const Filters = () => {
           setActiveElement(newActiveElement);
           const newProgress = progressValues[newActiveElement];
           setProgress(newProgress);
+          //Set up variable to hold next prompt message depending on next active element 
+          const newPrompt = promptMessages[newActiveElement];
+          setPromptMess(newPrompt);
         }
         if (key === "Occasion") {
             handleOccasionChange(value);
@@ -160,6 +184,9 @@ const Filters = () => {
             setActiveElement(newActiveElement);
             const newProgress = progressValues[newActiveElement];
             setProgress(newProgress);
+            //Set up variable to hold next prompt message depending on next active element 
+            const newPrompt = promptMessages[newActiveElement];
+            setPromptMess(newPrompt);
         }
         if (key === "Gift Type") {
             handleGiftTypeChange(value);
@@ -167,6 +194,9 @@ const Filters = () => {
             setActiveElement(newActiveElement);
             const newProgress = progressValues[newActiveElement];
             setProgress(newProgress);
+            //Set up variable to hold next prompt message depending on next active element 
+            const newPrompt = promptMessages[newActiveElement];
+            setPromptMess(newPrompt);
           }
         if (key === "Interests") {
             handleInterestsChange(value);
@@ -174,6 +204,9 @@ const Filters = () => {
             setActiveElement(newActiveElement);
             const newProgress = progressValues[newActiveElement];
             setProgress(newProgress);
+            //Set up variable to hold next prompt message depending on next active element 
+            const newPrompt = promptMessages[newActiveElement];
+            setPromptMess(newPrompt);
             console.log(isGenerated)
         }
         if (key === "generateButton") {
@@ -215,11 +248,15 @@ const Filters = () => {
             </div>
 
             <br />
-
-            {activeElement !== "gender" && (
-             <a onClick={handlePreviousElement} className="backButton">&lt;</a>
-            )}  
-
+            <div className="backButton-prompt-div">
+              
+              {activeElement !== "gender" && !isGenerated && (
+              <a onClick={handlePreviousElement} className="backButton">&lt;</a>
+              )}  
+              {!isGenerated && (
+                <p>{promptMessages[activeElement]}</p>
+              )}
+            </div>
             <div>
                 <ParameterComponent
                   key={activeElement}
