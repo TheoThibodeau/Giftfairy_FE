@@ -115,13 +115,13 @@ const Filters = () => {
 //   console.log("navData", navData);
 
     const progressValues = {
-      "gender": 0,
-      "age": 10,
-      "relationship": 20,
-      "priceRange": 30,
-      "occasion": 40,
-      "giftType": 50,
-      "interests": 60,
+      "gender": 10,
+      "age": 20,
+      "relationship": 30,
+      "priceRange": 40,
+      "occasion": 50,
+      "giftType": 60,
+      "interests": 70,
       "generate": 100,
     };
 
@@ -178,7 +178,7 @@ const Filters = () => {
         }
         if (key === "generateButton") {
           handleGenerate(value);
-          const newProgress = progressValues[newActiveElement];
+          const newProgress = progressValues[activeElement];
           setProgress(newProgress);
           console.log("key", key);
         }
@@ -213,6 +213,8 @@ const Filters = () => {
                 <ProgressBar variant="success" now={progressValues[activeElement]} label={`${progressValues[activeElement]}%`} style={{ backgroundColor: 'lightblue' }} />
               </ProgressBar>
             </div>
+
+            <br />
 
             {activeElement !== "gender" && (
              <a onClick={handlePreviousElement} className="backButton">&lt;</a>

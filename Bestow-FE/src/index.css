@@ -56,6 +56,10 @@ h4 {
     background-color: hsl(199, 61%, 88%)
   }
 
+  .navbarContainer .d-flex {
+    margin-right: 200px;
+  }
+
 /* Body */
 
 button {
