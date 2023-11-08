@@ -247,15 +247,18 @@ const Filters = () => {
               </ProgressBar>
             </div>
 
-            <br />
+            <br/>
             <div className="backButton-prompt-div">
-              
+              <div className="backButton-div">
               {activeElement !== "gender" && !isGenerated && (
               <a onClick={handlePreviousElement} className="backButton">&lt;</a>
-              )}  
+              )} 
+              </div>
+              <div className="prompt-div">
               {!isGenerated && (
                 <p>{promptMessages[activeElement]}</p>
               )}
+              </div> 
             </div>
             <div>
                 <ParameterComponent
