@@ -139,8 +139,23 @@ button:focus-visible {
     padding-top: 1.5em;
   }
 
-  .titleHeader {
-    
+  .backButton-prompt-div {
+    /* position: relative;
+    display: flex;
+    justify-content: center;
+    top: 18px; */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .backButton-div{
+    display: block;
+    float: left;
+  }
+
+  .prompt-div {
+    display: block;
   }
   
 }
