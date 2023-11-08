@@ -129,10 +129,10 @@ const Filters = () => {
     const promptMessages = {
       gender: "Hey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for. What is their gender?",
       age: "How old are they?", 
-      relationship: "What is your relationship with the person?", 
+      relationship: "What is your relationship with them?", 
       priceRange: "What is your price range?", 
       occasion: "What's the occasion?",
-      giftType: "What type of gift do you think they would best be interested in?",
+      giftType: "What gifts would they be interested in?",
       interests: "What are their interests?",
       generate: "Ok, thanks for the help! I think I have enough information to generate some great gift ideas for you! Click the generate button down below"
     }
@@ -248,17 +248,10 @@ const Filters = () => {
             </div>
 
             <br/>
-            <div className="backButton-prompt-div">
-              <div className="backButton-div">
-              {activeElement !== "gender" && !isGenerated && (
-              <a onClick={handlePreviousElement} className="backButton">&lt;</a>
-              )} 
-              </div>
-              <div className="prompt-div">
+            <div className="prompt-div">
               {!isGenerated && (
                 <p>{promptMessages[activeElement]}</p>
               )}
-              </div> 
             </div>
             <div>
                 <ParameterComponent
@@ -285,7 +278,21 @@ const Filters = () => {
           )}
           {activeElement === "generate" && isGenerated && (
             <button onClick={handlePost}>Re-Generate</button>
-          )}      
+          )}   
+          <div className="backButton-nextButton-container">
+              <div className="backButton-div">
+                {activeElement !== "gender" && !isGenerated && (
+                <button onClick={handlePreviousElement} className="backButton">Previous</button>
+                )} 
+              </div>
+              <div className="nextButton-div">
+                {activeElement !== "generate" && (
+                <button className="nextButton">Next</button>
+                )}
+
+              </div>
+          </div>   
+
     </>
     )
 }; 
