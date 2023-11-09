@@ -89,9 +89,23 @@
     "personality":{
     "title": "Personality",
     "data":[
-
+      "Introvert",
+      "Extrovert"
     ]
     },
+
+    "activity":{
+      "title": "Activity Level",
+      "data":[
+        "Couch potato",
+        "Not very active",
+        "Somewhat active",
+        "Active",
+        "Very active",
+        "Extremely active",
+        "Athlete"
+      ]
+      },
 
     "generate":{
       "title": "Generate Button",

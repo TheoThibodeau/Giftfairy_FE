@@ -2,7 +2,7 @@ body {
   font-family: 'Kiwi Maru', 'Raleway', serif;
 }
 
-#root {
+#main-container {
   max-width: 1280px;
   margin: 0;
   padding: 2rem;

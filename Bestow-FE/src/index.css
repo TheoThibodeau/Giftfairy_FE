@@ -128,7 +128,7 @@ button:focus-visible {
     width: 100%;
   }
 
-  #root{
+  #main-container{
     justify-content: center;
     align-items: center;
     width: 100%;

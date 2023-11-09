@@ -122,6 +122,7 @@ const Filters = () => {
       "occasion": 50,
       "giftType": 60,
       "interests": 70,
+      "activity": 80,
       "generate": 100,
     };
 
@@ -134,6 +135,7 @@ const Filters = () => {
       occasion: "What's the occasion?",
       giftType: "What gifts would they be interested in?",
       interests: "What are their interests?",
+      activity: "What is their activity level?",
       generate: "Ok, thanks for the help! I think I have enough information to generate some great gift ideas for you! Click the generate button down below"
     }
 
@@ -200,7 +202,7 @@ const Filters = () => {
           }
         if (key === "Interests") {
             handleInterestsChange(value);
-            const newActiveElement = "generate";
+            const newActiveElement = "activity";
             setActiveElement(newActiveElement);
             const newProgress = progressValues[newActiveElement];
             setProgress(newProgress);
@@ -209,6 +211,17 @@ const Filters = () => {
             setPromptMess(newPrompt);
             console.log(isGenerated)
         }
+        if (key === "Activity Level") {
+          handleInterestsChange(value);
+          const newActiveElement = "generate";
+          setActiveElement(newActiveElement);
+          const newProgress = progressValues[newActiveElement];
+          setProgress(newProgress);
+          //Set up variable to hold next prompt message depending on next active element 
+          const newPrompt = promptMessages[newActiveElement];
+          setPromptMess(newPrompt);
+          console.log(isGenerated)
+      }
         if (key === "generateButton") {
           handleGenerate(value);
           const newProgress = progressValues[activeElement];
@@ -217,7 +230,7 @@ const Filters = () => {
         }
       };
     
-      const keys = ["age", "gender", "relationship", "priceRange", "occasion", "giftType", "interests"]; //Delete this line??? Doesn't seem like it's getting used. 
+      const keys = ["age", "gender", "relationship", "priceRange", "occasion", "giftType", "interests", "activity"]; //Delete this line??? Doesn't seem like it's getting used. 
 
       const handlePreviousElement = () => {
         // Define the mapping of previous states here
@@ -228,7 +241,8 @@ const Filters = () => {
           "occasion": "priceRange",
           "giftType": "occasion",
           "interests": "giftType",
-          "generate": "interests"
+          "activity": "interests",
+          "generate": "activity"
         };
     
         if (activeElement !== "gender" && previousStateMap[activeElement]) {
