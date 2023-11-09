@@ -53,7 +53,7 @@ h4 {
     top: 0;
     z-index: 2;
     width: 100%;
-    background-color: hsl(199, 61%, 88%)
+    background-color: hsl(199, 61%, 88%);
   }
 
   .navbarContainer .d-flex {
@@ -126,7 +126,6 @@ button:focus-visible {
 
   .paramButtonContainer {
     width: 100%;
-
   }
 
   #root{
@@ -143,6 +142,7 @@ button:focus-visible {
   .backButton-nextButton-container {
     display: flex;
     gap: 2%;
+    margin-bottom: 20px;
   }
   .backButton-div {
     width: 49%;
@@ -151,4 +151,21 @@ button:focus-visible {
   .nextButton-div{
     width: 49%;
   }
+
+  .prompt-div {
+    margin-top: -25px;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    padding: 10px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
 }

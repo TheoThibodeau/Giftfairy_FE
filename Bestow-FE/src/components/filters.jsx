@@ -248,11 +248,13 @@ const Filters = () => {
             </div>
 
             <br/>
+            
             <div className="prompt-div">
               {!isGenerated && (
                 <p>{promptMessages[activeElement]}</p>
               )}
             </div>
+
             <div>
                 <ParameterComponent
                   key={activeElement}
@@ -279,7 +281,8 @@ const Filters = () => {
           {activeElement === "generate" && isGenerated && (
             <button onClick={handlePost}>Re-Generate</button>
           )}   
-          <div className="backButton-nextButton-container">
+
+          <div className="footer">
               <div className="backButton-div">
                 {activeElement !== "gender" && !isGenerated && (
                 <button onClick={handlePreviousElement} className="backButton">Previous</button>
@@ -289,10 +292,8 @@ const Filters = () => {
                 {activeElement !== "generate" && (
                 <button className="nextButton">Next</button>
                 )}
-
               </div>
           </div>   
-
     </>
     )
 }; 

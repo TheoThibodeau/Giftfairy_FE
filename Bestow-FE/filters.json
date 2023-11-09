@@ -85,6 +85,13 @@
       "Music",
       "Other"
     ]},
+    
+    "personality":{
+    "title": "Personality",
+    "data":[
+
+    ]
+    },
 
     "generate":{
       "title": "Generate Button",
