@@ -133,29 +133,22 @@ button:focus-visible {
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding: 4rem 1rem 0rem 1rem;
   }
 
   .openaiDescrip {
     padding-top: 1.5em;
   }
 
-  .backButton-prompt-div {
-    /* position: relative;
+  .backButton-nextButton-container {
     display: flex;
-    justify-content: center;
-    top: 18px; */
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    gap: 2%;
+  }
+  .backButton-div {
+    width: 49%;
   }
   
-  .backButton-div{
-    display: block;
-    float: left;
+  .nextButton-div{
+    width: 49%;
   }
-
-  .prompt-div {
-    display: block;
-  }
-  
 }
