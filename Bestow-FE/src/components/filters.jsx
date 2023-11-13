@@ -5,6 +5,7 @@ import data from "/filters.json";
 import getFilterResponse from "./getfilter";
 import NavBar from "./navbar";
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { ReactDOM } from "react";
 
 
 const Filters = () => {
@@ -15,6 +16,7 @@ const Filters = () => {
     const [occasion, setOccasion] = useState(""); 
     const [giftType, setGiftType] = useState(""); 
     const [interests, setInterests] = useState("");
+    const [activity, setActivity] = useState("");
     const [activeElement, setActiveElement] = useState("gender");
     const [isGenerated, setIsGenerated] = useState(false);
     const [generate, setGenerate] = useState(false);
@@ -22,7 +24,9 @@ const Filters = () => {
     const [itemDescrip, setItemDescrip] = useState([]);
     const [openaiDescrip, setOpenaiDescrip] = useState([]);
     const [progress, setProgress] = useState(0);
-    const [promptMess, setPromptMess] = useState("");   
+    const [promptMess, setPromptMess] = useState("");  
+    const [selectionMade, setSelectionMade] = useState(false); 
+    const [opacity1, setOpacity1] = useState("");
     
 
     const handlePost = () => {
@@ -35,6 +39,7 @@ const Filters = () => {
                 occasion: occasion, 
                 gift_type: giftType, 
                 interest: interests, 
+                activity_level: activity,
             })
             .then ((response) => {
                 console.log("Response from backend:", response.data);
@@ -91,6 +96,11 @@ const Filters = () => {
         console.log(selectedInterests)
     }
 
+    const handleActivityChange = (selectedActivity) => {
+      setActivity(selectedActivity)
+      console.log(selectedActivity)
+  }
+
     const handleGenerate = (selectedGenerate) => {
         setGenerate(selectedGenerate);
       };
@@ -142,91 +152,55 @@ const Filters = () => {
     const handleStateSet = (key, value) => {
         if (key === "Gender") {
           handleAgeChange(value);
-          const newActiveElement = "age";
-          setActiveElement(newActiveElement);
-          const newProgress = progressValues[newActiveElement];
-          setProgress(newProgress);
-          //Set up variable to hold next prompt message depending on next active element 
-          const newPrompt = promptMessages[newActiveElement];
-          setPromptMess(newPrompt);
+          setSelectionMade(true);
+          // const targetElement = document.getElementsByClassName("nextButton");
+          // targetElement.style = {opacity: "100%"};
         }
         if (key === "Age") {
           handleGenderChange(value);
-          const newActiveElement = "relationship";
-          setActiveElement(newActiveElement);
-          const newProgress = progressValues[newActiveElement];
-          setProgress(newProgress);
-          //Set up variable to hold next prompt message depending on next active element 
-          const newPrompt = promptMessages[newActiveElement];
-          setPromptMess(newPrompt);
+          setSelectionMade(true);
+          // const targetElement = document.getElementsByClassName("nextButton");
+          // targetElement.style = {opacity: "100%"};
         }
         if (key === "Relationship") {
           handleRelationshipChange(value);
-          const newActiveElement = "priceRange";
-          setActiveElement(newActiveElement);
-          const newProgress = progressValues[newActiveElement];
-          setProgress(newProgress);
-          //Set up variable to hold next prompt message depending on next active element 
-          const newPrompt = promptMessages[newActiveElement];
-          setPromptMess(newPrompt);
+          setSelectionMade(true);
+          // const targetElement = document.getElementsByClassName("nextButton");
+          // targetElement.style = {opacity: "100%"};
         }
         if (key === "Price Range") {
           handlePriceRangeChange(value);
-          const newActiveElement = "occasion";
-          setActiveElement(newActiveElement);
-          const newProgress = progressValues[newActiveElement];
-          setProgress(newProgress);
-          //Set up variable to hold next prompt message depending on next active element 
-          const newPrompt = promptMessages[newActiveElement];
-          setPromptMess(newPrompt);
+          setSelectionMade(true);
+          // const targetElement = document.getElementsByClassName("nextButton");
+          // targetElement.style = {opacity: "100%"};
         }
         if (key === "Occasion") {
             handleOccasionChange(value);
-            const newActiveElement = "giftType";
-            setActiveElement(newActiveElement);
-            const newProgress = progressValues[newActiveElement];
-            setProgress(newProgress);
-            //Set up variable to hold next prompt message depending on next active element 
-            const newPrompt = promptMessages[newActiveElement];
-            setPromptMess(newPrompt);
+            setSelectionMade(true);
+            // const targetElement = document.getElementsByClassName("nextButton");
+            // targetElement.style = {opacity: "100%"};
         }
         if (key === "Gift Type") {
             handleGiftTypeChange(value);
-            const newActiveElement = "interests";
-            setActiveElement(newActiveElement);
-            const newProgress = progressValues[newActiveElement];
-            setProgress(newProgress);
-            //Set up variable to hold next prompt message depending on next active element 
-            const newPrompt = promptMessages[newActiveElement];
-            setPromptMess(newPrompt);
+            setSelectionMade(true);
+            // const targetElement = document.getElementsByClassName("nextButton");
+            // targetElement.style = {opacity: "100%"};
           }
         if (key === "Interests") {
             handleInterestsChange(value);
-            const newActiveElement = "activity";
-            setActiveElement(newActiveElement);
-            const newProgress = progressValues[newActiveElement];
-            setProgress(newProgress);
-            //Set up variable to hold next prompt message depending on next active element 
-            const newPrompt = promptMessages[newActiveElement];
-            setPromptMess(newPrompt);
-            console.log(isGenerated)
+            setSelectionMade(true);
+            // const targetElement = document.getElementsByClassName("nextButton");
+            // targetElement.style = {opacity: "100%"};
         }
         if (key === "Activity Level") {
-          handleInterestsChange(value);
-          const newActiveElement = "generate";
-          setActiveElement(newActiveElement);
-          const newProgress = progressValues[newActiveElement];
-          setProgress(newProgress);
-          //Set up variable to hold next prompt message depending on next active element 
-          const newPrompt = promptMessages[newActiveElement];
-          setPromptMess(newPrompt);
-          console.log(isGenerated)
+            handleActivityChange(value);
+            setSelectionMade(true);
+            // const targetElement = document.getElementsByClassName("nextButton");
+            // targetElement.style = {opacity: "100%"};
       }
         if (key === "generateButton") {
           handleGenerate(value);
-          const newProgress = progressValues[activeElement];
-          setProgress(newProgress);
-          console.log("key", key);
+          setSelectionMade(true);
         }
       };
     
@@ -244,20 +218,46 @@ const Filters = () => {
           "activity": "interests",
           "generate": "activity"
         };
-    
+
         if (activeElement !== "gender" && previousStateMap[activeElement]) {
           const previousElement = previousStateMap[activeElement];
           setActiveElement(previousElement);
         }
+      }
+    
+      const handleNextElement = () => {
+        // Define the mapping of next states here
+        const nextStateMap = {
+          "gender": "age",
+          "age": "relationship",
+          "relationship": "priceRange",
+          "priceRange": "occasion",
+          "occasion": "giftType",
+          "giftType": "interests",
+          "interests": "activity",
+          "activity": "generate"
+        };
+  
+        if (activeElement !== "generate" && nextStateMap[activeElement]) {
+          const nextElement = nextStateMap[activeElement];
+          setActiveElement(nextElement);
+          const newProgress = progressValues[nextElement];
+          setProgress(newProgress);
+          const newPrompt = promptMessages[nextElement];
+          setPromptMess(newPrompt);
+          setSelectionMade(false);
+          // const targetElement = ReactDOM.findDOMNode.className("nextButton");
+          // targetElement.style = {backgroundColor: "blue"};
+        };
       };
-
+    
 
     return (
         <>
             <div className="navbarContainer">
               <NavBar />
-              <ProgressBar now={progressValues[activeElement]} label={`${progressValues[activeElement]}%`} style={{ backgroundColor: 'lightgray' }}>
-                <ProgressBar variant="success" now={progressValues[activeElement]} label={`${progressValues[activeElement]}%`} style={{ backgroundColor: 'lightblue' }} />
+              <ProgressBar now={progressValues[activeElement]} label={``} style={{ backgroundColor: 'lightgray', height: '24px' }}>
+                <ProgressBar variant="success" now={progressValues[activeElement]} label={``} style={{ backgroundColor: 'lightblue', height: '24px'} } />
               </ProgressBar>
             </div>
 
@@ -269,12 +269,13 @@ const Filters = () => {
               )}
             </div>
 
-            <div>
-                <ParameterComponent
-                  key={activeElement}
-                  data={data[activeElement]}
-                  handler={handleStateSet}/>
-            </div>
+          <div>
+              <ParameterComponent
+                key={activeElement}
+                data={data[activeElement]}
+                handler={handleStateSet}
+                />
+          </div>
 
           <div className="container">
             <p className="openaiDescrip">{openaiDescrip}</p>
@@ -299,15 +300,27 @@ const Filters = () => {
           <div className="footer">
               <div className="backButton-div">
                 {activeElement !== "gender" && !isGenerated && (
-                <button onClick={handlePreviousElement} className="backButton">Previous</button>
+                <button 
+                onClick={handlePreviousElement} 
+                className="backButton"
+                >Previous</button>
                 )} 
               </div>
               <div className="nextButton-div">
                 {activeElement !== "generate" && (
-                <button className="nextButton">Next</button>
+                <button 
+                disabled={!selectionMade}
+                onClick={handleNextElement} 
+                className="nextButton"
+                // {...() => setOpacity1(opacity1='100%')}
+                // className={opacity1}
+                >
+                  Next
+                </button>
                 )}
               </div>
-          </div>   
+          </div>  
+
     </>
     )
 }; 

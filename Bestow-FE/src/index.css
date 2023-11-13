@@ -141,15 +141,25 @@ button:focus-visible {
 
   .backButton-nextButton-container {
     display: flex;
-    gap: 2%;
     margin-bottom: 20px;
   }
+
   .backButton-div {
-    width: 49%;
+    width: 45%;
+    margin: 10px;
   }
   
   .nextButton-div{
-    width: 49%;
+    width: 45%;
+    margin: 15px 10px;
+  }
+
+  .opacity1{
+    opacity: 25%;
+  }
+
+  .opacity2{
+    opacity: 100%;
   }
 
   .prompt-div {
@@ -162,10 +172,15 @@ button:focus-visible {
     left: 0;
     width: 100%;
     background-color: rgb(255, 255, 255);
-    padding: 10px; 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+  }
+
+  .footer button {
+    margin: 0;
+    border: 1px solid gray;
+    border-radius: 10px;
   }
   
 }
