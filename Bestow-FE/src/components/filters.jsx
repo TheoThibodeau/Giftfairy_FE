@@ -26,7 +26,6 @@ const Filters = () => {
     const [progress, setProgress] = useState(0);
     const [promptMess, setPromptMess] = useState("");  
     const [selectionMade, setSelectionMade] = useState(false); 
-    const [opacity1, setOpacity1] = useState("");
     
 
     const handlePost = () => {
@@ -153,50 +152,34 @@ const Filters = () => {
         if (key === "Gender") {
           handleAgeChange(value);
           setSelectionMade(true);
-          // const targetElement = document.getElementsByClassName("nextButton");
-          // targetElement.style = {opacity: "100%"};
         }
         if (key === "Age") {
           handleGenderChange(value);
           setSelectionMade(true);
-          // const targetElement = document.getElementsByClassName("nextButton");
-          // targetElement.style = {opacity: "100%"};
         }
         if (key === "Relationship") {
           handleRelationshipChange(value);
           setSelectionMade(true);
-          // const targetElement = document.getElementsByClassName("nextButton");
-          // targetElement.style = {opacity: "100%"};
         }
         if (key === "Price Range") {
           handlePriceRangeChange(value);
           setSelectionMade(true);
-          // const targetElement = document.getElementsByClassName("nextButton");
-          // targetElement.style = {opacity: "100%"};
         }
         if (key === "Occasion") {
             handleOccasionChange(value);
             setSelectionMade(true);
-            // const targetElement = document.getElementsByClassName("nextButton");
-            // targetElement.style = {opacity: "100%"};
         }
         if (key === "Gift Type") {
             handleGiftTypeChange(value);
             setSelectionMade(true);
-            // const targetElement = document.getElementsByClassName("nextButton");
-            // targetElement.style = {opacity: "100%"};
           }
         if (key === "Interests") {
             handleInterestsChange(value);
             setSelectionMade(true);
-            // const targetElement = document.getElementsByClassName("nextButton");
-            // targetElement.style = {opacity: "100%"};
         }
         if (key === "Activity Level") {
             handleActivityChange(value);
             setSelectionMade(true);
-            // const targetElement = document.getElementsByClassName("nextButton");
-            // targetElement.style = {opacity: "100%"};
       }
         if (key === "generateButton") {
           handleGenerate(value);
@@ -246,8 +229,6 @@ const Filters = () => {
           const newPrompt = promptMessages[nextElement];
           setPromptMess(newPrompt);
           setSelectionMade(false);
-          // const targetElement = ReactDOM.findDOMNode.className("nextButton");
-          // targetElement.style = {backgroundColor: "blue"};
         };
       };
     
@@ -273,6 +254,7 @@ const Filters = () => {
               <ParameterComponent
                 key={activeElement}
                 data={data[activeElement]}
+                selectionMade={selectionMade}
                 handler={handleStateSet}
                 />
           </div>
@@ -311,9 +293,7 @@ const Filters = () => {
                 <button 
                 disabled={!selectionMade}
                 onClick={handleNextElement} 
-                className="nextButton"
-                // {...() => setOpacity1(opacity1='100%')}
-                // className={opacity1}
+                className={`${selectionMade ? 'opacity2': 'opacity1'}`}
                 >
                   Next
                 </button>

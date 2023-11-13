@@ -128,6 +128,10 @@ button:focus-visible {
     width: 100%;
   }
 
+  .paramButtonActive{
+    background-color: red;
+  }
+
   #main-container{
     justify-content: center;
     align-items: center;

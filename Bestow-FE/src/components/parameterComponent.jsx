@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const ParameterComponent = ({ data, handler }) => {
+const ParameterComponent = ({ data, handler, selectionMade }) => {
   const title = data.title;
   const entries = data.data;
   console.log(data);
@@ -14,7 +14,7 @@ const ParameterComponent = ({ data, handler }) => {
             className="paramButtonContainer"
           >
             <button
-              className="paramButton"
+              className={`${selectionMade ? "paramButtonActive" : "paramButton"}`}
               key={entry}
               onClick={() => handler(title, entry)}
             >
