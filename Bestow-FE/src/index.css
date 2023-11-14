@@ -79,7 +79,7 @@ button {
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
 }
 
 @media (prefers-color-scheme: light) {
@@ -129,7 +129,8 @@ button:focus-visible {
   }
 
   .paramButtonActive{
-    background-color: red;
+    border: 3px solid rgb(100, 100, 100);
+    opacity: 100%;
   }
 
   #main-container{

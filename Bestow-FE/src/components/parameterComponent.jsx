@@ -4,7 +4,13 @@ import axios from "axios";
 const ParameterComponent = ({ data, handler, selectionMade }) => {
   const title = data.title;
   const entries = data.data;
+  const [selectedEntry, setSelectedEntry] = useState(null);
   console.log(data);
+
+  const handleClick = (entry) => {
+    setSelectedEntry(entry);
+    handler(title, entry);
+  };
 
   return (
     
@@ -14,9 +20,9 @@ const ParameterComponent = ({ data, handler, selectionMade }) => {
             className="paramButtonContainer"
           >
             <button
-              className={`${selectionMade ? "paramButtonActive" : "paramButton"}`}
-              key={entry}
-              onClick={() => handler(title, entry)}
+              className={`paramButton ${selectedEntry === entry ? "paramButtonActive" : ""}`}
+              style={{ opacity: selectedEntry && selectedEntry !== entry ? 0.5 : 1 }}
+              onClick={() => handleClick(entry)}
             >
               {entry}
             </button>  
