@@ -119,10 +119,26 @@ button:focus-visible {
     overflow: scroll;
     color: #000;
     background-color: hsla(240, 9%, 81%, 0.6);
+    position: relative;
   }
 
-  .individual-responses-container button{
-    padding-top: 10px;
+  .individual-responses-container button {
+    padding: 15px 10px;
+    width: 70%;
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+  }
+
+  .individual-responses-container h2 {
+    height: auto;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  .individual-responses-container p {
+    height: auto;
+    margin: 25px 0px;
   }
 
   .blue-button {
@@ -160,9 +176,14 @@ button:focus-visible {
     margin: 10px;
   }
   
-  .nextButton-div{
+  .nextButton-div {
     width: 45%;
     margin: 15px 10px;
+  }
+
+  .regenButton-div {
+    width: 98%;
+    margin: 10px;
   }
 
   .opacity1{

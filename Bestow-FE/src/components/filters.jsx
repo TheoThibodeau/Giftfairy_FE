@@ -277,9 +277,6 @@ const Filters = () => {
           {activeElement === "generate" && !isGenerated && (
             <button onClick={handlePost}>Generate</button>
           )}
-          {activeElement === "generate" && isGenerated && (
-            <button onClick={handlePost}>Re-Generate</button>
-          )}   
 
           <div className="footer">
               <div className="backButton-div">
@@ -290,6 +287,7 @@ const Filters = () => {
                 >Previous</button>
                 )} 
               </div>
+
               <div className="nextButton-div">
                 {activeElement !== "generate" && (
                 <button 
@@ -300,6 +298,12 @@ const Filters = () => {
                   Next
                 </button>
                 )}
+              </div>
+
+              <div className="regenButton-div">
+                {activeElement === "generate" && isGenerated && (
+                  <button onClick={handlePost}>Re-Generate</button>
+                )}   
               </div>
           </div>  
 
