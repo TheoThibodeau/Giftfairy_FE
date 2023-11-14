@@ -279,33 +279,38 @@ const Filters = () => {
           )}
 
           <div className="footer">
-              <div className="backButton-div">
-                {activeElement !== "gender" && !isGenerated && (
-                <button 
-                onClick={handlePreviousElement} 
-                className="backButton"
-                >Previous</button>
-                )} 
+            {isGenerated ? (
+              <div className="regenButton-div">
+                <button onClick={handlePost}>Re-Generate</button>
               </div>
-
-              <div className="nextButton-div">
-                {activeElement !== "generate" && (
-                <button 
-                disabled={!selectionMade}
-                onClick={handleNextElement} 
-                className={`${selectionMade ? 'opacity2': 'opacity1'}`}
+            ) : (
+              <>
+              <div className="backButton-div">
+                {activeElement !== "gender" && (
+                <button
+                onClick={handlePreviousElement}
+                className="backButton"
                 >
-                  Next
+                  Previous
                 </button>
                 )}
               </div>
 
-              <div className="regenButton-div">
-                {activeElement === "generate" && isGenerated && (
-                  <button onClick={handlePost}>Re-Generate</button>
-                )}   
+              <div className="nextButton-div">
+                {activeElement !== "generate" && (
+                  <button
+                  disabled={!selectionMade}
+                  onClick={handleNextElement}
+                  className={`${selectionMade ? 'opacity2' : 'opacity1'}`}
+                  >
+                    Next
+                  </button>
+                )}
               </div>
-          </div>  
+              </>
+            )}
+          </div>
+
 
     </>
     )
