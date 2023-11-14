@@ -21,7 +21,7 @@ const ParameterComponent = ({ data, handler, selectionMade }) => {
           >
             <button
               className={`paramButton ${selectedEntry === entry ? "paramButtonActive" : ""}`}
-              style={{ opacity: selectedEntry && selectedEntry !== entry ? 0.5 : 1 }}
+              style={{ opacity: selectedEntry && selectedEntry !== entry ? 0.85 : 1 }}
               onClick={() => handleClick(entry)}
             >
               {entry}

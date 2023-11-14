@@ -260,7 +260,9 @@ const Filters = () => {
           </div>
 
           <div className="container">
-            <p className="openaiDescrip">{openaiDescrip}</p>
+            {/* //replace with paragraph of our own */}
+            {/* <p className="openaiDescrip">{openaiDescrip}</p> */}
+            <p className="openaiDescrip">Here are 10 gift ideas that I think would be perfect for your giftee!</p>
             {itemTitle.map((title, index) => (
               <div className="individual-responses-container" key={index}>
                 <h2>{title}</h2>

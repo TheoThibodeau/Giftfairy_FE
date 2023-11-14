@@ -3,6 +3,8 @@
   line-height: 1.5;
   font-weight: 400;
 
+  scroll-behavior: smooth;
+
   color-scheme: light dark;
   /* color: rgba(244, 111, 111, 0.87); */
   color: black;
@@ -117,6 +119,10 @@ button:focus-visible {
     overflow: scroll;
     color: #000;
     background-color: hsla(240, 9%, 81%, 0.6);
+  }
+
+  .individual-responses-container button{
+    padding-top: 10px;
   }
 
   .blue-button {
