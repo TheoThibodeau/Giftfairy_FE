@@ -10,7 +10,7 @@ function NavBar() {
   return (
     <>
         <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-            <Container>
+            {/* <Container> */}
             <div className="d-flex align-items-start">
                 <h3 className="titleHeader">GIFTFaiRY</h3>
             </div>
@@ -31,7 +31,7 @@ function NavBar() {
                     />
                 </svg>
                 </Link>
-            </Container>
+            {/* </Container> */}
         </Navbar>
     </>
   );
