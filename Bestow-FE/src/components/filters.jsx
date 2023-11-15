@@ -242,15 +242,15 @@ const Filters = () => {
         console.log(selectionMade);
       };
     
-      const typeWriter = () => {
-        let testString = 'Hello World!'
-        for (let i = 0; i < testString.length; i++) {
-          document.getElementsByClassName("fairyTalk").innerHTML += testString[i];
-          setTimeout(typeWriter, 1000);
-        }
-      };
+      // const typeWriter = () => {
+      //   let testString = 'Hello World!'
+      //   for (let i = 0; i < testString.length; i++) {
+      //     document.getElementsByClassName("fairyTalk").innerHTML += testString[i];
+      //     setTimeout(typeWriter, 1000);
+      //   }
+      // };
 
-      document.addEventListener("DOMContentLoaded", typeWriter);
+      // document.addEventListener("DOMContentLoaded", typeWriter);
       
 
     return (
