@@ -1,4 +1,8 @@
 {
+    "intro": {
+      "title": "Intro",
+      "data": []
+    },
     "age": {
       "title": "Age",
       "data":
@@ -11,8 +15,6 @@
         "Older Adult",
         "Elderly"
       ]},
-
-
     "gender": {
       "title": "Gender",
       "data":
@@ -21,7 +23,6 @@
         "Female",
         "Non-Binary"
     ]},
-
     "relationship": {
       "title": "Relationship",
       "data":
@@ -46,7 +47,6 @@
         "$501-$1,000",
         "$1,000-$2,000"
     ]},
-
     "occasion": {
         "title": "Occasion",
         "data":
@@ -59,7 +59,6 @@
           "Father's Day",
           "Other"
       ]},
-    
     "giftType": {
       "title": "Gift Type",
       "data":
@@ -72,7 +71,6 @@
       "Art & Collectibles",
       "Craft Supplies & Tools"
     ]},
-
     "interests":{
       "title": "Interests",
       "data":
@@ -85,7 +83,6 @@
       "Music",
       "Other"
     ]},
-    
     "personality":{
     "title": "Personality",
     "data":[
@@ -93,7 +90,6 @@
       "Extrovert"
     ]
     },
-
     "activity":{
       "title": "Activity Level",
       "data":[
@@ -106,7 +102,6 @@
         "Athlete"
       ]
       },
-
     "generate":{
       "title": "Generate Button",
       "data":[

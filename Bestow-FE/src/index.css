@@ -49,18 +49,31 @@ h4 {
 }
 
 /* Nav bar - home button */
-  .navbarContainer {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-    background-color: hsl(199, 61%, 88%);
+.navbarContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  background-color: hsl(199, 61%, 88%);
+  height: 6.5625em;
+}
+
+.navbarContainer .d-flex {
+  padding-top: 1em;
+  padding-left: 0.5em;
+  float: left;
   }
 
-  .navbarContainer .d-flex {
-    margin-right: 200px;
-  }
+nav {
+  height: 5.0625em;
+}
+
+nav a{
+  float: right;
+  padding-right: 1em;
+  padding-top: 1em;
+}
 
 /* Body */
 
@@ -104,7 +117,7 @@ button:focus-visible {
     flex-wrap: wrap;
     width: 100%;
     height: auto;
-    padding: .5rem 0;
+    padding: 2em 0 4.25em 0;
     justify-content: center;
   }
 
