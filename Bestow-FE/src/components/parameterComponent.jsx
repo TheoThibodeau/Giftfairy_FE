@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const ParameterComponent = ({ data, handler, selectionMade }) => {
+const ParameterComponent = ({ data, handler}) => {
   const title = data.title;
   const entries = data.data;
   const [selectedEntry, setSelectedEntry] = useState(null);

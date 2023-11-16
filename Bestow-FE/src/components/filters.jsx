@@ -1,5 +1,5 @@
 import axios from "axios";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
 import getFilterResponse from "./getfilter";
@@ -17,7 +17,7 @@ const Filters = () => {
     const [giftType, setGiftType] = useState(""); 
     const [interests, setInterests] = useState("");
     const [activity, setActivity] = useState("");
-    const [activeElement, setActiveElement] = useState("gender");
+    const [activeElement, setActiveElement] = useState("intro"); //Start at Intro page/state
     const [isGenerated, setIsGenerated] = useState(false);
     const [generate, setGenerate] = useState(false);
     const [itemTitle, setItemTitle] = useState([]);
@@ -25,7 +25,7 @@ const Filters = () => {
     const [openaiDescrip, setOpenaiDescrip] = useState([]);
     const [progress, setProgress] = useState(0);
     const [promptMess, setPromptMess] = useState("");  
-    const [selectionMade, setSelectionMade] = useState(false); 
+    const [selectionMade, setSelectionMade] = useState(true); 
     
 
     const handlePost = () => {
@@ -124,6 +124,7 @@ const Filters = () => {
 //   console.log("navData", navData);
 
     const progressValues = {
+      "intro": 0,
       "gender": 10,
       "age": 20,
       "relationship": 30,
@@ -137,7 +138,8 @@ const Filters = () => {
 
     //Object containing messages for each selection page
     const promptMessages = {
-      gender: "Hey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for. What is their gender?",
+      intro: "Hey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for.",
+      gender: "What is their gender?",
       age: "How old are they?", 
       relationship: "What is your relationship with them?", 
       priceRange: "What is your price range?", 
@@ -192,6 +194,7 @@ const Filters = () => {
       const handlePreviousElement = () => {
         // Define the mapping of previous states here
         const previousStateMap = {
+          "gender":"intro",
           "age": "gender",
           "relationship": "age",
           "priceRange": "relationship",
@@ -202,15 +205,21 @@ const Filters = () => {
           "generate": "activity"
         };
 
-        if (activeElement !== "gender" && previousStateMap[activeElement]) {
-          const previousElement = previousStateMap[activeElement];
-          setActiveElement(previousElement);
+
+        if (activeElement !== "intro" && previousStateMap[activeElement]) {
+            const previousElement = previousStateMap[activeElement];
+            setActiveElement(previousElement);
+            if(previousElement === "intro") {
+              setSelectionMade(true);
+            }
+          }
+          console.log(selectionMade);
         }
-      }
     
       const handleNextElement = () => {
         // Define the mapping of next states here
         const nextStateMap = {
+          "intro": "gender",
           "gender": "age",
           "age": "relationship",
           "relationship": "priceRange",
@@ -229,9 +238,20 @@ const Filters = () => {
           const newPrompt = promptMessages[nextElement];
           setPromptMess(newPrompt);
           setSelectionMade(false);
-        };
+        }
+        console.log(selectionMade);
       };
     
+      // const typeWriter = () => {
+      //   let testString = 'Hello World!'
+      //   for (let i = 0; i < testString.length; i++) {
+      //     document.getElementsByClassName("fairyTalk").innerHTML += testString[i];
+      //     setTimeout(typeWriter, 1000);
+      //   }
+      // };
+
+      // document.addEventListener("DOMContentLoaded", typeWriter);
+      
 
     return (
         <>
@@ -246,7 +266,7 @@ const Filters = () => {
             
             <div className="prompt-div">
               {!isGenerated && (
-                <p>{promptMessages[activeElement]}</p>
+                <p className="fairyTalk">{promptMessages[activeElement]}</p>
               )}
             </div>
 
@@ -254,7 +274,6 @@ const Filters = () => {
               <ParameterComponent
                 key={activeElement}
                 data={data[activeElement]}
-                selectionMade={selectionMade}
                 handler={handleStateSet}
                 />
           </div>
@@ -262,12 +281,14 @@ const Filters = () => {
           <div className="container">
             {/* //replace with paragraph of our own */}
             {/* <p className="openaiDescrip">{openaiDescrip}</p> */}
+            {isGenerated && (
             <p className="openaiDescrip">Here are 10 gift ideas that I think would be perfect for your giftee!</p>
+            )}
             {itemTitle.map((title, index) => (
               <div className="individual-responses-container" key={index}>
                 <h2>{title}</h2>
                 <p>{itemDescrip[index]}</p>
-                <a key={index} href={`https://www.amazon.com/s?k=${encodeURIComponent(title)}`} target="_blank">
+                <a key={index} href={`https://www.amazon.com/s?k=${encodeURIComponent(title)}`} target="_blank" rel="noreferrer">
                   <button>Buy Product</button>
                 </a>
               </div>
@@ -286,7 +307,7 @@ const Filters = () => {
             ) : (
               <>
               <div className="backButton-div">
-                {activeElement !== "gender" && (
+                {activeElement !== "intro" && (
                 <button
                 onClick={handlePreviousElement}
                 className="backButton"
