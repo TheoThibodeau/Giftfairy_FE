@@ -30,7 +30,7 @@ const Filters = () => {
 
     const handlePost = () => {
         axios 
-            .post ("https://giftfairyai-be-server.onrender.com/api/filter/generate", {
+            .post ("https://giftfairyai-be-server.onrender.com/api/filter/generate/", {
                 age: age,
                 gender: gender, 
                 relationship: relationship,
