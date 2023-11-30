@@ -32,8 +32,8 @@
         "Spouse",
         "Child",
         "Relative",
-        "Grandparent",
-        "Other" 
+        "Parent", 
+        "Grandparent"
     ]},
     "priceRange": {
       "title": "Price Range",
@@ -57,31 +57,31 @@
           "Wedding",
           "Mother's Day",
           "Father's Day",
-          "Other"
+          "Just because"
       ]},
     "giftType": {
       "title": "Gift Type",
       "data":
       [
-      "Jewellery & Accessories",
-      "Clothing & Shoes",
-      "Home & Living",
-      "Wedding & Party",
-      "Toys & Entertainment",
-      "Art & Collectibles",
-      "Craft Supplies & Tools"
+        "Jewelery & Accessories",
+        "Clothing & Shoes",
+        "Home & Living",
+        "Wedding or Party",
+        "Toys, Electrionics, or Entertainment",
+        "Art & Collectibles",
+        "Craft Supplies or Tools"
     ]},
     "interests":{
       "title": "Interests",
       "data":
       [
 			"Sports", 
-			"Crafts", 
+			"Pets", 
 			"Fashion",
 			"Travel",
 			"Cooking",
       "Music",
-      "Other"
+      "Reading"
     ]},
     "personality":{
     "title": "Personality",
