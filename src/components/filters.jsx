@@ -1,11 +1,15 @@
 import axios from "axios";
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
 import getFilterResponse from "./getfilter";
 import NavBar from "./navbar";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { ReactDOM } from "react";
+import GrowExample from "./loadingwheel";
+import Spinner from 'react-bootstrap/Spinner';
+
+
 
 
 const Filters = () => {
@@ -26,9 +30,11 @@ const Filters = () => {
     const [progress, setProgress] = useState(0);
     const [promptMess, setPromptMess] = useState("");  
     const [selectionMade, setSelectionMade] = useState(true); 
+    const [isLoading, setIsLoading] = useState(false);
     
 
     const handlePost = () => {
+        setIsLoading(true);
         axios 
             .post ("https://giftfairy-be-server.onrender.com/api/filter/generate", {
                 age: age,
@@ -267,7 +273,7 @@ const Filters = () => {
             <div className="prompt-div">
               {!isGenerated && (
                 <p className="fairyTalk">{promptMessages[activeElement]}</p>
-              )}
+              )}              
             </div>
 
           <div>
@@ -279,8 +285,6 @@ const Filters = () => {
           </div>
 
           <div className="container">
-            {/* //replace with paragraph of our own */}
-            {/* <p className="openaiDescrip">{openaiDescrip}</p> */}
             {isGenerated && (
             <p className="openaiDescrip">Here are 10 gift ideas that I think would be perfect for your giftee!</p>
             )}
