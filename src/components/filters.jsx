@@ -288,7 +288,7 @@ const Filters = () => {
               <div className="individual-responses-container" key={index}>
                 <h2>{title}</h2>
                 <p>{itemDescrip[index]}</p>
-                <a key={index} href={`https://www.amazon.com/s?k=${encodeURIComponent(title)}`} target="_blank" rel="noreferrer">
+                <a key={index} href={`https://www.amazon.com/s?k=${encodeURIComponent(title)}&tag=giftfairy08-20`} target="_blank" rel="noreferrer">
                   <button>Buy Product</button>
                 </a>
               </div>
@@ -296,7 +296,7 @@ const Filters = () => {
           </div>
 
           {activeElement === "generate" && !isGenerated && (
-            <button onClick={handlePost}>Generate</button>
+            <button onClick={handlePost} disabled={isGenerated}>Generate</button>
           )}
 
           <div className="footer">
