@@ -47,6 +47,7 @@ const Filters = () => {
                 activity_level: activity,
             })
             .then ((response) => {
+                setIsLoading(false);
                 console.log("Response from backend:", response.data);
                 //Toggle boolean value to true for re-generate button use
                 setIsGenerated(true)
@@ -270,11 +271,13 @@ const Filters = () => {
 
             <br/>
             
+            {!isGenerated && (
             <div className="prompt-div">
-              {!isGenerated && (
+              {isLoading ? (<GrowExample />) : (
                 <p className="fairyTalk">{promptMessages[activeElement]}</p>
               )}              
             </div>
+            )}
 
           <div>
               <ParameterComponent
