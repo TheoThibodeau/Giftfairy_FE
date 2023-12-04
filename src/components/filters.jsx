@@ -1,11 +1,15 @@
 import axios from "axios";
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
 import getFilterResponse from "./getfilter";
 import NavBar from "./navbar";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { ReactDOM } from "react";
+import GrowExample from "./loadingwheel";
+import Spinner from 'react-bootstrap/Spinner';
+
+
 
 
 const Filters = () => {
@@ -26,9 +30,11 @@ const Filters = () => {
     const [progress, setProgress] = useState(0);
     const [promptMess, setPromptMess] = useState("");  
     const [selectionMade, setSelectionMade] = useState(true); 
+    const [isLoading, setIsLoading] = useState(false);
     
 
     const handlePost = () => {
+        setIsLoading(true);
         axios 
             .post ("https://giftfairy-be-server.onrender.com/api/filter/generate", {
                 age: age,
@@ -41,6 +47,7 @@ const Filters = () => {
                 activity_level: activity,
             })
             .then ((response) => {
+                setIsLoading(false);
                 console.log("Response from backend:", response.data);
                 //Toggle boolean value to true for re-generate button use
                 setIsGenerated(true)
@@ -264,11 +271,13 @@ const Filters = () => {
 
             <br/>
             
+            {!isGenerated && (
             <div className="prompt-div">
-              {!isGenerated && (
+              {isLoading ? (<GrowExample />) : (
                 <p className="fairyTalk">{promptMessages[activeElement]}</p>
-              )}
+              )}              
             </div>
+            )}
 
           <div>
               <ParameterComponent
@@ -279,8 +288,6 @@ const Filters = () => {
           </div>
 
           <div className="container">
-            {/* //replace with paragraph of our own */}
-            {/* <p className="openaiDescrip">{openaiDescrip}</p> */}
             {isGenerated && (
             <p className="openaiDescrip">Here are 10 gift ideas that I think would be perfect for your giftee!</p>
             )}
@@ -288,7 +295,7 @@ const Filters = () => {
               <div className="individual-responses-container" key={index}>
                 <h2>{title}</h2>
                 <p>{itemDescrip[index]}</p>
-                <a key={index} href={`https://www.amazon.com/s?k=${encodeURIComponent(title)}`} target="_blank" rel="noreferrer">
+                <a key={index} href={`https://www.amazon.com/s?k=${encodeURIComponent(title)}&tag=giftfairy08-20`} target="_blank" rel="noreferrer">
                   <button>Buy Product</button>
                 </a>
               </div>
@@ -296,7 +303,7 @@ const Filters = () => {
           </div>
 
           {activeElement === "generate" && !isGenerated && (
-            <button onClick={handlePost}>Generate</button>
+            <button onClick={handlePost} disabled={isGenerated}>Generate</button>
           )}
 
           <div className="footer">
