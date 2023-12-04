@@ -208,7 +208,9 @@ button:focus-visible {
   }
 
   .prompt-div {
+    display: flex;
     margin-top: -25px;
+    justify-content: center;
   }
 
   .footer {

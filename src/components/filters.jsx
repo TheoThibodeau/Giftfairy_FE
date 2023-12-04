@@ -6,8 +6,7 @@ import getFilterResponse from "./getfilter";
 import NavBar from "./navbar";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { ReactDOM } from "react";
-import GrowExample from "./loadingwheel";
-import Spinner from 'react-bootstrap/Spinner';
+import { RingLoader } from "react-spinners";
 
 
 
@@ -273,7 +272,8 @@ const Filters = () => {
             
             {!isGenerated && (
             <div className="prompt-div">
-              {isLoading ? (<GrowExample />) : (
+              {isLoading ? (<RingLoader  
+                              color="#ffffff"/>) : (
                 <p className="fairyTalk">{promptMessages[activeElement]}</p>
               )}              
             </div>
@@ -303,7 +303,7 @@ const Filters = () => {
           </div>
 
           {activeElement === "generate" && !isGenerated && (
-            <button onClick={handlePost} disabled={isGenerated}>Generate</button>
+            <button onClick={handlePost} disabled={isGenerated} className={`${isLoading ? 'opacity1' : 'opacity2'}`}>Generate</button>
           )}
 
           <div className="footer">
