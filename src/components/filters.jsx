@@ -9,15 +9,13 @@ import { ReactDOM } from "react";
 import { RingLoader } from "react-spinners";
 
 
-
-
 const Filters = () => {
     const [age, setAge] = useState(""); 
     const [gender, setGender] = useState("");
     const [relationship, setRelationship] = useState(""); 
     const [priceRange, setPriceRange] = useState("");
     const [occasion, setOccasion] = useState(""); 
-    const [giftType, setGiftType] = useState(""); 
+    const [giftType, setGiftType] = useState(); 
     const [interests, setInterests] = useState("");
     const [activity, setActivity] = useState("");
     const [activeElement, setActiveElement] = useState("intro"); //Start at Intro page/state
@@ -125,10 +123,7 @@ const Filters = () => {
         setGiftType(selectedGiftType[0])
         //Loop through GiftType Data array and reset the boolean value to false.
         //GiftType page will only allow for one selection!
-        for(let i=0; i < data.giftType.data.length; i++) {
-          data.giftType.data[i][1] = false;
-        }
-        selectedGiftType[1] = true;
+        selectedGiftType[1] == false ? selectedGiftType[1] = true : selectedGiftType[1] = false
         console.log(selectedGiftType)
     }
 

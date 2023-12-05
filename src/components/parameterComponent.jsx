@@ -11,6 +11,12 @@ const ParameterComponent = ({ data, handler}) => {
   const handleClick = (entry) => {
     setSelectedEntry(entry);
     handler(title, entry);
+    // entry[1] = true;
+    // if (title !== "Gift Type") {
+    //   entry[1] == true
+    // } else (
+    //   entry[1] == true ? entry[1] = true : entry[1] = false
+    // );
   };
 
   return (
@@ -22,7 +28,7 @@ const ParameterComponent = ({ data, handler}) => {
           >
             <button
               className={`paramButton ${entry[1] == true ? "paramButtonActive" : ""}`}
-              style={{ opacity: selectedEntry && selectedEntry !== entry ? 0.85 : 1 }}
+              style={{ opacity: selectedEntry && entry[1] == false ? 0.85 : 1 }}
               onClick={() => handleClick(entry)}
             >
               {entry}
