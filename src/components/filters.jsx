@@ -34,6 +34,7 @@ const Filters = () => {
 
     const handlePost = () => {
         setIsLoading(true);
+        console.log(`Post information that will be sent to the backend: ${age}, ${gender}, ${relationship}, ${priceRange}, ${occasion}, ${giftType}, ${interests}, ${activity}.`)
         axios 
             .post ("https://giftfairy-be-server.onrender.com/api/filter/generate", {
                 age: age,
@@ -67,50 +68,53 @@ const Filters = () => {
     }
 
     const handleAgeChange = (selectedAge) => {
+      console.log("Hey this is the first line in handleAgeChange. Here is your selection: " + selectedAge[0])
       for(let i=0; i < data.age.data.length; i++) {
         data.age.data[i][1] = false;
       }
       selectedAge[1] = true;
-        setAge(selectedAge)
-        console.log(selectedAge)
+      setAge(selectedAge[0])
+      console.log(selectedAge)
     }
 
     const handleGenderChange = (selectedGender) => {
-      for(let i=0; i < data.gender.data.length; i++) {
-        data.gender.data[i][1] = false;
-      }
-      selectedGender[1] = true;
-        setGender(selectedGender)
+        setGender(selectedGender[0])
+        //Loop through Gender Data array and reset the boolean value to false.
+        //Gender page will only allow for one selection!
+        for(let i=0; i < data.gender.data.length; i++) {
+          data.gender.data[i][1] = false;
+        }
+        selectedGender[1] = true;
         console.log(selectedGender)
     }
 
     const handleRelationshipChange = (selectedRelationship) => {
-        setRelationship(selectedRelationship)
+        setRelationship(selectedRelationship[0])
         console.log(selectedRelationship)
     }
 
     const handlePriceRangeChange = (selectedPriceRange) => {
-        setPriceRange(selectedPriceRange)
+        setPriceRange(selectedPriceRange[0])
         console.log(selectedPriceRange)
     }
 
     const handleOccasionChange = (selectedOccasion) => {
-        setOccasion(selectedOccasion)
+        setOccasion(selectedOccasion[0])
         console.log(selectedOccasion)
     }   
 
     const handleGiftTypeChange = (selectedGiftType) => {
-        setGiftType(selectedGiftType)
+        setGiftType(selectedGiftType[0])
         console.log(selectedGiftType)
     }
 
     const handleInterestsChange = (selectedInterests) => {
-        setInterests(selectedInterests)
+        setInterests(selectedInterests[0])
         console.log(selectedInterests)
     }
 
     const handleActivityChange = (selectedActivity) => {
-      setActivity(selectedActivity)
+      setActivity(selectedActivity[0])
       console.log(selectedActivity)
   }
 
@@ -166,11 +170,11 @@ const Filters = () => {
 
     const handleStateSet = (key, value) => {
         if (key === "Gender") {
-          handleAgeChange(value);
+          handleGenderChange(value);
           setSelectionMade(true);
         }
         if (key === "Age") {
-          handleGenderChange(value);
+          handleAgeChange(value);
           setSelectionMade(true);
         }
         if (key === "Relationship") {
