@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
+
 const ParameterComponent = ({ data, handler}) => {
   const title = data.title;
   const entries = data.data;
@@ -20,7 +21,7 @@ const ParameterComponent = ({ data, handler}) => {
             className="paramButtonContainer"
           >
             <button
-              className={`paramButton ${selectedEntry === entry ? "paramButtonActive" : ""}`}
+              className={`paramButton ${entry[1] == true ? "paramButtonActive" : ""}`}
               style={{ opacity: selectedEntry && selectedEntry !== entry ? 0.85 : 1 }}
               onClick={() => handleClick(entry)}
             >

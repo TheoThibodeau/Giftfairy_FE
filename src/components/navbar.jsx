@@ -5,8 +5,37 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from "react-bootstrap/Nav";
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
+import data from "/filters.json";
 
 function NavBar() {
+    //Handler function to reset all json boolean value pairs to false.
+    const handleHomeReset = () => {
+        for(let i = 0; i < data.gender.data.length; i++) {
+            data.gender.data[i][1] = false;
+        }
+        for(let i = 0; i < data.age.data.length; i++) {
+            data.age.data[i][1] = false;
+        }
+        for(let i = 0; i < data.relationship.data.length; i++) {
+            data.relationship.data[i][1] = false;
+        }
+        for(let i = 0; i < data.priceRange.data.length; i++) {
+            data.priceRange.data[i][1] = false;
+        }
+        for(let i = 0; i < data.occasion.data.length; i++) {
+            data.occasion.data[i][1] = false;
+        }
+        for(let i = 0; i < data.giftType.data.length; i++) {
+            data.giftType.data[i][1] = false;
+        }
+        for(let i = 0; i < data.interests.data.length; i++) {
+            data.interests.data[i][1] = false;
+        }
+        for(let i = 0; i < data.activity.data.length; i++) {
+            data.activity.data[i][1] = false;
+        }
+        
+    }
   return (
     <>
         <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
@@ -14,7 +43,7 @@ function NavBar() {
             <div className="d-flex align-items-start">
                 <h3 className="titleHeader">GIFTFaiRY</h3>
             </div>
-            <Link to="/" className="navbar-brand">
+            <Link to="/" className="navbar-brand" onClick={handleHomeReset}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="48"
