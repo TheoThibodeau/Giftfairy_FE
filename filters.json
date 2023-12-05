@@ -7,99 +7,99 @@
       "title": "Age",
       "data":
       [
-        "Baby",
-        "Child",
-        "Teenager",
-        "Young Adult",
-        "Adult",
-        "Older Adult",
-        "Elderly"
+        ["Baby", false],
+        ["Child", false],
+        ["Teenager", false],
+        ["Young Adult", false],
+        ["Adult", false],
+        ["Older Adult", false],
+        ["Elderly", false]
       ]},
     "gender": {
       "title": "Gender",
       "data":
       [
-        "Male",
-        "Female",
-        "Non-Binary"
+        ["Male", false],
+        ["Female", false],
+        ["Non-Binary", false]
     ]},
     "relationship": {
       "title": "Relationship",
       "data":
       [
-        "Friend",
-        "Partner", 
-        "Spouse",
-        "Child",
-        "Relative",
-        "Parent", 
-        "Grandparent"
+        ["Friend", false],
+        ["Partner", false], 
+        ["Spouse", false],
+        ["Child", false],
+        ["Relative", false],
+        ["Parent", false], 
+        ["Grandparent", false]
     ]},
     "priceRange": {
       "title": "Price Range",
       "data":
       [
-        "$10-$20",
-        "$21-$50",
-        "$51-$100",
-        "$101-$200",
-        "$201-$500",
-        "$501-$1,000",
-        "$1,000-$2,000"
+        ["$10-$20", false],
+        ["$21-$50", false],
+        ["$51-$100", false],
+        ["$101-$200", false],
+        ["$201-$500", false],
+        ["$501-$1,000", false],
+        ["$1,000-$2,000", false]
     ]},
     "occasion": {
         "title": "Occasion",
         "data":
         [
-          "Birthday",
-          "Christmas",
-          "Anniversary",
-          "Wedding",
-          "Mother's Day",
-          "Father's Day",
-          "Just because"
+          ["Birthday", false],
+          ["Christmas", false],
+          ["Anniversary", false],
+          ["Wedding", false],
+          ["Mother's Day", false],
+          ["Father's Day", false],
+          ["Just because", false]
       ]},
     "giftType": {
       "title": "Gift Type",
       "data":
       [
-        "Jewelery & Accessories",
-        "Clothing & Shoes",
-        "Home & Living",
-        "Wedding or Party",
-        "Toys, Electrionics, or Entertainment",
-        "Art & Collectibles",
-        "Craft Supplies or Tools"
+        ["Jewelery & Accessories", false],
+        ["Clothing & Shoes", false],
+        ["Home & Living", false],
+        ["Wedding or Party", false],
+        ["Toys, Electrionics, or Entertainment", false],
+        ["Art & Collectibles", false],
+        ["Craft Supplies or Tools", false]
     ]},
     "interests":{
       "title": "Interests",
       "data":
       [
-			"Sports", 
-			"Pets", 
-			"Fashion",
-			"Travel",
-			"Cooking",
-      "Music",
-      "Reading"
+			["Sports", false], 
+			["Pets", false], 
+			["Fashion", false],
+			["Travel", false],
+			["Cooking", false],
+      ["Music", false],
+      ["Reading", false]
     ]},
     "personality":{
     "title": "Personality",
     "data":[
-      "Introvert",
-      "Extrovert"
+      ["Introvert", false],
+      ["Extrovert", false]
     ]
     },
     "activity":{
       "title": "Activity Level",
       "data":[
-        "Couch potato",
-        "Not very active",
-        "Somewhat active",
-        "Active",
-        "Very active",
-        "Extremely active",
-        "Athlete"
+        ["Couch potato", false],
+        ["Not very active", false],
+        ["Somewhat active", false],
+        ["Active", false],
+        ["Very active", false],
+        ["Extremely active", false],
+        ["Athlete", false]
       ]
       },
     "generate":{

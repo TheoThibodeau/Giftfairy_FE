@@ -67,11 +67,19 @@ const Filters = () => {
     }
 
     const handleAgeChange = (selectedAge) => {
+      for(let i=0; i < data.age.data.length; i++) {
+        data.age.data[i][1] = false;
+      }
+      selectedAge[1] = true;
         setAge(selectedAge)
         console.log(selectedAge)
     }
 
     const handleGenderChange = (selectedGender) => {
+      for(let i=0; i < data.gender.data.length; i++) {
+        data.gender.data[i][1] = false;
+      }
+      selectedGender[1] = true;
         setGender(selectedGender)
         console.log(selectedGender)
     }
