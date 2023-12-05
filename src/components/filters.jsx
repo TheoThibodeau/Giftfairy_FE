@@ -34,7 +34,6 @@ const Filters = () => {
 
     const handlePost = () => {
         setIsLoading(true);
-        console.log(`Post information that will be sent to the backend: ${age}, ${gender}, ${relationship}, ${priceRange}, ${occasion}, ${giftType}, ${interests}, ${activity}.`)
         axios 
             .post ("https://giftfairy-be-server.onrender.com/api/filter/generate", {
                 age: age,
@@ -68,12 +67,13 @@ const Filters = () => {
     }
 
     const handleAgeChange = (selectedAge) => {
-      console.log("Hey this is the first line in handleAgeChange. Here is your selection: " + selectedAge[0])
+      setAge(selectedAge[0])
+      //Loop through Age Data array and reset the boolean value to false.
+      //Age page will only allow for one selection!
       for(let i=0; i < data.age.data.length; i++) {
         data.age.data[i][1] = false;
       }
       selectedAge[1] = true;
-      setAge(selectedAge[0])
       console.log(selectedAge)
     }
 
@@ -90,31 +90,67 @@ const Filters = () => {
 
     const handleRelationshipChange = (selectedRelationship) => {
         setRelationship(selectedRelationship[0])
+        //Loop through Relationship Data array and reset the boolean value to false.
+        //Relationship page will only allow for one selection!
+        for(let i=0; i < data.relationship.data.length; i++) {
+          data.relationship.data[i][1] = false;
+        }
+        selectedRelationship[1] = true;
         console.log(selectedRelationship)
     }
 
     const handlePriceRangeChange = (selectedPriceRange) => {
         setPriceRange(selectedPriceRange[0])
+        //Loop through PriceRange Data array and reset the boolean value to false.
+        //PriceRange page will only allow for one selection!
+        for(let i=0; i < data.priceRange.data.length; i++) {
+          data.priceRange.data[i][1] = false;
+        }
+        selectedPriceRange[1] = true;
         console.log(selectedPriceRange)
     }
 
     const handleOccasionChange = (selectedOccasion) => {
         setOccasion(selectedOccasion[0])
+        //Loop through Occasion Data array and reset the boolean value to false.
+        //Occasion page will only allow for one selection!
+        for(let i=0; i < data.occasion.data.length; i++) {
+          data.occasion.data[i][1] = false;
+        }
+        selectedOccasion[1] = true;
         console.log(selectedOccasion)
     }   
 
     const handleGiftTypeChange = (selectedGiftType) => {
         setGiftType(selectedGiftType[0])
+        //Loop through GiftType Data array and reset the boolean value to false.
+        //GiftType page will only allow for one selection!
+        for(let i=0; i < data.giftType.data.length; i++) {
+          data.giftType.data[i][1] = false;
+        }
+        selectedGiftType[1] = true;
         console.log(selectedGiftType)
     }
 
     const handleInterestsChange = (selectedInterests) => {
         setInterests(selectedInterests[0])
+        //Loop through Interests Data array and reset the boolean value to false.
+        //Interests page will only allow for one selection!
+        for(let i=0; i < data.interests.data.length; i++) {
+          data.interests.data[i][1] = false;
+        }
+        selectedInterests[1] = true;
         console.log(selectedInterests)
     }
 
     const handleActivityChange = (selectedActivity) => {
       setActivity(selectedActivity[0])
+      //Loop through Activity Data array and reset the boolean value to false.
+      //Activity page will only allow for one selection!
+      for(let i=0; i < data.activity.data.length; i++) {
+        data.activity.data[i][1] = false;
+      }
+      selectedActivity[1] = true;
       console.log(selectedActivity)
   }
 
