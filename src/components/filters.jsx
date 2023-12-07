@@ -169,16 +169,16 @@ const Filters = () => {
       console.log(selectedPersonality)
     }
 
-  const handleNatureChange = (selectedNature) => {
-    setActivity(selectedNature[0])
-    //Loop through Activity Data array and reset the boolean value to false.
-    //Activity page will only allow for one selection!
-    for(let i=0; i < data.nature.data.length; i++) {
-      data.nature.data[i][1] = false;
+    const handleNatureChange = (selectedNature) => {
+      setNature(selectedNature[0])
+      //Loop through Activity Data array and reset the boolean value to false.
+      //Activity page will only allow for one selection!
+      for(let i=0; i < data.nature.data.length; i++) {
+        data.nature.data[i][1] = false;
+      }
+      selectedNature[1] = true;
+      console.log(selectedNature)
     }
-    selectedNature[1] = true;
-    console.log(selectedNature)
-  }
 
     const handleGenerate = (selectedGenerate) => {
         setGenerate(selectedGenerate);
