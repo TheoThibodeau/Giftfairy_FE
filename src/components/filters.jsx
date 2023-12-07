@@ -20,6 +20,8 @@ const Filters = () => {
     const [giftType, setGiftType] = useState(""); 
     const [interests, setInterests] = useState("");
     const [activity, setActivity] = useState("");
+    const [personality, setPersonality] = useState("");
+    const [nature, setNature] = useState("");
     const [activeElement, setActiveElement] = useState("intro"); //Start at Intro page/state
     const [isGenerated, setIsGenerated] = useState(false);
     const [generate, setGenerate] = useState(false);
@@ -44,6 +46,8 @@ const Filters = () => {
                 gift_type: giftType, 
                 interest: interests, 
                 activity_level: activity,
+                personality: personality,
+                nature: nature
             })
             .then ((response) => {
                 setIsLoading(false);
@@ -152,29 +156,51 @@ const Filters = () => {
       }
       selectedActivity[1] = true;
       console.log(selectedActivity)
+    }
+
+    const handlePersonalityChange = (selectedPersonality) => {
+      setPersonality(selectedPersonality[0])
+      //Loop through Activity Data array and reset the boolean value to false.
+      //Activity page will only allow for one selection!
+      for(let i=0; i < data.personality.data.length; i++) {
+        data.personality.data[i][1] = false;
+      }
+      selectedPersonality[1] = true;
+      console.log(selectedPersonality)
+    }
+
+  const handleNatureChange = (selectedNature) => {
+    setActivity(selectedNature[0])
+    //Loop through Activity Data array and reset the boolean value to false.
+    //Activity page will only allow for one selection!
+    for(let i=0; i < data.nature.data.length; i++) {
+      data.nature.data[i][1] = false;
+    }
+    selectedNature[1] = true;
+    console.log(selectedNature)
   }
 
     const handleGenerate = (selectedGenerate) => {
         setGenerate(selectedGenerate);
       };
 
-    const handleActiveNav = (newValue) => {   //Delete this function??? Doesn't seem like it's getting used. 
-    const newState = navData.map((datum) => {
-      if (datum.isActive) {
-        datum.isActive = false;
-        return datum;
-      }
+  //   const handleActiveNav = (newValue) => {   //Delete this function??? Doesn't seem like it's getting used. 
+  //   const newState = navData.map((datum) => {
+  //     if (datum.isActive) {
+  //       datum.isActive = false;
+  //       return datum;
+  //     }
 
-      if (datum.title.toLowerCase() === newValue) {
-        datum.isActive = true;
-        return datum;
-      }
+  //     if (datum.title.toLowerCase() === newValue) {
+  //       datum.isActive = true;
+  //       return datum;
+  //     }
 
-      return datum;
-    });
+  //     return datum;
+  //   });
 
-    setNavData(newState);
-  };
+  //   setNavData(newState);
+  // };
 //   console.log("navData", navData);
 
     const progressValues = {
@@ -187,6 +213,8 @@ const Filters = () => {
       "giftType": 60,
       "interests": 70,
       "activity": 80,
+      "personality": 87,
+      "nature": 95,
       "generate": 100,
     };
 
@@ -201,6 +229,8 @@ const Filters = () => {
       giftType: "What gifts would they be interested in?",
       interests: "What are their interests?",
       activity: "What is their activity level?",
+      personality: "What is their personality type?",
+      nature: "Do they prefer being inside or outside?",
       generate: "Ok, thanks for the help! I think I have enough information to generate some great gift ideas for you! Click the generate button down below"
     }
 
@@ -236,14 +266,22 @@ const Filters = () => {
         if (key === "Activity Level") {
             handleActivityChange(value);
             setSelectionMade(true);
-      }
+        }
+        if (key === "Personality") {
+            handlePersonalityChange(value);
+            setSelectionMade(true);
+        }
+        if (key === "Nature") {
+            handleNatureChange(value);
+            setSelectionMade(true);
+        }
         if (key === "generateButton") {
           handleGenerate(value);
           setSelectionMade(true);
         }
       };
     
-      const keys = ["age", "gender", "relationship", "priceRange", "occasion", "giftType", "interests", "activity"]; //Delete this line??? Doesn't seem like it's getting used. 
+      // const keys = ["age", "gender", "relationship", "priceRange", "occasion", "giftType", "interests", "activity"]; //Delete this line??? Doesn't seem like it's getting used. 
 
       const handlePreviousElement = () => {
         // Define the mapping of previous states here
@@ -256,7 +294,9 @@ const Filters = () => {
           "giftType": "occasion",
           "interests": "giftType",
           "activity": "interests",
-          "generate": "activity"
+          "personality": "activity",
+          "nature": "personality",
+          "generate": "nature"
         };
 
 
@@ -281,7 +321,9 @@ const Filters = () => {
           "occasion": "giftType",
           "giftType": "interests",
           "interests": "activity",
-          "activity": "generate"
+          "activity": "personality",
+          "personality": "nature", 
+          "nature": "generate"
         };
   
         if (activeElement !== "generate" && nextStateMap[activeElement]) {
