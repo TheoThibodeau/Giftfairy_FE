@@ -117,7 +117,7 @@ button:focus-visible {
     flex-wrap: wrap;
     width: 100%;
     height: auto;
-    padding: 2em 0 4.25em 0;
+    padding: 1em 0 4.25em 0;
     justify-content: center;
   }
 
@@ -173,10 +173,6 @@ button:focus-visible {
     align-items: center;
     width: 100%;
     padding: 4rem 1rem 0rem 1rem;
-  }
-
-  .openaiDescrip {
-    padding-top: 1.5em;
   }
 
   .backButton-nextButton-container {
