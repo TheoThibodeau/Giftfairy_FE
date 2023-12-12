@@ -7,6 +7,7 @@ import NavBar from "./navbar";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { ReactDOM } from "react";
 import { RingLoader } from "react-spinners";
+import TypeWriter from "./typewriter";
 
 
 
@@ -364,7 +365,8 @@ const Filters = () => {
             <div className="prompt-div">
               {isLoading ? (<RingLoader  
                               color="#ffffff"/>) : (
-                <p className="fairyTalk">{promptMessages[activeElement]}</p>
+                <TypeWriter text={promptMessages[activeElement]} />
+                // <p className="fairyTalk">{promptMessages[activeElement]}</p>
               )}              
             </div>
             )}
