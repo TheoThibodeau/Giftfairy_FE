@@ -381,7 +381,7 @@ const Filters = () => {
                   <button>Buy Product</button>
                 </a>
               </div>
-            ))}
+            ))} 
             {isGenerated && (
               <div className="regenButton-div">
                 <button onClick={handlePost}>Re-Generate</button>
