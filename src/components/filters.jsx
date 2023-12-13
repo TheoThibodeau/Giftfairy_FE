@@ -368,7 +368,7 @@ const Filters = () => {
                 handler={handleStateSet}
                 />
           </div>
-
+        {activeElement !== "generate" && (
           <div className="container">
             {isGenerated && (
             <p className="openaiDescrip">Here are 10 gift ideas that I think would be perfect for your giftee!</p>
@@ -382,18 +382,19 @@ const Filters = () => {
                 </a>
               </div>
             ))}
+            {isGenerated && (
+              <div className="regenButton-div">
+                <button onClick={handlePost}>Re-Generate</button>
+              </div>
+            )}
           </div>
-
+        )}
           {activeElement === "generate" && !isGenerated && (
             <button onClick={handlePost} disabled={isGenerated} className={`${isLoading ? 'opacity1' : 'opacity2'}`}>Generate</button>
           )}
 
           <div className="footer">
-            {isGenerated ? (
-              <div className="regenButton-div">
-                <button onClick={handlePost}>Re-Generate</button>
-              </div>
-            ) : (
+            {!isGenerated && (
               <>
               <div className="backButton-div">
                 {activeElement !== "intro" && (
