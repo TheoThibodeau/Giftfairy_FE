@@ -334,23 +334,18 @@ const Filters = () => {
         console.log(selectionMade);
       };
     
-      // const typeWriter = () => {
-      //   let testString = 'Hello World!'
-      //   for (let i = 0; i < testString.length; i++) {
-      //     document.getElementsByClassName("fairyTalk").innerHTML += testString[i];
-      //     setTimeout(typeWriter, 1000);
-      //   }
-      // };
-
-      // document.addEventListener("DOMContentLoaded", typeWriter);
       
-
     return (
         <>
             <div className="navbarContainer">
               <NavBar />
-              <ProgressBar now={progressValues[activeElement]} label={``} style={{ backgroundColor: 'lightgray', height: '24px' }}>
-                <ProgressBar variant="success" now={progressValues[activeElement]} label={``} style={{ backgroundColor: 'lightblue', height: '24px'} } />
+              <ProgressBar now={progressValues[activeElement]} label={``} style={{ backgroundColor: 'darkgray', height: '24px' }}>
+                <ProgressBar
+                variant="success" 
+                now={progressValues[activeElement]} 
+                label={``} 
+                style={{ background: 'whitesmoke', height: '24px'} } 
+                />
               </ProgressBar>
             </div>
 
