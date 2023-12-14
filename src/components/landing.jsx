@@ -22,14 +22,17 @@ const Landing = () => {
                 width={200}
                  />
             </div>
-            <h4>GIFTFaiRY selects the perfect gift for every 
+            <h4 className="landingDescription">GIFTFaiRY selects the perfect gift for every 
             personality with our AI-powered 
             shopping companion – thoughtful, 
             personalized, and just one click 
             away!</h4>
-            <Link to="/selections" className="landingBegin">
-                <button>Let's Begin</button>
+            <Link to="/selections">
+                <button className="landingButton">Let's Begin</button>
             </Link>
+            <h6 className="version">
+                version 2.0.0
+            </h6>
         </>
     )
 };

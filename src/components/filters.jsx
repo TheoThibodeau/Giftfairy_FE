@@ -353,9 +353,11 @@ const Filters = () => {
             
             {!isGenerated && (
             <div className="prompt-div">
-              {isLoading ? (<RingLoader  
-                              color="#ffffff"/>) : (
-                <TypeWriter text={promptMessages[activeElement]} />
+              {isLoading ? (
+              <RingLoader
+                  color="#ffffff"/>)  
+              :
+              (<TypeWriter text={promptMessages[activeElement]} />
                 // <p className="fairyTalk">{promptMessages[activeElement]}</p>
               )}              
             </div>
@@ -368,7 +370,8 @@ const Filters = () => {
                 handler={handleStateSet}
                 />
           </div>
-        {activeElement !== "generate" && (
+
+        {isGenerated && (
           <div className="container">
             {isGenerated && (
             <p className="openaiDescrip">Here are 10 gift ideas that I think would be perfect for your giftee!</p>
@@ -381,7 +384,7 @@ const Filters = () => {
                   <button>Buy Product</button>
                 </a>
               </div>
-            ))} 
+            ))}
             {isGenerated && (
               <div className="regenButton-div">
                 <button onClick={handlePost}>Re-Generate</button>
@@ -389,9 +392,15 @@ const Filters = () => {
             )}
           </div>
         )}
-          {activeElement === "generate" && !isGenerated && (
-            <button onClick={handlePost} disabled={isGenerated} className={`${isLoading ? 'opacity1' : 'opacity2'}`}>Generate</button>
-          )}
+        
+      {activeElement === "generate" && !isLoading && !isGenerated && (
+        <button
+          onClick={handlePost}
+          disabled={isLoading}
+          className={`generateButton ${isLoading ? 'opacity1' : 'opacity2'}`}>
+          Generate
+        </button>
+      )}
 
           <div className="footer">
             {!isGenerated && (
@@ -400,7 +409,8 @@ const Filters = () => {
                 {activeElement !== "intro" && (
                 <button
                 onClick={handlePreviousElement}
-                className="backButton"
+                disabled={isLoading}
+                className={`backButton ${isLoading ? 'opacity1' : 'opacity2'}`}
                 >
                   Previous
                 </button>
