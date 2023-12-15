@@ -128,7 +128,10 @@ const Filters = () => {
         setGiftType(selectedGiftType[0])
         //Loop through GiftType Data array and reset the boolean value to false.
         //GiftType page will only allow for one selection!
-        selectedGiftType[1] == false ? selectedGiftType[1] = true : selectedGiftType[1] = false
+        for(let i=0; i < data.giftType.data.length; i++) {
+          data.giftType.data[i][1] = false;
+        }
+        selectedGiftType[1] = true;
         console.log(selectedGiftType)
     }
 
@@ -216,7 +219,7 @@ const Filters = () => {
 
     //Object containing messages for each selection page
     const promptMessages = {
-      intro: "Hey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for.",
+      intro: "Heey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for.",
       gender: "What is their gender?",
       age: "How old are they?", 
       relationship: "What is your relationship with them?", 
