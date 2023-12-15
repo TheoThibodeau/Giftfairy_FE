@@ -1,11 +1,9 @@
 import axios from "axios";
-import React, {useState, useEffect} from "react";
+import React, { useState } from "react";
 import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
-import getFilterResponse from "./getfilter";
 import NavBar from "./navbar";
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { ReactDOM } from "react";
 import { RingLoader } from "react-spinners";
 import TypeWriter from "./typewriter";
 
@@ -183,25 +181,6 @@ const Filters = () => {
         setGenerate(selectedGenerate);
       };
 
-  //   const handleActiveNav = (newValue) => {   //Delete this function??? Doesn't seem like it's getting used. 
-  //   const newState = navData.map((datum) => {
-  //     if (datum.isActive) {
-  //       datum.isActive = false;
-  //       return datum;
-  //     }
-
-  //     if (datum.title.toLowerCase() === newValue) {
-  //       datum.isActive = true;
-  //       return datum;
-  //     }
-
-  //     return datum;
-  //   });
-
-  //   setNavData(newState);
-  // };
-//   console.log("navData", navData);
-
     const progressValues = {
       "intro": 0,
       "gender": 10,
@@ -280,8 +259,6 @@ const Filters = () => {
         }
       };
     
-      // const keys = ["age", "gender", "relationship", "priceRange", "occasion", "giftType", "interests", "activity"]; //Delete this line??? Doesn't seem like it's getting used. 
-
       const handlePreviousElement = () => {
         // Define the mapping of previous states here
         const previousStateMap = {
@@ -361,7 +338,6 @@ const Filters = () => {
                   color="#ffffff"/>)  
               :
               (<TypeWriter text={promptMessages[activeElement]} />
-                // <p className="fairyTalk">{promptMessages[activeElement]}</p>
               )}              
             </div>
             )}

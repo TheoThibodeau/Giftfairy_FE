@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 
 
 const ParameterComponent = ({ data, handler}) => {
@@ -11,12 +10,6 @@ const ParameterComponent = ({ data, handler}) => {
   const handleClick = (entry) => {
     setSelectedEntry(entry);
     handler(title, entry);
-    // entry[1] = true;
-    // if (title !== "Gift Type") {
-    //   entry[1] == true
-    // } else (
-    //   entry[1] == true ? entry[1] = true : entry[1] = false
-    // );
   };
 
   return (
