@@ -128,7 +128,10 @@ const Filters = () => {
         setGiftType(selectedGiftType[0])
         //Loop through GiftType Data array and reset the boolean value to false.
         //GiftType page will only allow for one selection!
-        selectedGiftType[1] == false ? selectedGiftType[1] = true : selectedGiftType[1] = false
+        for(let i=0; i < data.giftType.data.length; i++) {
+          data.giftType.data[i][1] = false;
+        }
+        selectedGiftType[1] = true;
         console.log(selectedGiftType)
     }
 
