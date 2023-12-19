@@ -138,7 +138,7 @@ const Filters = () => {
 
     //Object containing messages for each selection page
     const promptMessages = {
-      intro: "Heey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for.",
+      intro: "Hey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for.",
       gender: "What is their gender?",
       age: "How old are they?", 
       relationship: "What is your relationship with them?", 
@@ -278,7 +278,18 @@ const Filters = () => {
                   color="#ffffff"/>)  
               :
               (<TypeWriter text={promptMessages[activeElement]} />
-              )}              
+              )}
+              
+              {activeElement !== "intro" && activeElement !== "generate" ? ( 
+                activeElement !== "giftType" && activeElement !== "interests" ? 
+                <p>(Select One Option)</p> 
+                : 
+                <p>(Select Multiple Options)</p>
+              )
+              :
+              (<p></p>)
+            }
+
             </div>
             )}
 

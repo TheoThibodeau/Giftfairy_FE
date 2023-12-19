@@ -19,8 +19,8 @@
     "title": "Gender",
     "data":
     [
-      "Male",
-      "Female",
+      "Man",
+      "Woman",
       "Non-Binary"
   ]},
   "relationship": {

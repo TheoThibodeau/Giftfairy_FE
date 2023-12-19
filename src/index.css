@@ -224,7 +224,17 @@ button:focus-visible {
 
   .prompt-div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+  }
+
+  .prompt-div p:last-child {
+    font-size: 0.75rem;
+    margin: 0;
+  }
+  .prompt-div p:first-child {
+    margin-bottom: 0;
   }
 
   .footer {
