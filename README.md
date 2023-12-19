@@ -1,3 +1,8 @@
+Production Website:
+https://giftfairy.netlify.app/
+
+  *Please view on your phone or on your computer using the browser inspect tool.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
