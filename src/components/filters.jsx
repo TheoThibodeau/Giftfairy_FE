@@ -14,7 +14,7 @@ const Filters = () => {
     const [relationship, setRelationship] = useState(""); 
     const [priceRange, setPriceRange] = useState("");
     const [occasion, setOccasion] = useState(""); 
-    const [giftType, setGiftType] = useState(); 
+    const [giftType, setGiftType] = useState(""); 
     const [interests, setInterests] = useState("");
     const [activity, setActivity] = useState("");
     const [personality, setPersonality] = useState("");
@@ -95,6 +95,11 @@ const Filters = () => {
     const handleGiftTypeChange = (selectedGiftType) => {
         setGiftType(selectedGiftType)
         console.log(selectedGiftType)
+        
+    // if (title == "Gift Type" || title == "Interests")
+    // {
+    //   setMultiSelectEntry(prev => [...prev, entry]);
+    // }
     }
 
     const handleInterestsChange = (selectedInterests) => {
