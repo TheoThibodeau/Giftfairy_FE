@@ -1,6 +1,5 @@
-Production Website
+Production: Website
 https://giftfairy.netlify.app/
-
   *Please view on your phone or on your computer using the browser inspect tool.
 
 # React + Vite
