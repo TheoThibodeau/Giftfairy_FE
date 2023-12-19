@@ -13,21 +13,25 @@ const ParameterComponent = ({ data, handler}) => {
   };
 
   return (
-    
-        entries.map((entry) => (
+    <form>
+      
+        {entries.map((entry) => (
           <div
             key={entry}
             className="paramButtonContainer"
           >
-            <button
-              className={`paramButton ${entry[1] == true ? "paramButtonActive" : ""}`}
+            <input
+              type="button"
+              name={entry}
+              value={entry}
+              className={`button ${entry[1] == true ? "paramButtonActive" : ""}`}
               style={{ opacity: selectedEntry && entry[1] == false ? 0.55 : 1.1 }}
               onClick={() => handleClick(entry)}
-            >
-              {entry}
-            </button>  
+            />
           </div>
-        ))
+        ))}
+
+    </form>
         
   );
 };
