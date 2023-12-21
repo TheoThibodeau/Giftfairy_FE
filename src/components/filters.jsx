@@ -14,7 +14,7 @@ const Filters = () => {
     const [relationship, setRelationship] = useState(""); 
     const [priceRange, setPriceRange] = useState("");
     const [occasion, setOccasion] = useState(""); 
-    const [giftType, setGiftType] = useState(); 
+    const [giftType, setGiftType] = useState(""); 
     const [interests, setInterests] = useState("");
     const [activity, setActivity] = useState("");
     const [personality, setPersonality] = useState("");
@@ -68,112 +68,57 @@ const Filters = () => {
     }
 
     const handleAgeChange = (selectedAge) => {
-      setAge(selectedAge[0])
-      //Loop through Age Data array and reset the boolean value to false.
-      //Age page will only allow for one selection!
-      for(let i=0; i < data.age.data.length; i++) {
-        data.age.data[i][1] = false;
-      }
-      selectedAge[1] = true;
+      setAge(selectedAge)
       console.log(selectedAge)
     }
 
     const handleGenderChange = (selectedGender) => {
-        setGender(selectedGender[0])
-        //Loop through Gender Data array and reset the boolean value to false.
-        //Gender page will only allow for one selection!
-        for(let i=0; i < data.gender.data.length; i++) {
-          data.gender.data[i][1] = false;
-        }
-        selectedGender[1] = true;
+        setGender(selectedGender)
         console.log(selectedGender)
     }
 
     const handleRelationshipChange = (selectedRelationship) => {
-        setRelationship(selectedRelationship[0])
-        //Loop through Relationship Data array and reset the boolean value to false.
-        //Relationship page will only allow for one selection!
-        for(let i=0; i < data.relationship.data.length; i++) {
-          data.relationship.data[i][1] = false;
-        }
-        selectedRelationship[1] = true;
+        setRelationship(selectedRelationship)
         console.log(selectedRelationship)
     }
 
     const handlePriceRangeChange = (selectedPriceRange) => {
-        setPriceRange(selectedPriceRange[0])
-        //Loop through PriceRange Data array and reset the boolean value to false.
-        //PriceRange page will only allow for one selection!
-        for(let i=0; i < data.priceRange.data.length; i++) {
-          data.priceRange.data[i][1] = false;
-        }
-        selectedPriceRange[1] = true;
+        setPriceRange(selectedPriceRange)
         console.log(selectedPriceRange)
     }
 
     const handleOccasionChange = (selectedOccasion) => {
-        setOccasion(selectedOccasion[0])
-        //Loop through Occasion Data array and reset the boolean value to false.
-        //Occasion page will only allow for one selection!
-        for(let i=0; i < data.occasion.data.length; i++) {
-          data.occasion.data[i][1] = false;
-        }
-        selectedOccasion[1] = true;
+        setOccasion(selectedOccasion)
         console.log(selectedOccasion)
     }   
 
     const handleGiftTypeChange = (selectedGiftType) => {
-        setGiftType(selectedGiftType[0])
-        //Loop through GiftType Data array and reset the boolean value to false.
-        //GiftType page will only allow for one selection!
-        for(let i=0; i < data.giftType.data.length; i++) {
-          data.giftType.data[i][1] = false;
-        }
-        selectedGiftType[1] = true;
+        setGiftType(selectedGiftType)
         console.log(selectedGiftType)
+        
+    // if (title == "Gift Type" || title == "Interests")
+    // {
+    //   setMultiSelectEntry(prev => [...prev, entry]);
+    // }
     }
 
     const handleInterestsChange = (selectedInterests) => {
-        setInterests(selectedInterests[0])
-        //Loop through Interests Data array and reset the boolean value to false.
-        //Interests page will only allow for one selection!
-        for(let i=0; i < data.interests.data.length; i++) {
-          data.interests.data[i][1] = false;
-        }
-        selectedInterests[1] = true;
+        setInterests(selectedInterests)
         console.log(selectedInterests)
     }
 
     const handleActivityChange = (selectedActivity) => {
-      setActivity(selectedActivity[0])
-      //Loop through Activity Data array and reset the boolean value to false.
-      //Activity page will only allow for one selection!
-      for(let i=0; i < data.activity.data.length; i++) {
-        data.activity.data[i][1] = false;
-      }
-      selectedActivity[1] = true;
+      setActivity(selectedActivity)
       console.log(selectedActivity)
     }
 
     const handlePersonalityChange = (selectedPersonality) => {
-      setPersonality(selectedPersonality[0])
-      //Loop through Activity Data array and reset the boolean value to false.
-      //Activity page will only allow for one selection!
-      for(let i=0; i < data.personality.data.length; i++) {
-        data.personality.data[i][1] = false;
-      }
-      selectedPersonality[1] = true;
+      setPersonality(selectedPersonality)
       console.log(selectedPersonality)
     }
 
     const handleNatureChange = (selectedNature) => {
-      setNature(selectedNature[0])
-      //Loop through Activity Data array and reset the boolean value to false.
-      //Activity page will only allow for one selection!
-      for(let i=0; i < data.nature.data.length; i++) {
-        data.nature.data[i][1] = false;
-      }
-      selectedNature[1] = true;
+      setNature(selectedNature)
       console.log(selectedNature)
     }
 
@@ -198,7 +143,7 @@ const Filters = () => {
 
     //Object containing messages for each selection page
     const promptMessages = {
-      intro: "Heey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for.",
+      intro: "Hey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for.",
       gender: "What is their gender?",
       age: "How old are they?", 
       relationship: "What is your relationship with them?", 
@@ -338,7 +283,18 @@ const Filters = () => {
                   color="#ffffff"/>)  
               :
               (<TypeWriter text={promptMessages[activeElement]} />
-              )}              
+              )}
+              
+              {activeElement !== "intro" && activeElement !== "generate" ? ( 
+                activeElement !== "giftType" && activeElement !== "interests" ? 
+                <p>(Select One Option)</p> 
+                : 
+                <p>(Select Multiple Options)</p>
+              )
+              :
+              (<p></p>)
+            }
+
             </div>
             )}
 
