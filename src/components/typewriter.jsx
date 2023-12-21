@@ -13,7 +13,7 @@ export default function TypeWriter ({text}) {
             } else {
               clearInterval(typingInterval);
             }
-          }, 50);
+          }, 40);
       
           return () => {
             clearInterval(typingInterval);
