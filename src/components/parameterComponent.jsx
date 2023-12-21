@@ -5,6 +5,7 @@ const ParameterComponent = ({ data, handler}) => {
   const title = data.title;
   const entries = data.data;
   const [selectedEntry, setSelectedEntry] = useState(null);
+  const [multiSelectEntry, setMultiSelectEntry] = useState([]);
   console.log(data);
 
   const handleClick = (entry) => {
@@ -13,21 +14,41 @@ const ParameterComponent = ({ data, handler}) => {
   };
 
   return (
-    
-        entries.map((entry) => (
+    <form>
+      
+        {entries.map((entry) => (
           <div
             key={entry}
             className="paramButtonContainer"
           >
-            <button
-              className={`paramButton ${entry[1] == true ? "paramButtonActive" : ""}`}
-              style={{ opacity: selectedEntry && entry[1] == false ? 0.55 : 1.1 }}
+            {title !== "Gift Type" && title !== "Interests" ? (
+              <input
+                type="button"
+                name={entry}
+                value={entry}
+                className={`button ${selectedEntry === entry ? "paramButtonActive" : ""}`}
+                style={{ opacity: selectedEntry && selectedEntry !== entry ? 0.55 : 1.1 }}
+                onClick={() => handleClick(entry)}
+              />
+            )
+            : 
+            (
+            <>
+              <input
+              type="checkbox"
+              name={entry}
+              value={entry}
+              id={entry}
               onClick={() => handleClick(entry)}
-            >
-              {entry}
-            </button>  
+              />
+              <label htmlFor={entry} className="checkbox-button">{entry}</label>
+            </>
+            )
+            }
           </div>
-        ))
+        ))}
+
+    </form>
         
   );
 };
