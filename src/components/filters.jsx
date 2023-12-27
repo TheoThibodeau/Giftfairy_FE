@@ -317,6 +317,7 @@ const Filters = () => {
           key={activeElement}
           data={data[activeElement]}
           handler={handleStateSet}
+          selectionMade={selectionMade}
         />
       </div>
 
