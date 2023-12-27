@@ -28,6 +28,7 @@ const Filters = () => {
   const [promptMess, setPromptMess] = useState("");
   const [selectionMade, setSelectionMade] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasSelections, setHasSelections] = useState(false);
 
   const handlePost = () => {
     setIsLoading(true);
@@ -99,12 +100,9 @@ const Filters = () => {
     } else {
       setGiftType([...giftType, selectedGiftType]);
     }
-    console.log(giftType);
 
-    // if (title == "Gift Type" || title == "Interests")
-    // {
-    //   setMultiSelectEntry(prev => [...prev, entry]);
-    // }
+    // checkIfEmptyStringSelection(giftType);
+    console.log(giftType);
   };
 
   const handleInterestsChange = (selectedInterests) => {
@@ -137,6 +135,20 @@ const Filters = () => {
   const handleGenerate = (selectedGenerate) => {
     setGenerate(selectedGenerate);
   };
+
+  // const checkIfEmptyStringSelection = (arrayToCheck) => {
+  //   console.log("Array we are checking: " + arrayToCheck)
+  //   if (arrayToCheck.length == 0){
+  //     setHasSelections(false)
+  //     setSelectionMade(false)
+  //   } else {
+  //     setHasSelections(true)
+  //     setSelectionMade(true)
+  //   }
+  //   console.log("Has Selections: " + hasSelections);
+  //   console.log("Selection was made: " + selectionMade);
+
+  // }
 
   const progressValues = {
     intro: 0,
@@ -317,7 +329,7 @@ const Filters = () => {
           key={activeElement}
           data={data[activeElement]}
           handler={handleStateSet}
-          selectionMade={selectionMade}
+          hasSelectionsHandler={setHasSelections}
         />
       </div>
 
@@ -381,7 +393,15 @@ const Filters = () => {
             </div>
 
             <div className="nextButton-div">
-              {activeElement !== "generate" && (
+              {(activeElement == "age" 
+                || activeElement == "gender" 
+                || activeElement == "activity" 
+                || activeElement == "personality" 
+                || activeElement == "nature" 
+                || activeElement == "priceRange" 
+                || activeElement == "intro" 
+                || activeElement == "relationship") 
+                && (
                 <button
                   disabled={!selectionMade}
                   onClick={handleNextElement}
@@ -389,6 +409,18 @@ const Filters = () => {
                 >
                   Next
                 </button>
+              )}
+              {(activeElement == "giftType" 
+                || activeElement == "interests" 
+                || activeElement == "occasion") 
+                && (
+                <button
+                disabled={(!hasSelections && !selectionMade)}
+                onClick={handleNextElement}
+                className={`${hasSelections || selectionMade ? "opacity2" : "opacity1"}`}
+              >
+                Next
+              </button>
               )}
             </div>
           </>
