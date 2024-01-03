@@ -28,7 +28,6 @@
     "data":
     [
       "Friend",
-      "Partner", 
       "Spouse",
       "Child",
       "Relative",
@@ -56,15 +55,13 @@
         "Anniversary",
         "Wedding",
         "Mother's Day",
-        "Father's Day",
-        "Just because"
+        "Father's Day"
     ]},
   "giftType": {
     "title": "Gift Type",
     "data":
     [
       "Jewelry & Accessories",
-      "Clothing & Shoes",
       "Home & Living",
       "Wedding or Party",
       "Toys, Electronics, or Entertainment",
@@ -76,7 +73,6 @@
     "data":
     [
     "Sports", 
-    "Pets", 
     "Fashion",
     "Travel",
     "Cooking",
