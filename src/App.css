@@ -2,12 +2,12 @@ body {
   font-family: 'Kiwi Maru', 'Raleway', serif;
 }
 
-#main-container {
+/* #main-container {
   max-width: 1280px;
   margin: 0;
   padding: 2rem;
   text-align: center;
-}
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
