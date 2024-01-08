@@ -324,7 +324,7 @@ const Filters = () => {
         </div>
       )}
 
-      <div>
+      <div className="paramCompContainer">
         <ParameterComponent
           key={activeElement}
           data={data[activeElement]}

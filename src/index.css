@@ -382,6 +382,23 @@ button:focus-visible {
     justify-content: center;
   }
 
+  .paramCompContainer {
+    width: 100%
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .checkbox-button {
+    width: 100%;
+  }
+
+  .inputButton {
+    width: 100%;
+  }
+
+
   .individual-responses-container {
     width: 92%;
     height: 275px;
@@ -401,7 +418,11 @@ button:focus-visible {
     width: 70%;
     position: absolute;
     bottom: 20px;
-    right: 50px;
+    left: 58.5px;
+  }
+
+  p {
+    width: auto;
   }
 
   .individual-responses-container h2 {
@@ -433,7 +454,7 @@ button:focus-visible {
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 0rem 1rem 3rem 1rem;
+    padding: 0rem 1rem 1rem 1rem;
   }
 
   .backButton-nextButton-container {
@@ -469,6 +490,7 @@ button:focus-visible {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
 
   .prompt-div p:last-child {
@@ -514,6 +536,7 @@ button:focus-visible {
 
   .generateButton {
     margin-top: 50px;
+    width: 100%;
   }
 
   input[type="checkbox"] {
