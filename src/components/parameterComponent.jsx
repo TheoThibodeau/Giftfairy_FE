@@ -66,17 +66,17 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler}) => {
                 className={`button`}
                 onChange={handleChange}
               >
-                  <option value="" style={{ textAlign: "center" }} hidden>Select Another Relationship</option>
-                  <option value="Sibling" style={{ textAlign: "center" }}>Sibling</option>
-                  <option value="Father In-law" style={{ textAlign: "center" }}>Father In-Law</option>
-                  <option value="Mother In-law" style={{ textAlign: "center" }}>Mother In-Law</option>
-                  <option value="Boss" style={{ textAlign: "center" }}>Boss</option>
-                  <option value="Co-Worker" style={{ textAlign: "center" }}>Co-Worker</option>
-                  <option value="Professor/Teacher" style={{ textAlign: "center" }}>Professor/Teacher</option>
-                  <option value="Niece/Nephew" style={{ textAlign: "center" }}>Niece/Nephew</option>
-                  <option value="Sister In-Law" style={{ textAlign: "center" }}>Sister In-Law</option>
-                  <option value="Brother In-Law" style={{ textAlign: "center" }}>Brother In-Law</option>
-                  <option value="Pet" style={{ textAlign: "center" }}>Pet</option>
+                  <option value="" hidden>Select Another Relationship</option>
+                  <option value="Sibling" >Sibling</option>
+                  <option value="Father In-law" >Father In-Law</option>
+                  <option value="Mother In-law" >Mother In-Law</option>
+                  <option value="Boss" >Boss</option>
+                  <option value="Co-Worker" >Co-Worker</option>
+                  <option value="Professor/Teacher" >Professor/Teacher</option>
+                  <option value="Niece/Nephew" >Niece/Nephew</option>
+                  <option value="Sister In-Law" >Sister In-Law</option>
+                  <option value="Brother In-Law" >Brother In-Law</option>
+                  <option value="Pet" >Pet</option>
               </select>
             )}
             {/* // Write-In Button */}
