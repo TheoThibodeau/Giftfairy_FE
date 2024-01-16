@@ -29,7 +29,7 @@ const Filters = () => {
   const [selectionMade, setSelectionMade] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSelections, setHasSelections] = useState(false);
-
+  
   const handlePost = () => {
     setIsLoading(true);
     axios

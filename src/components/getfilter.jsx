@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const getFilterResponse = ({ }) => {
+const GetFilterResponse = () => {
 
     const [output, setOutput] = useState("");
 
     useEffect(() => {
         axios
-            .get('http://127.0.0.1:8000/api/filter/response')
+            .get('https://giftfairy-be-server.onrender.com/api/filter/response/?user=*')
             .then((response) => {
                 setOutput(response.data.output);
             })
@@ -15,9 +15,10 @@ const getFilterResponse = ({ }) => {
 
     return(
         <>
+            <h1>User Profile</h1>
             <h3>{output}</h3>
         </>
     );
 };
 
-export default getFilterResponse;
+export default GetFilterResponse;
