@@ -6,7 +6,7 @@ import Filters from './components/filters';
 import Landing from './components/landing';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserAuthentication from './components/userAuthentication';
-import GetFilterResponse from './components/getfilter';
+import GetProfileResponse from './components/userProfile';
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
       <Route path="/" element={<Landing />} />
       <Route path="/selections" element={<Filters />}></Route>
       <Route path="/login" element={<UserAuthentication setToken={setToken} token={token} />}></Route>
-      <Route path="/profile" element={<GetFilterResponse />}></Route>
+      <Route path="/profile" element={<GetProfileResponse />}></Route>
     </Routes> 
     </BrowserRouter>
     </>

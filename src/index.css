@@ -166,6 +166,20 @@ button:focus-visible {
   }
 }
 
+.userProfileHistory {
+  display: inline;
+
+}
+
+.userProfileHistoryAge {
+
+}
+
+.userProfileHistoryGender {
+  
+}
+
+
 /* DESKTOP */
 @media only screen and (max-width: 2560px) {
   .container {
