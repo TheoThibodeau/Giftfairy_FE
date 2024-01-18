@@ -168,15 +168,64 @@ button:focus-visible {
 
 .userProfileHistory {
   display: inline;
-
+  width: 100%;
 }
 
-.userProfileHistoryAge {
-
+.userHistoryByDate {
+  padding: 0 2rem;
+  border: 1px solid transparent;
+  border-color: #f5f5f5;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.userProfileHistoryGender {
+.userHistoryByDateHeader {
+  display: flex;
+  align-items: center;
+}
+
+.userHistoryByDateHeader svg {
+  position:relative;
+  left: 3.5rem; /* APPLY CSS RULE TO BE RESPONSIVE FOR DIFFERENT WIDTHS*/
+  padding-top: 1rem;
+}
+
+#more-arrows {
+	width: 45px;
+  height: 35px;
   
+  &:hover {
+    
+    polygon {
+      fill: #FFF;
+      transition: all .2s ease-out;
+
+      &.arrow-bottom {
+        transform: translateY(-18px);
+      }
+
+      &.arrow-top {
+        transform: translateY(18px);
+      }
+      
+    }
+  
+  }
+  
+}
+
+polygon {
+  fill: #FFF;
+  transition: all .2s ease-out;
+    
+  &.arrow-middle {
+	  opacity: 0.75;
+	}
+
+	&.arrow-top {
+	  opacity: 0.5
+	}
+	 
 }
 
 
