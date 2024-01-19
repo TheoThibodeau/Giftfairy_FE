@@ -29,7 +29,9 @@ const GetProfileResponse = () => {
       <h1>User Profile</h1>
       <h2>Selection History</h2>
       <div className="userProfileHistory">
-        {profile.map((item, index) => (
+        {profile
+          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+          .map((item, index) => (
             <div key={index} className="userHistoryByDate" >
               <div key={index}className="userHistoryByDateHeader"> 
                   <h3>
