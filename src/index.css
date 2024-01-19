@@ -189,6 +189,14 @@ button:focus-visible {
   padding-top: 1rem;
 }
 
+.userHistorySelections {
+  display: flex;
+}
+
+.userHistorySelections svg {
+  padding: 1.5rem 0 0 1rem;
+}
+
 #more-arrows {
 	width: 45px;
   height: 35px;
