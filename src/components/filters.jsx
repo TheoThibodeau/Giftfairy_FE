@@ -349,7 +349,8 @@ const Filters = () => {
                 key={index}
                 href={`https://www.amazon.com/s?k=${encodeURIComponent(
                   title
-                )}&tag=giftfairy08-20`}
+                )}`}
+                // &tag=giftfairy08-20 add amazon affiliate link once it has been approved. 
                 target="_blank"
                 rel="noreferrer"
               >

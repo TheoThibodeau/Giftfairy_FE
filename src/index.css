@@ -185,9 +185,16 @@ button:focus-visible {
 }
 
 .userHistoryByDateHeader svg {
-  position:relative;
-  left: 3.5rem; /* APPLY CSS RULE TO BE RESPONSIVE FOR DIFFERENT WIDTHS*/
+  margin-left: auto;
   padding-top: 1rem;
+}
+
+.userHistorySelections {
+  display: flex;
+}
+
+.userHistorySelections svg {
+  padding: 1.5rem 0 0 1rem;
 }
 
 #more-arrows {
@@ -610,5 +617,9 @@ polygon {
   input[type="checkbox"]:checked + label.checkbox-button {
     border: 3px solid rgb(0, 0, 0);
     opacity: 100%;
+  }
+
+  .userHistoryByDate {
+    padding: 0 0.5rem 0 2rem;
   }
 }
