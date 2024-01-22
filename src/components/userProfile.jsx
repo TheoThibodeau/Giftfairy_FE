@@ -85,8 +85,8 @@ const GetProfileResponse = () => {
                             <h3>Nature: {item.nature}</h3>
                         </div>
                     )}
-                    <div className="userHistoryGeneratedGifts">                      
-                    <h3>Generated Gift Ideas: {item.item_title_string}</h3>
+                    <div className="userHistoryGeneratedGifts">                
+                        <h3>Generated Gift Ideas: {item.item_title_string}</h3>
                     </div>
               </div>
               )}

@@ -10,8 +10,9 @@ import GetProfileResponse from './components/userProfile';
 
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [token, setToken] = useState('')
+  const [count, setCount] = useState(0);
+  const [token, setToken] = useState('');
+  const [user, setUser] = useState('');
 
   return (
     <>
@@ -19,7 +20,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/selections" element={<Filters />}></Route>
-      <Route path="/login" element={<UserAuthentication setToken={setToken} token={token} />}></Route>
+      <Route path="/login" element={<UserAuthentication user={user} setUser={setUser}/>}></Route>
       <Route path="/profile" element={<GetProfileResponse />}></Route>
     </Routes> 
     </BrowserRouter>
