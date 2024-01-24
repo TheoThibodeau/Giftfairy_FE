@@ -6,7 +6,6 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler}) => {
   const entries = data.data;
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [multiSelectEntry, setMultiSelectEntry] = useState([]);
-  console.log(data);
 
   const handleClick = (entry) => {
     setSelectedEntry(entry);

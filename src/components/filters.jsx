@@ -1,13 +1,16 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
 import NavBar from "./navbar";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { RingLoader } from "react-spinners";
 import TypeWriter from "./typewriter";
+import UserAuthentication from './userAuthentication';
+import { getAuth } from "firebase/auth";
 
-const Filters = () => {
+
+const Filters = ({user, handleUserLogin, authentication, handleLoginSubmit, handleLogOut, handleRegisterSubmit, handlePasswordInput, handleEmailInput, email, password}) => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [relationship, setRelationship] = useState("");
@@ -136,32 +139,18 @@ const Filters = () => {
     setGenerate(selectedGenerate);
   };
 
-  // const checkIfEmptyStringSelection = (arrayToCheck) => {
-  //   console.log("Array we are checking: " + arrayToCheck)
-  //   if (arrayToCheck.length == 0){
-  //     setHasSelections(false)
-  //     setSelectionMade(false)
-  //   } else {
-  //     setHasSelections(true)
-  //     setSelectionMade(true)
-  //   }
-  //   console.log("Has Selections: " + hasSelections);
-  //   console.log("Selection was made: " + selectionMade);
-
-  // }
-
   const progressValues = {
     intro: 0,
-    gender: 10,
-    age: 20,
-    relationship: 30,
-    priceRange: 40,
-    occasion: 50,
-    giftType: 60,
-    interests: 70,
-    activity: 80,
-    personality: 87,
-    nature: 95,
+    gender: 9,
+    age: 18,
+    relationship: 27,
+    priceRange: 36,
+    occasion: 45,
+    giftType: 54,
+    interests: 63,
+    activity: 72,
+    personality: 81,
+    nature: 90,
     generate: 100,
   };
 
@@ -284,6 +273,19 @@ const Filters = () => {
     console.log(selectionMade);
   };
 
+  //This is where we check to see who the user is
+
+    const auth = getAuth();
+    const [authCurrentUser, setAuthCurrentUser] = useState(null);
+
+    useEffect(() => {
+      const currentUser = auth.currentUser;
+      setAuthCurrentUser(currentUser);
+    }, [auth.currentUser]);
+
+    console.log(user);
+    console.log(authCurrentUser);
+
   return (
     <>
       <div className="navbarContainer">
@@ -293,7 +295,7 @@ const Filters = () => {
           label={``}
           style={{ backgroundColor: "darkgray", height: "24px" }}
         >
-          <ProgressBar
+        <ProgressBar
             variant="success"
             now={progressValues[activeElement]}
             label={``}
@@ -304,14 +306,12 @@ const Filters = () => {
 
       <br />
 
-      {!isGenerated && (
+      {/* While going through selections and before making it to the generate page, show this 
+      version of the "prompt-div" div */}
+      {(activeElement !== "generate") && (
         <div className="prompt-div">
-          {isLoading ? (
-            <RingLoader color="#ffffff" />
-          ) : (
-            <TypeWriter text={promptMessages[activeElement]} />
-          )}
-
+          {/* Christian Dezha - 12/12/2023 */}
+          <TypeWriter text={promptMessages[activeElement]} />
           {activeElement !== "intro" && activeElement !== "generate" ? (
             activeElement !== "giftType" && activeElement !== "interests" ? (
               <p>(Select One Option)</p>
@@ -324,6 +324,16 @@ const Filters = () => {
         </div>
       )}
 
+      {(activeElement == "generate") && authCurrentUser && (
+        <div className="prompt-div">
+          {isLoading ? (
+            <RingLoader color="#ffffff" />
+          ) : (
+            <TypeWriter text={promptMessages[activeElement]} />
+          )}
+        </div>
+      )}
+
       <div className="paramCompContainer">
         <ParameterComponent
           key={activeElement}
@@ -332,6 +342,7 @@ const Filters = () => {
           hasSelectionsHandler={setHasSelections}
         />
       </div>
+    
 
       {isGenerated && (
         <div className="container">
@@ -366,7 +377,7 @@ const Filters = () => {
         </div>
       )}
 
-      {activeElement === "generate" && !isLoading && !isGenerated && (
+      {activeElement === "generate" && !isLoading && !isGenerated && authCurrentUser &&(
         <button
           onClick={handlePost}
           disabled={isLoading}
@@ -374,6 +385,15 @@ const Filters = () => {
         >
           Generate
         </button>
+      )}
+
+      {activeElement === "generate" && !isLoading && !isGenerated && !authCurrentUser &&(
+        <>
+          <div className="prompt-div">
+          <TypeWriter text={"Before I can give you any suggestions, please login or register a new account!"} />
+          </div>
+          <UserAuthentication user={user} handleLoginSubmit={handleLoginSubmit} handleLogOut={handleLogOut} handleRegisterSubmit={handleRegisterSubmit} handlePasswordInput={handlePasswordInput} handleEmailInput={handleEmailInput} email={email} password={password}/>
+        </>
       )}
 
       <div className="footer">
