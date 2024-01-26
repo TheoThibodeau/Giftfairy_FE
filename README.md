@@ -7,7 +7,7 @@ GIFTFaiRY🧚🏻 is your personal shopping assistant powered by artificial inte
 https://github.com/kekedezha/GiftFairy-FE/assets/105559393/5708a738-6fe9-4fc5-90b4-41e775e10af5
 
 
-## 🤓Motivation
+## 🤓 Motivation
 Funny enough, [Theodore Thibodeau](https://github.com/TheoThibodeau) and I created this project to make up for his lack of gift giving skills especially when it came to him getting a present for his mom. 
 
 Both transitioning over to software development, we thought it would be a great idea to have AI help us out with gift ideas as we expand and grow our knowledge in software engineering. This project help us explore and learn both the Front-End and Back-End side of software/app development. 
