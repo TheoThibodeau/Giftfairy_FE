@@ -3,6 +3,10 @@ GIFTFaiRY🧚🏻 is your personal shopping assistant powered by artificial inte
 
 [GIFTFaiRY](https://giftfairy.netlify.app/)
 
+https://github.com/kekedezha/GiftFairy-FE/assets/105559393/97493bd8-9ed7-43b0-9a8b-d70fee23db95
+
+
+
 
 ## 🤓Motivation
 Funny enough, [Theodore Thibodeau](https://github.com/TheoThibodeau) and I created this project to make up for his lack of gift giving skills especially when it came to him getting a present for his mom. 
