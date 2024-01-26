@@ -44,7 +44,7 @@ Back-End: Visit [GifFairy-BE](https://github.com/kekedezha/GiftFairy-BE)
 - User can select a 'write-in you own', leave it blank and proceed to the next page, causing the POST request to OpenAI to fail.
 - Refreshing browser on anything but the landing page causes netlify to display "Page Not Found"
 
-### 📈 Overall Growth:
+## 📈 Overall Growth:
 
 Each part of this project helped me understand more about building apps, managing complex information, and improving user experience. It was more than just making a web-app. It was about solving problems, learning new things, and improving my skills for future work.
 
