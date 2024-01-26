@@ -3,9 +3,8 @@ GIFTFaiRY🧚🏻 is your personal shopping assistant powered by artificial inte
 
 [GIFTFaiRY](https://giftfairy.netlify.app/)
 
-https://github.com/kekedezha/GiftFairy-FE/assets/105559393/97493bd8-9ed7-43b0-9a8b-d70fee23db95
 
-
+https://github.com/kekedezha/GiftFairy-FE/assets/105559393/5708a738-6fe9-4fc5-90b4-41e775e10af5
 
 
 ## 🤓Motivation
