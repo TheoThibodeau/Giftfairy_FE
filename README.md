@@ -7,9 +7,9 @@ https://github.com/kekedezha/GiftFairy-FE/assets/105559393/5708a738-6fe9-4fc5-90
 
 
 ## 🤓 Motivation
-Funny enough, [Theodore Thibodeau](https://github.com/TheoThibodeau) and I created this project to make up for his lack of gift giving skills especially when it came to him getting a present for his mom. 
+Funny enough, [Christian Dezha](https://github.com/kekedezha) and I created this project to make up for my serious lack of gift giving skills. 
 
-Both transitioning over to software development, we thought it would be a great idea to have AI help us out with gift ideas as we expand and grow our knowledge in software engineering. This project help us explore and learn both the Front-End and Back-End side of software/app development and hopefully helps others when it comes to gift giving! 
+Both transitioning over to software development, we thought it would be a great idea to have AI help us out with gift ideas as we expand and grow our knowledge in software engineering. This project helped us explore and learn both the Front-End and Back-End side of software/app development and hopefully helps others when it comes to gift giving! 
 
 ## 🛠️ Main Technologies
 Front-End: 
@@ -48,6 +48,6 @@ Back-End: Visit [GifFairy-BE](https://github.com/kekedezha/GiftFairy-BE)
 Each part of this project helped me understand more about building apps, managing complex information, and improving user experience. It was more than just making a web-app. It was about solving problems, learning new things, and improving my skills for future work.
 
 ## 🫱🏼‍🫲🏽 Contributing 
-- [Theodore Thibodeau](https://github.com/TheoThibodeau)
+- [Christian Dezha](https://github.com/kekedezha)
 - [Kimberly Rivas](https://github.com/rivkj)
 - We are also open to contributions from others! Please contact us at [dezhac6@gmail.com](mailto:dezha6@gmail.com) or [teddythibodeau@gmail.com](mailto:teddythibodeau@gmail.com).
