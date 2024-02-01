@@ -3,30 +3,11 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   scroll-behavior: smooth;
-
   color-scheme: light dark;
-  /* color: rgba(244, 111, 111, 0.87); */
   color: whitesmoke;
-  /* background-color: #0b4050; */
   background: rgb(177,223,238);
   background: radial-gradient(circle, rgba(106,181,205,1) 43%, rgba(13,13,57,1) 100%);
-  /* background: hsla(233, 93%, 57%, 1);
-
-  background: linear-gradient(135deg, hsla(233, 93%, 57%, 1) 0%, hsla(211, 88%, 75%, 1) 50%, hsla(199, 82%, 71%, 1) 100%);
-
-  background: -moz-linear-gradient(135deg, hsla(233, 93%, 57%, 1) 0%, hsla(211, 88%, 75%, 1) 50%, hsla(199, 82%, 71%, 1) 100%);
-
-  background: -webkit-linear-gradient(135deg, hsla(233, 93%, 57%, 1) 0%, hsla(211, 88%, 75%, 1) 50%, hsla(199, 82%, 71%, 1) 100%);
-
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#2A42F7", endColorstr="#86BDF7", GradientType=1 );
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%; */
 }
 
 body {
@@ -53,7 +34,7 @@ h4 {
 }
 
 /* Nav bar - home button */
-.navbarContainer {
+.navbar-ProgressBar-Container {
   position: fixed;
   left: 0;
   top: 0;
@@ -67,17 +48,33 @@ h4 {
 .navbarContainer .d-flex {
   padding-top: 1em;
   padding-left: 0.5em;
-  float: left;
+  width: 40%;
   }
 
 nav {
+  display: flex;
+  justify-content: space-between;
   height: 5.0625em;
 }
 
-nav a{
-  float: right;
-  padding-right: 1em;
+nav a {
+  width: 25%;
+  display: flex;
+  justify-content: center;
   padding-top: 1em;
+}
+
+nav a img {
+  padding-top: .5rem;
+}
+
+nav a svg {
+  padding-top: .3rem;
+}
+
+.titleHeader {
+  /* width: 40%; */
+  padding-top: 0.5rem;
 }
 
 button {
@@ -235,6 +232,14 @@ polygon {
 	 
 }
 
+.userProfileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 5rem;
+}
 
 /* DESKTOP */
 @media only screen and (max-width: 2560px) {

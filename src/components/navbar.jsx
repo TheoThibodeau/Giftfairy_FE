@@ -2,21 +2,27 @@ import React from "react";
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom";
 import data from "/filters.json";
+import UserImage from '../images/userImage.png';
 
 function NavBar() {
     
     return (
     <>
         <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-            {/* <Container> */}
-            <div className="d-flex align-items-start">
-                <h3 className="titleHeader">GIFTFaiRY</h3>
-            </div>
+                <Link to="/profile">
+                <img 
+                src={UserImage} 
+                alt="User Image"
+                height={40}
+                width={40}
+                 />
+                 </Link>
+                <h2 className="titleHeader" >GIFTFaiRY</h2>
             <Link to="/" className="navbar-brand">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="48"
-                    height="48"
+                    width="44"
+                    height="44"
                     fill="whitesmoke"
                     className="bi bi-house-fill"
                     viewBox="0 0 16 16"
@@ -29,7 +35,6 @@ function NavBar() {
                     />
                 </svg>
                 </Link>
-            {/* </Container> */}
         </Navbar>
     </>
   );

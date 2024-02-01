@@ -1,109 +1,140 @@
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
-import { getAuth } from "firebase/auth";
+import { 
+    getAuth,
+    createUserWithEmailAndPassword, 
+    signOut, 
+    signInWithEmailAndPassword,
+    onAuthStateChanged
+ } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 
+const UserAuthentication = ({ handleUserLogin, authentication }) => {
 
-const UserAuthentication = ({user, handleUserLogin, authentication, handleLoginSubmit, handleLogOut, handleRegisterSubmit, handleEmailInput, handlePasswordInput, email, password}) => {
-
-    // const [password, setPassword] = useState('');
-    // const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [emailInput, setEmailInput] = useState('');
     const [loginSelected, setLoginSelected] = useState(false);
     const [registerSelected, setRegisterSelected] = useState(false);
+    const [authCurrentUser, setAuthCurrentUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [userID, setUserID] = useState(null);
+    const [userEmail, setUserEmail] = useState("");
 
-    // // Your web app's Firebase configuration
-    // // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    // const firebaseConfig = {
-    //     apiKey: "AIzaSyD31E0qyRff38YbacqfmJX1mLePHxanrws",
-    //     authDomain: "giftfairy-a84c0.firebaseapp.com",
-    //     projectId: "giftfairy-a84c0",
-    //     storageBucket: "giftfairy-a84c0.appspot.com",
-    //     messagingSenderId: "360717671227",
-    //     appId: "1:360717671227:web:1a35bb12a01c2799f7f51e",
-    //     measurementId: "G-TDHVENEFD9"
-    // };
+    const handlePasswordInput = (e) => {
+        setPassword(e.target.value);
+    };
 
-    // // Initialize Firebase
-    // const app = initializeApp(firebaseConfig);
+    const handleEmailInput = (e) => {
+        setEmailInput(e.target.value);
+    };
 
-    // // Initialize Firebase Authentication and get a reference to the service for the giftfairy app
-    // const auth = getAuth(app);
+    const handleLoginSubmit = (e) => {
+        e.preventDefault()
+        signInWithEmailAndPassword(authentication, emailInput, password)
+            .then((userCredential) => {
+                // Signed in 
+                handleUserLogin(userCredential.user);
+                alert("Successful User Login");
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorCode + errorMessage);
+            });
+    };
 
-    // const handlePasswordInput = (e) => {
-    //     setPassword(e.target.value);
-    // };
+    const handleRegisterSubmit = (e) => {
+        handleUserPost();
+        e.preventDefault();
+        createUserWithEmailAndPassword(authentication, emailInput, password)
+            .then((userCredential) => {
+            // Signed up 
+            handleUserLogin(userCredential.user);
+            console.log("Successful User created")
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode)
+            console.log(errorMessage)
+            // ..
+        });
+    };
 
-    // const handleEmailInput = (e) => {
-    //     setEmail(e.target.value);
-    // };
+    const handleLogOut = (e) => {
+        signOut(authentication).then(() => {
+        console.log("Your signout was successful")
+          // Sign-out successful.
+        }).catch((error) => {
+        console.log(error)
+          // An error happened.
+        });
+    };
 
-    // const handleLoginSubmit = (e) => {
-    //     e.preventDefault()
-    //     signInWithEmailAndPassword(authentication, email, password)
-    //         .then((userCredential) => {
-    //             // Signed in 
-    //             handleUserLogin(userCredential.user);
-    //             alert("Successful User Login");
-    //             // ...
-    //         })
-    //         .catch((error) => {
-    //             const errorCode = error.code;
-    //             const errorMessage = error.message;
-    //             alert(errorCode + errorMessage);
-    //         });
-    // };
+    //Creates a new User in the User Table Database
+    const handleUserPost = () => {
+        axios
+          .post('https://giftfairy-be-server.onrender.com/api/user/generate', {
+            uid: userID,
+            password: " ",
+            username: emailInput,
+            email: emailInput,
+          }) 
+          .then((response) => {
+            if(response){
+              console.log("Your post was successful!")
+            }
+          }) 
+          .catch((error) => {
+            if(error){
+              console.log("Oops, there was an error, don't ask me why")
+            }
+          })
+      };
 
-    // const handleRegisterSubmit = (e) => {
-    //     e.preventDefault()
-    //     createUserWithEmailAndPassword(authentication, email, password)
-    //         .then((userCredential) => {
-    //         // Signed up 
-    //         handleUserLogin(userCredential.user);
-    //         console.log("Successful User created")
-    //         // ...
-    //     })
-    //     .catch((error) => {
-    //         const errorCode = error.code;
-    //         const errorMessage = error.message;
-    //         console.log(errorCode)
-    //         console.log(errorMessage)
-    //         // ..
-    //     });
-    // };
+      //userAuthentication.jsx - User Authentication Observer
+      //The observer tracks the user authentication token across the different components
 
-    // const handleLogOut = (e) => {
-    //     signOut(authentication).then(() => {
-    //     console.log("Your signout was successful")
-    //       // Sign-out successful.
-    //     }).catch((error) => {
-    //     console.log(error)
-    //       // An error happened.
-    //     });
-    // };
+      console.log("Auth Current User is: " + authCurrentUser);
 
-      //This is where we check to see who the user is
-
-      const auth = getAuth();
-      const [authCurrentUser, setAuthCurrentUser] = useState(null);
-  
       useEffect(() => {
-        const currentUser = auth.currentUser;
-        setAuthCurrentUser(currentUser);
-      }, [auth.currentUser]);  
-      console.log(user);
-      console.log(authCurrentUser);
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+              // User is signed in
+              setAuthCurrentUser(user);
+              console.log("User is: " + user);
+              handleUserLogin(user); // Call the handler to update user state in parent component
+              setUserID(user.uid);
+              setUserEmail(user.email);
+            } else {
+              // No user is signed in
+              setAuthCurrentUser(null);
+            }
+            setLoading(false);
+          });
+      
+          return () => unsubscribe(); // Cleanup function to unsubscribe from the observer
+        }, [handleLoginSubmit, handleLogOut, handleRegisterSubmit]);  
 
-    const handleLoginClick = () => {
-        setLoginSelected(true);
-    };
+        if (loading) {
+            return <div></div>;
+          }
 
-    const handleRegisterClick = () => {
-        setRegisterSelected(true);
-    };
+        const handleLoginClick = () => {
+            setLoginSelected(true);
+        };
 
-    console.log(loginSelected);
-    console.log(registerSelected);
-    console.log(user.email);
+        const handleRegisterClick = () => {
+            setRegisterSelected(true);
+        };
+
+        console.log(loginSelected);
+        console.log(registerSelected);
 
     return(
     <>
@@ -148,7 +179,7 @@ const UserAuthentication = ({user, handleUserLogin, authentication, handleLoginS
             type="string" 
             placeholder="Email"
             name="Email" 
-            value={email}
+            value={emailInput}
             onChange={handleEmailInput}
             className={`inputButton `}
         >
@@ -163,11 +194,11 @@ const UserAuthentication = ({user, handleUserLogin, authentication, handleLoginS
             className={`inputButton `}
         >
         </input>
-        <button
-            type="submit"
-        >
-            Submit
-        </button>
+            <button
+                type="submit"
+            >
+                Submit
+            </button>
        </form>
        </>
     )}
@@ -182,7 +213,7 @@ const UserAuthentication = ({user, handleUserLogin, authentication, handleLoginS
             type="string" 
             placeholder="Email"
             name="Email" 
-            value={email}
+            value={emailInput}
             onChange={handleEmailInput}
             className={`inputButton `}
         >
@@ -197,11 +228,11 @@ const UserAuthentication = ({user, handleUserLogin, authentication, handleLoginS
             className={`inputButton `}
         >
         </input>
-        <button
-            type="submit"
-        >
-            Submit
-        </button>
+            <button
+                type="submit"
+            >
+                Submit
+            </button>
        </form>
        </>
     )}

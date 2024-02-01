@@ -1,19 +1,11 @@
 import { useState, useEffect } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 import Filters from './components/filters';
 import Landing from './components/landing';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import UserAuthentication from './components/userAuthentication';
 import GetProfileResponse from './components/userProfile';
 import { initializeApp } from "firebase/app";
-import { 
-    getAuth,
-    createUserWithEmailAndPassword, 
-    signOut, 
-    signInWithEmailAndPassword
- } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 
 function App() {
@@ -21,8 +13,6 @@ function App() {
   const [token, setToken] = useState('');
   const [user, setUser] = useState('');
   const [authentication, setAuthentication] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
 
   const handleUserLogin = (newUser) => {
     setUser(newUser);
@@ -50,96 +40,18 @@ function App() {
       setAuthentication(auth);
     }, [auth]);
 
-    const handleLoginSubmit = (e) => {
-      e.preventDefault()
-      signInWithEmailAndPassword(authentication, email, password)
-          .then((userCredential) => {
-              // Signed in 
-              handleUserLogin(userCredential.user);
-              alert("Successful User Login");
-              // ...
-          })
-          .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              alert(errorCode + errorMessage);
-          });
-  };
-
-  const handleRegisterSubmit = (e) => {
-      e.preventDefault()
-      createUserWithEmailAndPassword(authentication, email, password)
-          .then((userCredential) => {
-          // Signed up 
-          handleUserLogin(userCredential.user);
-          console.log("Successful User created")
-          // ...
-      })
-      .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode)
-          console.log(errorMessage)
-          // ..
-      });
-  };
-
-  const handleLogOut = (e) => {
-      signOut(authentication).then(() => {
-      console.log("Your signout was successful")
-        // Sign-out successful.
-      }).catch((error) => {
-      console.log(error)
-        // An error happened.
-      });
-  };
-
-  const handlePasswordInput = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleEmailInput = (e) => {
-      setEmail(e.target.value);
-  };
 
   return (
     <>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/selections" 
-      element=
-      {<Filters 
-      user={user} 
-      handleUserLogin={handleUserLogin} 
-      authentication={authentication} 
-      handleLoginSubmit={handleLoginSubmit} 
-      handleLogOut={handleLogOut} 
-      handleRegisterSubmit={handleRegisterSubmit} 
-      handlePasswordInput={handlePasswordInput}
-      handleEmailInput={handleEmailInput}
-      email={email}
-      password={password}
-      />}></Route>
-      <Route path="/login" 
-      element=
-      {<UserAuthentication 
-      user={user} 
-      handleUserLogin={handleUserLogin} 
-      authentication={authentication} 
-      handleLoginSubmit={handleLoginSubmit} 
-      handleLogOut={handleLogOut} 
-      handleRegisterSubmit={handleRegisterSubmit}
-      handlePasswordInput={handlePasswordInput}
-      handleEmailInput={handleEmailInput}
-      email={email}
-      password={password}
-      />}></Route>
-      <Route path="/profile" element={<GetProfileResponse user={user} handleUserLogin={handleUserLogin}/>}></Route>
+      <Route path="/selections" element={<Filters handleUserLogin={handleUserLogin} authentication={authentication} />}></Route>
+      <Route path="/profile" element={<GetProfileResponse handleUserLogin={handleUserLogin} authentication={authentication}/>}></Route>
     </Routes> 
     </BrowserRouter>
     </>
   )
-}
+};
 
 export default App;

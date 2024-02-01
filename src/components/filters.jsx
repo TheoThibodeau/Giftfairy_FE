@@ -7,10 +7,10 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import { RingLoader } from "react-spinners";
 import TypeWriter from "./typewriter";
 import UserAuthentication from './userAuthentication';
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
-const Filters = ({user, handleUserLogin, authentication, handleLoginSubmit, handleLogOut, handleRegisterSubmit, handlePasswordInput, handleEmailInput, email, password}) => {
+const Filters = ({ handleUserLogin, authentication }) => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [relationship, setRelationship] = useState("");
@@ -32,10 +32,12 @@ const Filters = ({user, handleUserLogin, authentication, handleLoginSubmit, hand
   const [selectionMade, setSelectionMade] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSelections, setHasSelections] = useState(false);
+  const [authCurrentUser, setAuthCurrentUser] = useState(null);
+  const [userEmail, setUserEmail] = useState("");
   
   const handlePost = () => {
     setIsLoading(true);
-    axios
+   axios
       .post("https://giftfairy-be-server.onrender.com/api/filter/generate", {
         age: age,
         gender: gender,
@@ -47,6 +49,7 @@ const Filters = ({user, handleUserLogin, authentication, handleLoginSubmit, hand
         activity_level: activity,
         personality: personality,
         nature: nature,
+        email: userEmail,
       })
       .then((response) => {
         setIsLoading(false);
@@ -273,22 +276,34 @@ const Filters = ({user, handleUserLogin, authentication, handleLoginSubmit, hand
     console.log(selectionMade);
   };
 
-  //This is where we check to see who the user is
+    //Filters.jsx - User Authentication Observer
+    //The observer tracks the user authentication token across the different components
+      
+      console.log("Auth Current User is: " + authCurrentUser);
 
-    const auth = getAuth();
-    const [authCurrentUser, setAuthCurrentUser] = useState(null);
+      useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+              // User is signed in
+              setAuthCurrentUser(user);
+              console.log("User is: " + user);
+              setUserEmail(user.email);
+              handleUserLogin(user); // Call the handler to update user state in parent component
+            } else {
+              // No user is signed in
+              setAuthCurrentUser(null);
+            }
+          });
+      
+        return () => unsubscribe(); // Cleanup function to unsubscribe from the observer
+      }, []);
 
-    useEffect(() => {
-      const currentUser = auth.currentUser;
-      setAuthCurrentUser(currentUser);
-    }, [auth.currentUser]);
-
-    console.log(user);
     console.log(authCurrentUser);
 
   return (
     <>
-      <div className="navbarContainer">
+      <div className="navbar-ProgressBar-Container">
         <NavBar />
         <ProgressBar
           now={progressValues[activeElement]}
@@ -324,7 +339,7 @@ const Filters = ({user, handleUserLogin, authentication, handleLoginSubmit, hand
         </div>
       )}
 
-      {(activeElement == "generate") && authCurrentUser && (
+      {(activeElement == "generate" && authCurrentUser && !isGenerated) && (
         <div className="prompt-div">
           {isLoading ? (
             <RingLoader color="#ffffff" />
@@ -392,7 +407,7 @@ const Filters = ({user, handleUserLogin, authentication, handleLoginSubmit, hand
           <div className="prompt-div">
           <TypeWriter text={"Before I can give you any suggestions, please login or register a new account!"} />
           </div>
-          <UserAuthentication user={user} handleLoginSubmit={handleLoginSubmit} handleLogOut={handleLogOut} handleRegisterSubmit={handleRegisterSubmit} handlePasswordInput={handlePasswordInput} handleEmailInput={handleEmailInput} email={email} password={password}/>
+          <UserAuthentication handleUserLogin={handleUserLogin} authentication={authentication}/>
         </>
       )}
 
