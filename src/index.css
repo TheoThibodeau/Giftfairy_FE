@@ -6,8 +6,6 @@
   scroll-behavior: smooth;
   color-scheme: light dark;
   color: whitesmoke;
-  background: rgb(177,223,238);
-  background: radial-gradient(circle, rgba(106,181,205,1) 43%, rgba(13,13,57,1) 100%);
 }
 
 body {
@@ -16,6 +14,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  height: 100%;
   align-items: center;
   justify-content: center;
 }
@@ -238,8 +237,25 @@ polygon {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-top: 5rem;
+  padding-top: 4rem;
+  height: 100%;
+  margin-bottom: 100px;
 }
+
+.userProfilePage {
+  background: rgb(177,223,238);
+  background: radial-gradient(circle, rgba(106,181,205,1) 63%, rgba(13,13,57,1) 100%);
+  width: 100%;
+  height: 100%;
+}
+
+.userProfileContainer h1 {
+  margin-bottom: 10px;
+}
+
+
+
+
 
 /* DESKTOP */
 @media only screen and (max-width: 2560px) {
@@ -343,7 +359,10 @@ polygon {
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 0rem 1rem 3rem 1rem;
+    background: rgb(177,223,238);
+    background: radial-gradient(circle, rgba(106,181,205,1) 43%, rgba(13,13,57,1) 100%);
+    height: 100%;
+    min-height: 100vh;
   }
 
   .backButton-nextButton-container {
@@ -414,7 +433,7 @@ polygon {
   .landingDescription {
     margin-bottom: 30px;
     color: white;
-    width: 25rem;
+    width: 20rem;
     text-align: center;
     }
 
@@ -424,7 +443,6 @@ polygon {
   }
 
   .version {
-    margin: 0px;
     opacity: 35%;
     position: fixed;
     bottom: 10px;
@@ -453,7 +471,7 @@ polygon {
     flex-wrap: wrap;
     width: 100%;
     height: auto;
-    padding: 5em 0 .40em 0;
+    padding: 5em 10px .40em 0;
     justify-content: center;
   }
 
@@ -472,7 +490,6 @@ polygon {
   .inputButton {
     width: 100%;
   }
-
 
   .individual-responses-container {
     width: 92%;
@@ -529,7 +546,8 @@ polygon {
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 0rem 1rem 1rem 1rem;
+    height: 100%;
+    padding: 0 20px;
   }
 
   .backButton-nextButton-container {
@@ -603,7 +621,6 @@ polygon {
   }
 
   .version {
-    margin: 0px;
     opacity: 35%;
     position: fixed;
     bottom: 10px;
@@ -625,6 +642,6 @@ polygon {
   }
 
   .userHistoryByDate {
-    padding: 0 0.5rem 0 2rem;
+    padding: 0 0.5rem 0 1rem;
   }
 }

@@ -77,7 +77,7 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
               <div key={index} className="userHistoryByDate" >
                 <div key={index}className="userHistoryByDateHeader"> 
                     <h3>
-                        Date: {dayjs(item.created_at).format("MM-DD-YYYY hh:mm A")}
+                        Date: {dayjs(item.created_at).format("MM-DD-YY hh:mm A")}
                     </h3>
                     {selectedDate == index ? 
                       <svg id="more-arrows" viewBox="0 0 125 115" onClick={() => handleDateClick(index)}>
