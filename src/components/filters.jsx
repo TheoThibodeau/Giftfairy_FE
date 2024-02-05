@@ -39,7 +39,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const handlePost = () => {
     setIsLoading(true);
    axios
-      .post("https://giftfairy-be-server.onrender.com/api/filter/generate", {
+      .post("https://giftfairy-be-server.onrender.com/api/filter/generate//", {
         age: age,
         gender: gender,
         relationship: relationship,
@@ -72,15 +72,27 @@ const Filters = ({ handleUserLogin, authentication }) => {
         //Set up variable to hold next prompt message depending on next active element
       })
       .catch((error) => {
+        console.log(error)
         if (error.response) {
           // The request was made and the server responded with a status code
-          console.error('Server responded with status code:', error.response.status);
+          console.error('Server responded with status code:', error.response.data);
+          if (error.response.status == 400) {
+            alert("You left one or more of your choices blank please go back and redo your selections!")
+          } else if (error.response.status == 404) {
+            alert("Back-End server endpoint not found. Server might have been discontinued.")
+          } else if (error.response.status == 500) {
+            alert("Internal Server Error, please try again!")
+          } else if (error.response.status == 502) {
+            alert("Bad Gateway, please try again!")
+          } else if (error.response.status == 504) {
+            alert("Gateway Timeout, please try again!")
+          }
         } else if (error.request) {
           // The request was made but no response was received
-          console.error('No response received from server');
+          alert("No response received from server, please try again!");
         } else {
           // Something else happened while setting up the request
-          console.error('Error:', error.message);
+          alert('Error:', error.message);
         }
       });
   };
