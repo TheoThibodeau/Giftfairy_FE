@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
 import NavBar from "./navbar";
@@ -11,6 +11,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
 const Filters = ({ handleUserLogin, authentication }) => {
+
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [relationship, setRelationship] = useState("");
@@ -69,6 +70,18 @@ const Filters = ({ handleUserLogin, authentication }) => {
         //Set response.data.openai_descrip_string
         setOpenaiDescrip(response.data.openai_descrip_string.split(","));
         //Set up variable to hold next prompt message depending on next active element
+      })
+      .catch((error) => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          console.error('Server responded with status code:', error.response.status);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error('No response received from server');
+        } else {
+          // Something else happened while setting up the request
+          console.error('Error:', error.message);
+        }
       });
   };
 
