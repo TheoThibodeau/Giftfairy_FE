@@ -1,13 +1,17 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import React, { useState } from "react";
 import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
 import NavBar from "./navbar";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { RingLoader } from "react-spinners";
 import TypeWriter from "./typewriter";
+import UserAuthentication from './userAuthentication';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const Filters = () => {
+
+const Filters = ({ handleUserLogin, authentication }) => {
+
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [relationship, setRelationship] = useState("");
@@ -29,11 +33,13 @@ const Filters = () => {
   const [selectionMade, setSelectionMade] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSelections, setHasSelections] = useState(false);
+  const [authCurrentUser, setAuthCurrentUser] = useState(null);
+  const [userEmail, setUserEmail] = useState("");
   
   const handlePost = () => {
     setIsLoading(true);
-    axios
-      .post("https://giftfairy-be-server.onrender.com/api/filter/generate", {
+   axios
+      .post("https://giftfairy-be-server.onrender.com/api/filter/generate//", {
         age: age,
         gender: gender,
         relationship: relationship,
@@ -44,6 +50,7 @@ const Filters = () => {
         activity_level: activity,
         personality: personality,
         nature: nature,
+        email: userEmail,
       })
       .then((response) => {
         setIsLoading(false);
@@ -63,6 +70,30 @@ const Filters = () => {
         //Set response.data.openai_descrip_string
         setOpenaiDescrip(response.data.openai_descrip_string.split(","));
         //Set up variable to hold next prompt message depending on next active element
+      })
+      .catch((error) => {
+        console.log(error)
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          console.error('Server responded with status code:', error.response.data);
+          if (error.response.status == 400) {
+            alert("You left one or more of your choices blank please go back and redo your selections!")
+          } else if (error.response.status == 404) {
+            alert("Back-End server endpoint not found. Server might have been discontinued.")
+          } else if (error.response.status == 500) {
+            alert("Internal Server Error, please try again!")
+          } else if (error.response.status == 502) {
+            alert("Bad Gateway, please try again!")
+          } else if (error.response.status == 504) {
+            alert("Gateway Timeout, please try again!")
+          }
+        } else if (error.request) {
+          // The request was made but no response was received
+          alert("No response received from server, please try again!");
+        } else {
+          // Something else happened while setting up the request
+          alert('Error:', error.message);
+        }
       });
   };
 
@@ -136,32 +167,18 @@ const Filters = () => {
     setGenerate(selectedGenerate);
   };
 
-  // const checkIfEmptyStringSelection = (arrayToCheck) => {
-  //   console.log("Array we are checking: " + arrayToCheck)
-  //   if (arrayToCheck.length == 0){
-  //     setHasSelections(false)
-  //     setSelectionMade(false)
-  //   } else {
-  //     setHasSelections(true)
-  //     setSelectionMade(true)
-  //   }
-  //   console.log("Has Selections: " + hasSelections);
-  //   console.log("Selection was made: " + selectionMade);
-
-  // }
-
   const progressValues = {
     intro: 0,
-    gender: 10,
-    age: 20,
-    relationship: 30,
-    priceRange: 40,
-    occasion: 50,
-    giftType: 60,
-    interests: 70,
-    activity: 80,
-    personality: 87,
-    nature: 95,
+    gender: 9,
+    age: 18,
+    relationship: 27,
+    priceRange: 36,
+    occasion: 45,
+    giftType: 54,
+    interests: 63,
+    activity: 72,
+    personality: 81,
+    nature: 90,
     generate: 100,
   };
 
@@ -284,16 +301,41 @@ const Filters = () => {
     console.log(selectionMade);
   };
 
+    //Filters.jsx - User Authentication Observer
+    //The observer tracks the user authentication token across the different components
+      
+      console.log("Auth Current User is: " + authCurrentUser);
+
+      useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+              // User is signed in
+              setAuthCurrentUser(user);
+              console.log("User is: " + user);
+              setUserEmail(user.email);
+              handleUserLogin(user); // Call the handler to update user state in parent component
+            } else {
+              // No user is signed in
+              setAuthCurrentUser(null);
+            }
+          });
+      
+        return () => unsubscribe(); // Cleanup function to unsubscribe from the observer
+      }, []);
+
+    console.log(authCurrentUser);
+
   return (
     <>
-      <div className="navbarContainer">
+      <div className="navbar-ProgressBar-Container">
         <NavBar />
         <ProgressBar
           now={progressValues[activeElement]}
           label={``}
           style={{ backgroundColor: "darkgray", height: "24px" }}
         >
-          <ProgressBar
+        <ProgressBar
             variant="success"
             now={progressValues[activeElement]}
             label={``}
@@ -304,14 +346,12 @@ const Filters = () => {
 
       <br />
 
-      {!isGenerated && (
+      {/* While going through selections and before making it to the generate page, show this 
+      version of the "prompt-div" div */}
+      {(activeElement !== "generate") && (
         <div className="prompt-div">
-          {isLoading ? (
-            <RingLoader color="#ffffff" />
-          ) : (
-            <TypeWriter text={promptMessages[activeElement]} />
-          )}
-
+          {/* Christian Dezha - 12/12/2023 */}
+          <TypeWriter text={promptMessages[activeElement]} />
           {activeElement !== "intro" && activeElement !== "generate" ? (
             activeElement !== "giftType" && activeElement !== "interests" ? (
               <p>(Select One Option)</p>
@@ -324,6 +364,16 @@ const Filters = () => {
         </div>
       )}
 
+      {(activeElement == "generate" && authCurrentUser && !isGenerated) && (
+        <div className="prompt-div">
+          {isLoading ? (
+            <RingLoader color="#ffffff" />
+          ) : (
+            <TypeWriter text={promptMessages[activeElement]} />
+          )}
+        </div>
+      )}
+
       <div className="paramCompContainer">
         <ParameterComponent
           key={activeElement}
@@ -332,6 +382,7 @@ const Filters = () => {
           hasSelectionsHandler={setHasSelections}
         />
       </div>
+    
 
       {isGenerated && (
         <div className="container">
@@ -366,7 +417,7 @@ const Filters = () => {
         </div>
       )}
 
-      {activeElement === "generate" && !isLoading && !isGenerated && (
+      {activeElement === "generate" && !isLoading && !isGenerated && authCurrentUser &&(
         <button
           onClick={handlePost}
           disabled={isLoading}
@@ -374,6 +425,15 @@ const Filters = () => {
         >
           Generate
         </button>
+      )}
+
+      {activeElement === "generate" && !isLoading && !isGenerated && !authCurrentUser &&(
+        <>
+          <div className="prompt-div">
+          <TypeWriter text={"Before I can give you any suggestions, please login or register a new account!"} />
+          </div>
+          <UserAuthentication handleUserLogin={handleUserLogin} authentication={authentication}/>
+        </>
       )}
 
       <div className="footer">

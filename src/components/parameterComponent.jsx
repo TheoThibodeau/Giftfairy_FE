@@ -6,7 +6,6 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler}) => {
   const entries = data.data;
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [multiSelectEntry, setMultiSelectEntry] = useState([]);
-  console.log(data);
 
   const handleClick = (entry) => {
     setSelectedEntry(entry);
@@ -26,11 +25,23 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler}) => {
   return (
     <form>
       
+      {/* // Write-In Button */}
+      {(title == "Gift Type" || title == "Interests" || title == "Occasion") && (
+        <input 
+          type="text"
+          name="userInput"
+          placeholder="Write your own"
+          className={`inputButton `}
+          style={{ opacity: 1.1 }}
+          onChange={handleNextButtonOnInput}
+          onBlur={handleChange}
+        />
+      )}
         {entries.map((entry) => (
           <div
             key={entry}
             className="paramButtonContainer"
-          >
+            >
             {/* // Single Select Button */}
             {(title == "Age" || title == "Gender" || title == "Activity Level" || title == "Personality" || title == "Nature" || title == "Price Range" || title == "Occasion" || title == "Relationship") && (
               <input
@@ -78,18 +89,6 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler}) => {
                   <option value="Brother In-Law" >Brother In-Law</option>
                   <option value="Pet" >Pet</option>
               </select>
-            )}
-            {/* // Write-In Button */}
-            {(title == "Gift Type" || title == "Interests" || title == "Occasion") && (
-              <input 
-                type="text"
-                name="userInput"
-                placeholder="Write your own"
-                className={`inputButton `}
-                style={{ opacity: 1.1 }}
-                onChange={handleNextButtonOnInput}
-                onBlur={handleChange}
-              />
             )}
 
     </form>

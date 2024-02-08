@@ -29,7 +29,7 @@ const Landing = () => {
                 <button className="landingButton">Let's Begin</button>
             </Link>
             <h6 className="version">
-                version 2.0.0
+                version 3.0.0
             </h6>
         </>
     )
