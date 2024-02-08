@@ -39,7 +39,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const handlePost = () => {
     setIsLoading(true);
    axios
-      .post("https://giftfairy-be-server.onrender.com/api/filter/generate//", {
+      .post("https://giftfairy-be-server.onrender.com/api/filter/generate", {
         age: age,
         gender: gender,
         relationship: relationship,
