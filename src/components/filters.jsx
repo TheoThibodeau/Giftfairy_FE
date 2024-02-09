@@ -38,8 +38,9 @@ const Filters = ({ handleUserLogin, authentication }) => {
   
   const handlePost = () => {
     setIsLoading(true);
+    setIsGenerated(false);
    axios
-      .post("https://giftfairy-be-server.onrender.com/api/filter/generate//", {
+      .post("https://giftfairy-be-server.onrender.com/api/filter/generate", {
         age: age,
         gender: gender,
         relationship: relationship,
@@ -411,7 +412,11 @@ const Filters = ({ handleUserLogin, authentication }) => {
           ))}
           {isGenerated && (
             <div className="regenButton-div">
-              <button onClick={handlePost}>Re-Generate</button>
+              <button 
+              onClick={handlePost}
+              >
+                Re-Generate
+              </button>
             </div>
           )}
         </div>
@@ -452,7 +457,8 @@ const Filters = ({ handleUserLogin, authentication }) => {
                 </button>
               )}
             </div>
-
+          
+            {/* Next Button Logic for Single Selections */}
             <div className="nextButton-div">
               {(activeElement == "age" 
                 || activeElement == "gender" 
@@ -471,14 +477,16 @@ const Filters = ({ handleUserLogin, authentication }) => {
                   Next
                 </button>
               )}
+
+              {/* Next Button Logic for Multi Selections */}
               {(activeElement == "giftType" 
                 || activeElement == "interests" 
                 || activeElement == "occasion") 
                 && (
                 <button
-                disabled={(!hasSelections && !selectionMade)}
+                disabled={(!hasSelections || !selectionMade)}
                 onClick={handleNextElement}
-                className={`${hasSelections || selectionMade ? "opacity2" : "opacity1"}`}
+                className={`${hasSelections && selectionMade ? "opacity2" : "opacity1"}`}
               >
                 Next
               </button>

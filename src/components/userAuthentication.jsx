@@ -42,7 +42,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                alert(errorCode + errorMessage);
+                alert("Incorrect password or email address, please try again.");
             });
     };
 
@@ -59,6 +59,9 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            if(errorCode == "auth/email-already-in-use"){
+                alert("Email is already in use, please use a different email to sign-up for an account.")
+            }
             console.log(errorCode)
             console.log(errorMessage)
             // ..

@@ -12,15 +12,6 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
   const [authCurrentUser, setAuthCurrentUser] = useState(null);
 
 
-  useEffect(() => {
-    axios
-      .get("https://giftfairy-be-server.onrender.com/api/filter/response/")
-      .then((response) => {
-        const items = response.data;
-        setProfile(items);
-      });
-  }, []);
-
   const handleDateClick = (index) => {
     setSelectedDate(selectedDate === index ? null : index);
   };
@@ -37,11 +28,17 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
     useEffect(() => {
       const auth = getAuth();
       const unsubscribe = onAuthStateChanged(auth, (user) => {
-          if (user) {
-            // User is signed in
-            setAuthCurrentUser(user);
-            console.log("User is: " + user);
-            handleUserLogin(user); // Call the handler to update user state in parent component
+        if (user) {
+          // User is signed in
+          setAuthCurrentUser(user);
+          console.log("User is: " + user);
+          handleUserLogin(user); // Call the handler to update user state in parent component
+          axios
+            .get(`https://giftfairy-be-server.onrender.com/api/filter/response/${user.email}/`)
+            .then((response) => {
+              const items = response.data;
+              setProfile(items);
+            });
           } else {
             // No user is signed in
             setAuthCurrentUser(null);

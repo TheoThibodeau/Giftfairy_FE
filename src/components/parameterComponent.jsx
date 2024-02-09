@@ -35,6 +35,7 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler}) => {
           style={{ opacity: 1.1 }}
           onChange={handleNextButtonOnInput}
           onBlur={handleChange}
+          maxLength="45"
         />
       )}
         {entries.map((entry) => (
