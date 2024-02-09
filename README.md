@@ -20,7 +20,7 @@ Front-End:
   - `Firebase`
   - `Vite`
   
-Back-End: Visit [GifFairy-BE](https://github.com/kekedezha/GiftFairy-BE)
+Back-End: Visit [GifFairy-BE](https://github.com/kekedezha/GIFTFaiRY_BE)
 
 ## 💡 Key Features
 - AI generated gift ideas, with direct link to Amazon
