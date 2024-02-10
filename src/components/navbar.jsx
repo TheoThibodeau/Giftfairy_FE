@@ -11,7 +11,7 @@ function NavBar() {
         <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
                 <Link to="/profile">
                 <img 
-                src={UserImage} 
+                src={UserImage}   
                 alt="User Image"
                 height={40}
                 width={40}
