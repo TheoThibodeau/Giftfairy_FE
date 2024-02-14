@@ -29,7 +29,6 @@ function App() {
       appId: "1:360717671227:web:1a35bb12a01c2799f7f51e",
       measurementId: "G-TDHVENEFD9"
   };
-
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
 
@@ -39,7 +38,6 @@ function App() {
     useEffect(() => {
       setAuthentication(auth);
     }, [auth]);
-
 
   return (
     <>

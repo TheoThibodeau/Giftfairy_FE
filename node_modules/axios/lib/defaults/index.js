@@ -37,7 +37,7 @@ const defaults = {
 
   transitional: transitionalDefaults,
 
-  adapter: platform.isNode ? 'http' : 'xhr',
+  adapter: ['xhr', 'http'],
 
   transformRequest: [function transformRequest(data, headers) {
     const contentType = headers.getContentType() || '';
@@ -51,9 +51,6 @@ const defaults = {
     const isFormData = utils.isFormData(data);
 
     if (isFormData) {
-      if (!hasJSONContentType) {
-        return data;
-      }
       return hasJSONContentType ? JSON.stringify(formDataToJSON(data)) : data;
     }
 

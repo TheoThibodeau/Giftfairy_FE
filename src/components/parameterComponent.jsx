@@ -26,7 +26,7 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler}) => {
     <form>
       
       {/* // Write-In Button */}
-      {(title == "Gift Type" || title == "Interests" || title == "Occasion") && (
+      {(title == "Gift Type" || title == "Interests" || title == "Occasion" || title == "Giftee Name") && (
         <input 
           type="text"
           name="userInput"
@@ -91,7 +91,6 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler}) => {
                   <option value="Pet" >Pet</option>
               </select>
             )}
-
     </form>
         
   );

@@ -21,6 +21,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const [interests, setInterests] = useState([]);
   const [activity, setActivity] = useState("");
   const [personality, setPersonality] = useState("");
+  const [gifteeName, setGifteeName] = useState("");
   const [nature, setNature] = useState("");
   const [activeElement, setActiveElement] = useState("intro"); //Start at Intro page/state
   const [isGenerated, setIsGenerated] = useState(false);
@@ -52,6 +53,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
         personality: personality,
         nature: nature,
         email: userEmail,
+        giftee_name: gifteeName,
       })
       .then((response) => {
         setIsLoading(false);
@@ -132,8 +134,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
     } else {
       setGiftType([...giftType, selectedGiftType]);
     }
-
-    // checkIfEmptyStringSelection(giftType);
     console.log(giftType);
   };
 
@@ -164,17 +164,23 @@ const Filters = ({ handleUserLogin, authentication }) => {
     console.log(selectedNature);
   };
 
+  const handleGifteeName = (selectedGifteeName) => {
+    setGifteeName(selectedGifteeName);
+    console.log(selectedGifteeName);
+  };
+
   const handleGenerate = (selectedGenerate) => {
     setGenerate(selectedGenerate);
   };
 
   const progressValues = {
     intro: 0,
-    gender: 9,
-    age: 18,
-    relationship: 27,
-    priceRange: 36,
-    occasion: 45,
+    gifteeName: 6,
+    gender: 14,
+    age: 22,
+    relationship: 30,
+    priceRange: 38,
+    occasion: 46,
     giftType: 54,
     interests: 63,
     activity: 72,
@@ -187,6 +193,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const promptMessages = {
     intro:
       "Heey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for.",
+    gifteeName: "Before we get started, I'm curious, what is your giftee's name?",
     gender: "What is their gender?",
     age: "How old are they?",
     relationship: "What is your relationship with them?",
@@ -202,6 +209,10 @@ const Filters = ({ handleUserLogin, authentication }) => {
   };
 
   const handleStateSet = (key, value) => {
+    if (key === "Giftee Name") {
+      handleGifteeName(value);
+      setSelectionMade(true);
+    }
     if (key === "Gender") {
       handleGenderChange(value);
       setSelectionMade(true);
@@ -251,7 +262,8 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const handlePreviousElement = () => {
     // Define the mapping of previous states here
     const previousStateMap = {
-      gender: "intro",
+      gifteeName: "intro",
+      gender: "gifteeName",
       age: "gender",
       relationship: "age",
       priceRange: "relationship",
@@ -277,7 +289,8 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const handleNextElement = () => {
     // Define the mapping of next states here
     const nextStateMap = {
-      intro: "gender",
+      intro: "gifteeName",
+      gifteeName: "gender",
       gender: "age",
       age: "relationship",
       relationship: "priceRange",
@@ -353,14 +366,14 @@ const Filters = ({ handleUserLogin, authentication }) => {
         <div className="prompt-div">
           {/* Christian Dezha - 12/12/2023 */}
           <TypeWriter text={promptMessages[activeElement]} />
-          {activeElement !== "intro" && activeElement !== "generate" ? (
+          {(activeElement !== "intro" && activeElement !== "generate" && activeElement !== "gifteeName") ? (
             activeElement !== "giftType" && activeElement !== "interests" ? (
               <p>(Select One Option)</p>
             ) : (
               <p>(Select Multiple Options)</p>
             )
           ) : (
-            <p></p>
+            <p>(Optional)</p>
           )}
         </div>
       )}
@@ -389,8 +402,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
         <div className="container">
           {isGenerated && (
             <p className="openaiDescrip">
-              Here are 10 gift ideas that I think would be perfect for your
-              giftee!
+              Here are 10 gift ideas that I think {gifteeName} would love!
             </p>
           )}
           {itemTitle.map((title, index) => (
@@ -490,6 +502,16 @@ const Filters = ({ handleUserLogin, authentication }) => {
               >
                 Next
               </button>
+              )}
+
+            {/* Next button logic for 'Optional' gifteeName */}
+              {(activeElement == "gifteeName") && (
+                <button
+                  onClick={handleNextElement}
+                  className={`${selectionMade}`}
+                >
+                  Next
+                </button>
               )}
             </div>
           </>

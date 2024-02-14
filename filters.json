@@ -3,6 +3,10 @@
     "title": "Intro",
     "data": []
   },
+  "gifteeName": {
+    "title": "Giftee Name",
+    "data": []
+  },
   "age": {
     "title": "Age",
     "data":
