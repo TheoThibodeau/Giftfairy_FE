@@ -19,6 +19,13 @@ body {
   justify-content: center;
 }
 
+/* Font */
+.oxygen-bold {
+  font-family: "Oxygen", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
 /* Headings */
 
 h1 {
@@ -440,6 +447,16 @@ polygon {
   .landingButton{
     margin-bottom: 10px;
     width: 15rem;
+    text-align: left;
+    border-radius: 50px;
+    vertical-align: center;
+    font-size: larger;
+    padding-top: 0px;
+    padding-bottom: 10px;
+  }
+
+  .landingButton img {
+    margin-left: 150px;
   }
 
   .version {
@@ -612,12 +629,20 @@ polygon {
   }
 
   .landingDescription {
-    margin-bottom: 30px;
     color: white;
+    text-align: left;
+    margin-top: 40px;
+  }
+
+  .landingDescription h2 {
+    margin-bottom: 5px;
+    margin-top: 5px;
   }
 
   .landingButton{
     margin-bottom: 10px;
+    border-radius: 50px;
+    width: 90vw;
   }
 
   .version {
