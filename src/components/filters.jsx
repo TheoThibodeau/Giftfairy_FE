@@ -23,7 +23,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const [personality, setPersonality] = useState("");
   const [gifteeName, setGifteeName] = useState("");
   const [nature, setNature] = useState("");
-  const [activeElement, setActiveElement] = useState("intro"); //Start at Intro page/state
+  const [activeElement, setActiveElement] = useState("gifteeName"); //Start at gifteeName page/state
   const [isGenerated, setIsGenerated] = useState(false);
   const [generate, setGenerate] = useState(false);
   const [itemTitle, setItemTitle] = useState([]);
@@ -174,10 +174,9 @@ const Filters = ({ handleUserLogin, authentication }) => {
   };
 
   const progressValues = {
-    intro: 0,
-    gifteeName: 6,
-    gender: 14,
-    age: 22,
+    gifteeName: 0,
+    gender: 9,
+    age: 19,
     relationship: 30,
     priceRange: 38,
     occasion: 46,
@@ -191,8 +190,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
 
   //Object containing messages for each selection page
   const promptMessages = {
-    intro:
-      "Heey gift fairy here! Before I can give you some great gift ideas, I need to know a little bit more about the person you are shopping for.",
     gifteeName: "Before we get started, I'm curious, what is your giftee's name?",
     gender: "What is their gender?",
     age: "How old are they?",
@@ -262,7 +259,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const handlePreviousElement = () => {
     // Define the mapping of previous states here
     const previousStateMap = {
-      gifteeName: "intro",
       gender: "gifteeName",
       age: "gender",
       relationship: "age",
@@ -276,10 +272,10 @@ const Filters = ({ handleUserLogin, authentication }) => {
       generate: "nature",
     };
 
-    if (activeElement !== "intro" && previousStateMap[activeElement]) {
+    if (activeElement !== "gifteeName" && previousStateMap[activeElement]) {
       const previousElement = previousStateMap[activeElement];
       setActiveElement(previousElement);
-      if (previousElement === "intro") {
+      if (previousElement === "gifteeName") {
         setSelectionMade(true);
       }
     }
@@ -289,7 +285,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const handleNextElement = () => {
     // Define the mapping of next states here
     const nextStateMap = {
-      intro: "gifteeName",
       gifteeName: "gender",
       gender: "age",
       age: "relationship",
@@ -366,7 +361,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
         <div className="prompt-div">
           {/* Christian Dezha - 12/12/2023 */}
           <TypeWriter text={promptMessages[activeElement]} />
-          {(activeElement !== "intro" && activeElement !== "generate" && activeElement !== "gifteeName") ? (
+          {(activeElement !== "generate" && activeElement !== "gifteeName") ? (
             activeElement !== "giftType" && activeElement !== "interests" ? (
               <p>(Select One Option)</p>
             ) : (
@@ -457,7 +452,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
         {!isGenerated && (
           <>
             <div className="backButton-div">
-              {activeElement !== "intro" && (
+              {activeElement !== "gifteeName" && (
                 <button
                   onClick={handlePreviousElement}
                   disabled={isLoading}
@@ -478,7 +473,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
                 || activeElement == "personality" 
                 || activeElement == "nature" 
                 || activeElement == "priceRange" 
-                || activeElement == "intro" 
                 || activeElement == "relationship") 
                 && (
                 <button
