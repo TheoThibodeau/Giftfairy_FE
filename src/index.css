@@ -5,7 +5,7 @@
   font-weight: 400;
   scroll-behavior: smooth;
   color-scheme: light dark;
-  color: whitesmoke;
+  color: black;
 }
 
 body {
@@ -19,6 +19,17 @@ body {
   justify-content: center;
 }
 
+svg {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+path {
+  height: 100%;
+}
+
 /* Font */
 .oxygen-bold {
   font-family: "Oxygen", sans-serif;
@@ -26,6 +37,18 @@ body {
   font-style: normal;
 }
 
+.landingTitle {
+  font-family: "Oxygen", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+.landingTitle i {
+  color: #ffa514;
+  font-style: normal;
+}
 /* Headings */
 
 h1 {
@@ -366,8 +389,10 @@ polygon {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background: rgb(177,223,238);
-    background: radial-gradient(circle, rgba(106,181,205,1) 43%, rgba(13,13,57,1) 100%);
+    background: rgb(253, 239, 221);
+    /* Version 3 background styling */
+    /* background: rgb(177,223,238);
+    background: radial-gradient(circle, rgba(106,181,205,1) 43%, rgba(13,13,57,1) 100%); */
     height: 100%;
     min-height: 100vh;
   }
@@ -444,6 +469,11 @@ polygon {
     text-align: center;
     }
 
+    .landingDescription i {
+      color: #ffa514;
+      font-style: normal;
+    }
+
   .landingButton{
     margin-bottom: 10px;
     width: 15rem;
@@ -462,7 +492,7 @@ polygon {
   .version {
     opacity: 35%;
     position: fixed;
-    bottom: 10px;
+    margin-bottom: 5px;
   }
 
   .generateButton {
@@ -564,7 +594,7 @@ polygon {
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 0 20px;
+    padding: 0px;
   }
 
   .backButton-nextButton-container {
@@ -629,9 +659,10 @@ polygon {
   }
 
   .landingDescription {
-    color: white;
+    color: black;
     text-align: left;
     margin-top: 40px;
+    margin-bottom: 0px;
   }
 
   .landingDescription h2 {
