@@ -41,8 +41,8 @@ path {
   font-family: "Oxygen", sans-serif;
   font-weight: 800;
   font-style: normal;
-  margin-bottom: 20px;
-  margin-top: 0px;
+  margin-bottom: 30px;
+  margin-top: 80px;
 }
 
 .landingTitle i {
@@ -476,6 +476,7 @@ polygon {
 
   .landingButton{
     margin-bottom: 10px;
+    margin-top: 15px;
     width: 15rem;
     text-align: left;
     border-radius: 50px;
@@ -661,7 +662,7 @@ polygon {
   .landingDescription {
     color: black;
     text-align: left;
-    margin-top: 40px;
+    margin-top: 30px;
     margin-bottom: 0px;
   }
 
