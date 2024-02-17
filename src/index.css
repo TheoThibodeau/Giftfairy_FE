@@ -107,7 +107,7 @@ nav a svg {
 }
 
 button {
-  border: 1px solid transparent;
+  border: 1px solid black;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -380,7 +380,8 @@ polygon {
 
   .paramButtonActive{
     border: 3px solid rgb(0, 0, 0);
-    opacity: 100%;
+    opacity: 25%;
+    background-color: #ffc25f;
   }
 
   #main-container{
