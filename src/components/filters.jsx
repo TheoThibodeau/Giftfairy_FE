@@ -9,8 +9,7 @@ import TypeWriter from "./typewriter";
 import UserAuthentication from "./userAuthentication";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Link } from "react-router-dom";
-import UserImage from '../images/userImage.png';
-
+import UserImage from "../images/userImage.png";
 
 const Filters = ({ handleUserLogin, authentication }) => {
   const [age, setAge] = useState("");
@@ -346,21 +345,9 @@ const Filters = ({ handleUserLogin, authentication }) => {
 
   return (
     <>
-      {/* <div className="navbar-ProgressBar-Container">
+      <div className="navbar-ProgressBar-Container">
         <NavBar />
-        <ProgressBar
-          now={progressValues[activeElement]}
-          label={``}
-          style={{ backgroundColor: "darkgray", height: "24px" }}
-        >
-        <ProgressBar
-            variant="success"
-            now={progressValues[activeElement]}
-            label={``}
-            style={{ background: "whitesmoke", height: "24px" }}
-          />
-        </ProgressBar>
-      </div> */}
+      </div>
 
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 310">
         <path
@@ -368,23 +355,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
           fillOpacity=".75"
           d="M0,160L40,176C80,192,160,224,240,234.7C320,245,400,235,480,197.3C560,160,640,96,720,96C800,96,880,160,960,165.3C1040,171,1120,117,1200,85.3C1280,53,1360,43,1400,37.3L1440,32L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
         ></path>
-        <Link to="/profile">
-          <img src={UserImage} alt="User Image" height={40} width={40} />
-        </Link>
-        <h2 className="titleHeader">GIFTFaiRY</h2>
-        <Link to="/" className="navbar-brand">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="44"
-            height="44"
-            fill="whitesmoke"
-            className="bi bi-house-fill"
-            viewBox="0 0 16 16"
-          >
-            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
-            <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z" />
-          </svg>
-        </Link>
       </svg>
 
       <br />
@@ -551,6 +521,23 @@ const Filters = ({ handleUserLogin, authentication }) => {
           </>
         )}
       </div>
+      <ProgressBar
+        now={progressValues[activeElement]}
+        label={``}
+        style={{
+          backgroundColor: "white",
+          width: "100%",
+          opacity: ".75",
+          height: "8px",
+        }}
+      >
+        <ProgressBar
+          variant="success"
+          now={progressValues[activeElement]}
+          label={``}
+          style={{ background: "#ffa514", height: "8px" }}
+        />
+      </ProgressBar>
     </>
   );
 };
