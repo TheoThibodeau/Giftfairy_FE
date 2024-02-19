@@ -307,7 +307,7 @@ polygon {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #f9cccc;
+    background-color: #f9d4c3;
     color: #000000;
     cursor: pointer;
     transition: border-color 0.25s;
@@ -381,7 +381,7 @@ polygon {
   .paramButtonActive{
     border: 3px solid rgb(0, 0, 0);
     opacity: 25%;
-    background-color: #f2b758;
+    background-color: #ffffff;
   }
 
   #main-container{
