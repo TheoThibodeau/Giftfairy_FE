@@ -380,7 +380,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
       {activeElement == "generate" && authCurrentUser && !isGenerated && (
         <div className="prompt-div">
           {isLoading ? (
-            <RingLoader color="#ffffff" />
+            <RingLoader color="black" />
           ) : (
             <TypeWriter text={promptMessages[activeElement]} />
           )}
