@@ -21,7 +21,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const [interests, setInterests] = useState([]);
   const [activity, setActivity] = useState("");
   const [personality, setPersonality] = useState("");
-  const [gifteeName, setGifteeName] = useState("");
+  const [gifteeName, setGifteeName] = useState("No name selected");
   const [nature, setNature] = useState("");
   const [activeElement, setActiveElement] = useState("gifteeName"); //Start at gifteeName page/state
   const [isGenerated, setIsGenerated] = useState(false);
@@ -398,11 +398,11 @@ const Filters = ({ handleUserLogin, authentication }) => {
 
       {isGenerated && (
         <div className="container">
-          {isGenerated && (
-            <p className="openaiDescrip">
-              Here are 10 gift ideas that I think {gifteeName} would love!
-            </p>
-          )}
+          <p className="openaiDescrip">
+            {gifteeName === "No name selected"
+              ? "Here are 10 gift ideas that I think your giftee would love!"
+              : `Here are 10 gift ideas that I think ${gifteeName} would love!`}
+          </p>
           {itemTitle.map((title, index) => (
             <div className="individual-responses-container" key={index}>
               <h2>{title}</h2>
@@ -410,7 +410,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
               <a
                 key={index}
                 href={`https://www.amazon.com/s?k=${encodeURIComponent(title)}`}
-                // &tag=giftfairy08-20 add amazon affiliate link once it has been approved.
                 target="_blank"
                 rel="noreferrer"
               >
@@ -418,13 +417,12 @@ const Filters = ({ handleUserLogin, authentication }) => {
               </a>
             </div>
           ))}
-          {isGenerated && (
-            <div className="regenButton-div">
-              <button onClick={handlePost}>Re-Generate</button>
-            </div>
-          )}
+          <div className="regenButton-div">
+            <button onClick={handlePost}>Re-Generate</button>
+          </div>
         </div>
       )}
+
 
       {activeElement === "generate" &&
         !isLoading &&
