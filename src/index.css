@@ -512,7 +512,7 @@ polygon {
     vertical-align: center;
     font-size: larger;
     padding-top: 0px;
-    padding-bottom: 10px;
+    padding-bottom: 13px;
   }
 
   .landingButton img {
@@ -709,6 +709,12 @@ polygon {
     margin-bottom: 10px;
     border-radius: 50px;
     width: 90vw;
+  }
+
+  .landingButton img {
+    margin-left: 150px;
+    vertical-align: bottom;
+    padding-top: 11px;
   }
 
   .version {
