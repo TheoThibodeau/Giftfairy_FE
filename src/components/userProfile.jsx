@@ -50,7 +50,7 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
   }, []);
 
   console.log(authCurrentUser);
-
+  
   return (
     <>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 1440 290">
