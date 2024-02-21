@@ -26,8 +26,7 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler }) => {
       {/* // Write-In Button */}
       {(title == "Gift Type" ||
         title == "Interests" ||
-        title == "Occasion" ||
-        title == "Giftee Name") && (
+        title == "Occasion") && (
         <input
           type="text"
           name="userInput"
@@ -45,6 +44,26 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler }) => {
           maxLength="45"
         />
       )}
+
+      {title == "Giftee Name" && (
+        <input
+          type="text"
+          name="userInput"
+          placeholder="Enter name"
+          className={`inputButton `}
+          style={{
+            opacity: 1.1,
+            outlineColor: "#ffa514",
+            border: "none",
+            colorScheme: "white",
+            boxShadow: "none",
+          }}
+          onChange={handleNextButtonOnInput}
+          onBlur={handleChange}
+          maxLength="25"
+        />
+      )}
+
       {entries.map((entry) => (
         <div key={entry} className="paramButtonContainer">
           {/* // Single Select Button */}
