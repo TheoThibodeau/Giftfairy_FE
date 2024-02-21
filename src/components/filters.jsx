@@ -423,7 +423,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
         </div>
       )}
 
-
       {activeElement === "generate" &&
         !isLoading &&
         !isGenerated &&
