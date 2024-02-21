@@ -21,6 +21,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
     const [loading, setLoading] = useState(true);
     const [userID, setUserID] = useState(null);
     const [userEmail, setUserEmail] = useState("");
+    const [nameInput, setNameInput] = useState("");
 
     const handlePasswordInput = (e) => {
         setPassword(e.target.value);
@@ -28,6 +29,10 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
 
     const handleEmailInput = (e) => {
         setEmailInput(e.target.value);
+    };
+
+    const handleNameInput = (e) => {
+        setNameInput(e.target.value);
     };
 
     const handleLoginSubmit = (e) => {
@@ -53,8 +58,8 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
             .then((userCredential) => {
             // Signed up 
             handleUserLogin(userCredential.user);
-            console.log("Successful User created")
-            // ...
+            alert("Successful User created")
+            // ..
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -63,7 +68,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
                 alert("Email is already in use, please use a different email to sign-up for an account.")
             }
             console.log(errorCode)
-            console.log(errorMessage)
+            alert(errorMessage)
             // ..
         });
     };
@@ -86,6 +91,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
             password: " ",
             username: emailInput,
             email: emailInput,
+            first_name: nameInput,
           }) 
           .then((response) => {
             if(response){
@@ -94,7 +100,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
           }) 
           .catch((error) => {
             if(error){
-              console.log("Oops, there was an error, don't ask me why")
+              alert("Oops, there was an error when creating your account. (Render)")
             }
           })
       };
@@ -178,6 +184,18 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
        <form
             onSubmit={handleRegisterSubmit}
        >
+
+        <input 
+            type="string" 
+            placeholder="First Name"
+            name="First Name" 
+            value={nameInput}
+            onChange={handleNameInput}
+            className={`inputButton `}
+            required
+        >
+        </input>
+
         <input 
             type="string" 
             placeholder="Email"
@@ -185,6 +203,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
             value={emailInput}
             onChange={handleEmailInput}
             className={`inputButton `}
+            required
         >
         </input>
 
@@ -195,6 +214,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
             value={password}
             onChange={handlePasswordInput}
             className={`inputButton `}
+            required
         >
         </input>
             <button
