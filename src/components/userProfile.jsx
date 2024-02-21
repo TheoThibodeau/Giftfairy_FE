@@ -53,7 +53,7 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
 
   return (
     <>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 310">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 1440 290">
         <path
           fill="#ffa517"
           fill-opacity=".75"

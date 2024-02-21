@@ -304,9 +304,6 @@ polygon {
 }
 
 
-
-
-
 /* DESKTOP */
 @media only screen and (max-width: 2560px) {
   .container {
@@ -318,6 +315,10 @@ polygon {
     justify-items: center;
     align-items: center;
     text-align: center;
+  }
+
+  svg {
+    width: 100vw;
   }
 
   .button {
@@ -495,11 +496,11 @@ polygon {
   }
 
   .landingDescription {
-    margin-bottom: 30px;
-    color: white;
-    width: 20rem;
-    text-align: center;
-    }
+    color: black;
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 0px;
+  }
 
     .landingDescription i {
       color: #ffa514;
@@ -519,13 +520,15 @@ polygon {
   }
 
   .landingButton img {
-    margin-left: 150px;
+    margin-left: 57px;
+    vertical-align: bottom;
+    padding-top: 11px;
   }
 
   .version {
     opacity: 35%;
     position: fixed;
-    margin-bottom: 5px;
+    bottom: -20px;
   }
 
   .generateButton {
@@ -553,6 +556,10 @@ polygon {
     height: auto;
     padding: 5em 10px .40em 0;
     justify-content: center;
+  }
+
+  svg {
+    height: 13vh;
   }
 
   .paramCompContainer {
@@ -723,7 +730,7 @@ polygon {
   .version {
     opacity: 35%;
     position: fixed;
-    bottom: 10px;
+    bottom: -10px;
   }
 
   .generateButton {
