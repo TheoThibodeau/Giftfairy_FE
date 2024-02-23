@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./App.css";
 import Filters from "./components/filters";
 import Landing from "./components/landing";
 import { BrowserRouter, Routes, Route } from "react-router-dom";

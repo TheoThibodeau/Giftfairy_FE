@@ -197,7 +197,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
   //Object containing messages for each selection page
   const promptMessages = {
     gifteeName:
-      "Before we get started, I'm curious, what is your giftee's name?",
+      "Beefore we get started, I'm curious, what is your giftee's name?",
     gender: "What is their gender?",
     age: "How old are they?",
     relationship: "What is your relationship with them?",
@@ -209,7 +209,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
     personality: "What is their personality type?",
     nature: "Do they prefer being inside or outside?",
     generate:
-      "Ok, thanks for the help! I think I have enough information to generate some great gift ideas for you! Click the generate button down below",
+      "Okk, thanks for the help! I think I have enough information to generate some great gift ideas for you! Click the generate button down below",
   };
 
   const handleStateSet = (key, value) => {
