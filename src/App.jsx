@@ -8,8 +8,6 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [token, setToken] = useState("");
   const [user, setUser] = useState("");
   const [authentication, setAuthentication] = useState("");
 

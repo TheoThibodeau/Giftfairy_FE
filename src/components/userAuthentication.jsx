@@ -8,7 +8,6 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged
  } from "firebase/auth";
-import { Link } from "react-router-dom";
 
 
 const UserAuthentication = ({ handleUserLogin, authentication }) => {
