@@ -64,6 +64,30 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler }) => {
         />
       )}
 
+      {/* Dropdown Button */}
+      {title == "Relationship" && (
+        <select
+          type="button"
+          name="relationship selection"
+          className={`button`}
+          onChange={handleChange}
+        >
+          <option value="" hidden>
+            Select Another Relationship
+          </option>
+          <option value="Sibling">Sibling</option>
+          <option value="Father In-law">Father In-Law</option>
+          <option value="Mother In-law">Mother In-Law</option>
+          <option value="Boss">Boss</option>
+          <option value="Co-Worker">Co-Worker</option>
+          <option value="Professor/Teacher">Professor/Teacher</option>
+          <option value="Niece/Nephew">Niece/Nephew</option>
+          <option value="Sister In-Law">Sister In-Law</option>
+          <option value="Brother In-Law">Brother In-Law</option>
+          <option value="Pet">Pet</option>
+        </select>
+      )}
+
       {entries.map((entry) => (
         <div key={entry} className="paramButtonContainer">
           {/* // Single Select Button */}
@@ -105,29 +129,6 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler }) => {
           )}
         </div>
       ))}
-      {/* Dropdown Button */}
-      {title == "Relationship" && (
-        <select
-          type="button"
-          name="relationship selection"
-          className={`button`}
-          onChange={handleChange}
-        >
-          <option value="" hidden>
-            Select Another Relationship
-          </option>
-          <option value="Sibling">Sibling</option>
-          <option value="Father In-law">Father In-Law</option>
-          <option value="Mother In-law">Mother In-Law</option>
-          <option value="Boss">Boss</option>
-          <option value="Co-Worker">Co-Worker</option>
-          <option value="Professor/Teacher">Professor/Teacher</option>
-          <option value="Niece/Nephew">Niece/Nephew</option>
-          <option value="Sister In-Law">Sister In-Law</option>
-          <option value="Brother In-Law">Brother In-Law</option>
-          <option value="Pet">Pet</option>
-        </select>
-      )}
     </form>
   );
 };

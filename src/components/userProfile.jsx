@@ -73,7 +73,9 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
         <NavBar />
       </div>
       <div className="userProfileContainer">
-        {(authCurrentUser && userFirstName.length > 0) && <h1>{userFirstName[0].first_name}'s Profile</h1>}
+        {authCurrentUser && userFirstName.length > 0 && (
+          <h1>{userFirstName[0].first_name}'s Profile</h1>
+        )}
         {!authCurrentUser && <h1>User Profile</h1>}
 
         {!authCurrentUser && (
