@@ -21,7 +21,7 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler }) => {
   };
 
   return (
-    <form>
+    <form onSubmit={(e) => e.preventDefault()}>
       {/* // Write-In Button */}
       {(title == "Gift Type" ||
         title == "Interests" ||
