@@ -200,9 +200,23 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
                           </div>
                         )}
                         <div className="userHistoryGeneratedGifts">
-                          <h3>
-                            Generated Gift Ideas: {item.item_title_string}
-                          </h3>
+                          <h3>Generated Gift Ideas:</h3>
+                          {item.item_title_string
+                            .split(",")
+                            .map((gift, index) => (
+                              <a
+                                key={index}
+                                href={`https://www.amazon.com/s?k=${encodeURIComponent(
+                                  gift
+                                )}&tag=${"giftfairy0c9-20"}`}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                <h3 key={index}>
+                                  {index + 1}. {gift}
+                                </h3>
+                              </a>
+                            ))}
                         </div>
                       </div>
                     )}

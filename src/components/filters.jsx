@@ -408,7 +408,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
               <p>{itemDescrip[index]}</p>
               <a
                 key={index}
-                href={`https://www.amazon.com/s?k=${encodeURIComponent(title)}`}
+                href={`https://www.amazon.com/s?k=${encodeURIComponent(title)}&tag=${'giftfairy0c9-20'}`}
                 target="_blank"
                 rel="noreferrer"
               >

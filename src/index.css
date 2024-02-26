@@ -211,6 +211,10 @@ button:focus-visible {
   width: 100%;
 }
 
+.userHistory {
+  text-align: left;
+}
+
 .userHistoryByDate {
   padding: 0 2rem;
   border: 1px solid transparent;
@@ -238,6 +242,10 @@ button:focus-visible {
 .userHistorySelections svg {
   padding: 1.5rem 0 0 1rem;
   position: relative;
+}
+
+.userHistoryGeneratedGifts {
+  text-align: left;
 }
 
 #more-arrows {
