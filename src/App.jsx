@@ -10,7 +10,7 @@ function App() {
   const [user, setUser] = useState("");
   const [authentication, setAuthentication] = useState("");
 
-  const handleUserLogin = (newUser) => {
+  const handleUserLogin = (newUser) => {  
     setUser(newUser);
   };    
 
