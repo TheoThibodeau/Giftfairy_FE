@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Filters from "./components/filters";
 import Landing from "./components/landing";
+import ProductCarousel from "./components/productCarousel";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GetProfileResponse from "./components/userProfile";
 import { initializeApp } from "firebase/app";
@@ -37,7 +38,8 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+    <ProductCarousel />
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route
@@ -59,7 +61,7 @@ function App() {
             }
           ></Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </>
   );
 }

@@ -248,6 +248,10 @@ button:focus-visible {
   text-align: left;
 }
 
+.details {
+  color: #9e9EFF;
+}
+
 #more-arrows {
 	width: 45px;
   height: 35px;
