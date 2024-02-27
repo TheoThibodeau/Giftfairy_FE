@@ -38,8 +38,7 @@ function App() {
 
   return (
     <>
-    <ProductCarousel />
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route
@@ -61,7 +60,7 @@ function App() {
             }
           ></Route>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </>
   );
 }

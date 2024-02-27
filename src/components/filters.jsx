@@ -8,6 +8,7 @@ import { RingLoader } from "react-spinners";
 import TypeWriter from "./typewriter";
 import UserAuthentication from "./userAuthentication";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import ProductCarousel from "./productCarousel";
 
 
 const Filters = ({ handleUserLogin, authentication }) => {
@@ -402,7 +403,11 @@ const Filters = ({ handleUserLogin, authentication }) => {
               ? "Here are 10 gift ideas that I think your giftee would love!"
               : `Here are 10 gift ideas that I think ${gifteeName} would love!`}
           </p>
-          {itemTitle.map((title, index) => (
+          <ProductCarousel 
+            itemTitle={itemTitle}
+            itemDescrip={itemDescrip}
+          />
+          {/* {itemTitle.map((title, index) => (
             <div className="individual-responses-container" key={index}>
               <h2>{title}</h2>
               <p>{itemDescrip[index]}</p>
@@ -415,7 +420,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
                 <button>Buy Product</button>
               </a>
             </div>
-          ))}
+          ))} */}
           <div className="regenButton-div">
             <button onClick={handlePost}>Re-Generate</button>
           </div>
