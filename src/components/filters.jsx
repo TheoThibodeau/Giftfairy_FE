@@ -10,7 +10,6 @@ import UserAuthentication from "./userAuthentication";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProductCarousel from "./productCarousel";
 
-
 const Filters = ({ handleUserLogin, authentication }) => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
@@ -209,8 +208,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
     activity: "What is their activity level?",
     personality: "What is their personality type?",
     nature: "Do they prefer being inside or outside?",
-    generate:
-      "Okk, thanks for the help! I think I have enough information to generate some great gift ideas for you! Click the generate button down below",
+    generate: "",
   };
 
   const handleStateSet = (key, value) => {
@@ -379,6 +377,13 @@ const Filters = ({ handleUserLogin, authentication }) => {
 
       {activeElement == "generate" && authCurrentUser && !isGenerated && (
         <div className="prompt-div">
+          {!isLoading && (
+            <p className="openaiDescrip">
+              {gifteeName === "No name selected"
+                ? "Press Generate to see 10 gift ideas that I think your giftee would love!"
+                : `Press Generate to see 10 gift ideas that I think ${gifteeName} would love!`}
+            </p>
+          )}
           {isLoading ? (
             <RingLoader color="black" />
           ) : (
@@ -398,17 +403,9 @@ const Filters = ({ handleUserLogin, authentication }) => {
 
       {isGenerated && (
         <>
-          <p className="openaiDescrip">
-            {gifteeName === "No name selected"
-              ? "Here are 10 gift ideas that I think your giftee would love!"
-              : `Here are 10 gift ideas that I think ${gifteeName} would love!`}
-          </p>
-        <div className="container">
-          <ProductCarousel 
-            itemTitle={itemTitle}
-            itemDescrip={itemDescrip}
-          />
-          {/* {itemTitle.map((title, index) => (
+          <div className="container">
+            <ProductCarousel itemTitle={itemTitle} itemDescrip={itemDescrip} />
+            {/* {itemTitle.map((title, index) => (
             <div className="individual-responses-container" key={index}>
               <h2>{title}</h2>
               <p>{itemDescrip[index]}</p>
@@ -422,15 +419,15 @@ const Filters = ({ handleUserLogin, authentication }) => {
               </a>
             </div>
           ))} */}
-        </div>
+          </div>
         </>
       )}
 
       {/* Regenerate Button */}
       {isGenerated && (
-          <div className="regenButton-div">
-            <button onClick={handlePost}>Re-Generate</button>
-          </div>
+        <div className="regenButton-div">
+          <button onClick={handlePost}>Re-Generate</button>
+        </div>
       )}
 
       {activeElement === "generate" &&

@@ -32,11 +32,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              className="d-block w-100"
+              className="productImage"
               src={GiftfairyImage}
               alt="First slide"
-              height={100}
-              width={100}
             />
             <h2>{itemTitle[0]}</h2>
             <p>{itemDescrip[0]}</p>
@@ -53,11 +51,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
 
           <div className="carousel-item">
             <img
-              className="d-block w-100"
+              className="productImage"
               src={GiftFairy1}
               alt="Second slide"
-              height={100}
-              width={100}
             />
             <h2>{itemTitle[1]}</h2>
             <p>{itemDescrip[1]}</p>
@@ -74,11 +70,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
 
           <div className="carousel-item">
             <img
-              className="d-block w-100"
+              className="productImage"
               src={GiftfairyImage}
               alt="Third slide"
-              height={100}
-              width={100}
             />
             <h2>{itemTitle[2]}</h2>
             <p>{itemDescrip[2]}</p>
@@ -95,11 +89,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
 
           <div className="carousel-item">
             <img
-              className="d-block w-100"
+              className="productImage"
               src={GiftfairyImage}
               alt="Fourth slide"
-              height={100}
-              width={100}
             />
             <h2>{itemTitle[3]}</h2>
             <p>{itemDescrip[3]}</p>
@@ -116,11 +108,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
 
           <div className="carousel-item">
             <img
-              className="d-block w-100"
+              className="productImage"
               src={GiftfairyImage}
               alt="Fifth slide"
-              height={100}
-              width={100}
             />
             <h2>{itemTitle[4]}</h2>
             <p>{itemDescrip[4]}</p>
@@ -137,11 +127,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
 
           <div className="carousel-item">
             <img
-              className="d-block w-100"
+              className="productImage"
               src={GiftfairyImage}
               alt="Sixth slide"
-              height={100}
-              width={100}
             />
             <h2>{itemTitle[5]}</h2>
             <p>{itemDescrip[5]}</p>
@@ -158,11 +146,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
 
           <div className="carousel-item">
             <img
-              className="d-block w-100"
+              className="productImage"
               src={GiftfairyImage}
               alt="Seventh slide"
-              height={100}
-              width={100}
             />
             <h2>{itemTitle[6]}</h2>
             <p>{itemDescrip[6]}</p>
@@ -179,11 +165,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           
           <div className="carousel-item">
             <img
-              className="d-block w-100"
+              className="productImage"
               src={GiftfairyImage}
               alt="Eighth slide"
-              height={100}
-              width={100}
             />
             <h2>{itemTitle[7]}</h2>
             <p>{itemDescrip[7]}</p>
@@ -200,11 +184,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
 
           <div className="carousel-item">
             <img
-              className="d-block w-100"
+              className="productImage"
               src={GiftfairyImage}
               alt="Nine slide"
-              height={100}
-              width={100}
             />
             <h2>{itemTitle[8]}</h2>
             <p>{itemDescrip[8]}</p>
@@ -221,11 +203,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
 
           <div className="carousel-item">
             <img
-              className="d-block w-100"
+              className="productImage"
               src={GiftfairyImage}
               alt="Ten slide"
-              height={100}
-              width={100}
             />
             <h2>{itemTitle[9]}</h2>
             <p>{itemDescrip[9]}</p>

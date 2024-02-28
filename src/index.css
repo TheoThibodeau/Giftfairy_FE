@@ -564,7 +564,7 @@ polygon {
     display: inline-flex;
     flex-wrap: wrap;
     width: 90%;
-    height: 420px;
+    height: 480px;
     justify-content: center;
     border: 1px solid black;
     border-radius: 10px;
@@ -590,6 +590,12 @@ polygon {
     width: 100%;
   }
 
+  .productImage {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+
   .buyProduct {
     margin-top: 50px;
   }
@@ -603,6 +609,11 @@ polygon {
 
   .carousel-indicators .active {
     background-color: #ffa514;
+  }
+
+  .carousel-item p {
+    margin-bottom: 0px;
+    font-size: small;
   }
 
   /* .individual-responses-container {
@@ -762,9 +773,13 @@ polygon {
     bottom: -10px;
   }
 
+  .openaiDescrip {
+    width: 80%;
+  }
+
   .generateButton {
-    margin-top: 50px;
-    width: 100%;
+    margin-top: 20px;
+    width: 80%;
   }
 
   input[type="checkbox"] {
