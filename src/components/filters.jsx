@@ -421,10 +421,14 @@ const Filters = ({ handleUserLogin, authentication }) => {
               </a>
             </div>
           ))} */}
+        </div>
+      )}
+
+      {/* Regenerate Button */}
+      {isGenerated && (
           <div className="regenButton-div">
             <button onClick={handlePost}>Re-Generate</button>
           </div>
-        </div>
       )}
 
       {activeElement === "generate" &&

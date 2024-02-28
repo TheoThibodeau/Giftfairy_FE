@@ -9,6 +9,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
         id="carouselExampleIndicators"
         className="carousel slide"
         data-ride="carousel"
+        data-interval="15000"
       >
         <ol className="carousel-indicators">
           <li
@@ -25,8 +26,8 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               className="d-block w-100"
               src={GiftfairyImage}
               alt="First slide"
-              height={300}
-              width={300}
+              height={100}
+              width={100}
             />
             <h2>{itemTitle[0]}</h2>
             <p>{itemDescrip[0]}</p>
@@ -46,8 +47,8 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               className="d-block w-100"
               src={GiftFairy1}
               alt="Second slide"
-              height={300}
-              width={300}
+              height={100}
+              width={100}
             />
             <h2>{itemTitle[1]}</h2>
             <p>{itemDescrip[1]}</p>
@@ -67,8 +68,8 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               className="d-block w-100"
               src={GiftfairyImage}
               alt="Third slide"
-              height={300}
-              width={300}
+              height={100}
+              width={100}
             />
             <h2>{itemTitle[2]}</h2>
             <p>{itemDescrip[2]}</p>
@@ -96,13 +97,13 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           <span className="sr-only">Previous</span>
         </a>
         <a
-          class="carousel-control-next"
+          className="carousel-control-next"
           href="#carouselExampleIndicators"
           role="button"
           data-slide="next"
         >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="sr-only">Next</span>
         </a>
       </div>
     </>

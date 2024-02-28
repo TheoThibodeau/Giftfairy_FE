@@ -447,6 +447,8 @@ polygon {
   .regenButton-div {
     width: 98%;
     margin: 10px;
+    position: fixed;
+    bottom: .5rem;
   }
 
   .opacity1{
@@ -566,6 +568,8 @@ polygon {
     height: auto;
     padding: 5em 10px .40em 0;
     justify-content: center;
+    border: 1px solid black;
+    border-radius: 10px;
   }
 
   svg {
@@ -665,6 +669,8 @@ polygon {
   .regenButton-div {
     width: 98%;
     margin: 10px;
+    position: fixed;
+    bottom: .5rem;
   }
 
   .opacity1{
