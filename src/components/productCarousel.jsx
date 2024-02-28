@@ -11,7 +11,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
         data-ride="carousel"
         data-interval="10000"
       >
-        <ol className="carousel-indicators" style={{ paddingBottom: "35px" }}>
+        <ol 
+        className="carousel-indicators" 
+        style={{ paddingBottom: "35px", borderRadius: "1px" }}>
           <li
             data-target="#carouselExampleIndicators"
             data-slide-to="0"
