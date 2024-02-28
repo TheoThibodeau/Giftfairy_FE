@@ -321,7 +321,6 @@ polygon {
     flex-direction: column;
     width: 100%;
     height: auto;
-    padding: 5em 0 .40em 0;
     justify-items: center;
     align-items: center;
     text-align: center;
@@ -564,9 +563,8 @@ polygon {
   .container {
     display: inline-flex;
     flex-wrap: wrap;
-    width: 100%;
-    height: auto;
-    padding: 5em 10px .40em 0;
+    width: 90%;
+    height: 420px;
     justify-content: center;
     border: 1px solid black;
     border-radius: 10px;
@@ -592,7 +590,19 @@ polygon {
     width: 100%;
   }
 
-  .individual-responses-container {
+  .buyProduct {
+    margin-top: 50px;
+  }
+
+  .carousel-indicators li {
+    background-color: white;
+  }
+
+  .carousel-indicators .active {
+    background-color: #ffa514;
+  }
+
+  /* .individual-responses-container {
     width: 92%;
     height: 275px;
     border: 1px solid #000000;
@@ -612,7 +622,7 @@ polygon {
     position: absolute;
     bottom: 20px;
     left: 58.5px;
-  }
+  } */
 
   p {
     width: auto;

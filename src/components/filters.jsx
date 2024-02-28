@@ -397,12 +397,13 @@ const Filters = ({ handleUserLogin, authentication }) => {
       </div>
 
       {isGenerated && (
-        <div className="container">
+        <>
           <p className="openaiDescrip">
             {gifteeName === "No name selected"
               ? "Here are 10 gift ideas that I think your giftee would love!"
               : `Here are 10 gift ideas that I think ${gifteeName} would love!`}
           </p>
+        <div className="container">
           <ProductCarousel 
             itemTitle={itemTitle}
             itemDescrip={itemDescrip}
@@ -422,6 +423,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
             </div>
           ))} */}
         </div>
+        </>
       )}
 
       {/* Regenerate Button */}
