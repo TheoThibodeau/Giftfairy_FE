@@ -31,6 +31,10 @@ path {
   height: 100%;
 }
 
+/* Rules to overwrite Bootstrap */
+.bg-dark {
+  background-color: transparent !important;
+}
 /* Font */
 .oxygen-bold {
   font-family: "Oxygen", sans-serif;
@@ -59,6 +63,10 @@ h1 {
   margin-bottom: 60px;
 }
 
+h2 {
+  font-size: 30px;
+}
+
 h4 {
   margin-bottom: 60px;
 }
@@ -79,6 +87,10 @@ h4 {
   width: 40%;
   }
 
+.navbar-brand {
+  display: flex;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -89,15 +101,15 @@ nav a {
   width: 25%;
   display: flex;
   justify-content: center;
-  padding-top: 1em;
 }
 
 nav a img {
   padding-top: .5rem;
 }
 
-.navbar-brand img {
+.navbar img {
   padding-top: 2px;
+  box-sizing: content-box;
 }
 
 nav a svg {
@@ -164,6 +176,7 @@ button {
   margin: 5px 0px;
   width: 30rem;
   height: 24px;
+  box-sizing: content-box;
 }
 
 select {
@@ -503,6 +516,7 @@ polygon {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0;
   }
 
   .landingDescription {
@@ -532,7 +546,6 @@ polygon {
   .landingButton img {
     margin-left: 57px;
     vertical-align: bottom;
-    padding-top: 11px;
   }
 
   .version {
@@ -748,6 +761,7 @@ polygon {
     position: fixed;
     bottom: 0px;
     width: 100%;
+    border-radius: 0;
   }
 
   .landingDescription {
@@ -765,19 +779,20 @@ polygon {
   .landingButton{
     margin-bottom: 10px;
     border-radius: 50px;
-    width: 90vw;
+    width: 80vw;
+    box-sizing: content-box;
+    padding-top: 10px;
   }
 
   .landingButton img {
     margin-left: 150px;
     vertical-align: bottom;
-    padding-top: 11px;
   }
 
   .version {
     opacity: 35%;
     position: fixed;
-    bottom: -10px;
+    bottom: 0px;
   }
 
   .openaiDescrip {
