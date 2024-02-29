@@ -613,10 +613,12 @@ polygon {
 
   .carousel-control-next-icon {
     background-image: url("./images/rightArrow.png");
+    margin-top: 245px;
   }
 
   .carousel-control-prev-icon {
     background-image: url("./images/leftArrow.png");
+    margin-top: 245px;
   }
 
   .carousel-indicators li {
@@ -624,6 +626,7 @@ polygon {
     border-radius: 20px;
     width: 12px;
     height: 12px;
+    margin-bottom: 10px;
   }
 
   .carousel-indicators .active {

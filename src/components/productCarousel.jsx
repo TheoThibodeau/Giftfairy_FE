@@ -1,6 +1,7 @@
 import React from "react";
 import GiftFairy1 from "../images/giftFairy.png";
 import Italy from "../images/italyPicture.jpeg";
+import Amazon from "../images/amazon.png";
 
 const ProductCarousel = ({ itemTitle, itemDescrip }) => {
   return (
@@ -32,7 +33,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img className="productImage" src={Italy} alt="First slide" />
+            <img className="productImage" src={Amazon} alt="First slide" />
             <div className="productInfo">
               <h3>{itemTitle[0]}</h3>
               <p>{itemDescrip[0]}</p>
@@ -49,7 +50,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img className="productImage" src={Italy} alt="Second slide" />
+            <img className="productImage" src={Amazon} alt="Second slide" />
             <div className="productInfo">
               <h3>{itemTitle[1]}</h3>
               <p>{itemDescrip[1]}</p>
@@ -66,7 +67,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img className="productImage" src={Italy} alt="Third slide" />
+            <img className="productImage" src={Amazon} alt="Third slide" />
             <div className="productInfo">
               <h3>{itemTitle[2]}</h3>
               <p>{itemDescrip[2]}</p>
@@ -83,7 +84,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img className="productImage" src={Italy} alt="Fourth slide" />
+            <img className="productImage" src={Amazon} alt="Fourth slide" />
             <div className="productInfo">
               <h3>{itemTitle[3]}</h3>
               <p>{itemDescrip[3]}</p>
@@ -100,7 +101,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img className="productImage" src={Italy} alt="Fifth slide" />
+            <img className="productImage" src={Amazon} alt="Fifth slide" />
             <div className="productInfo">
               <h3>{itemTitle[4]}</h3>
               <p>{itemDescrip[4]}</p>
@@ -117,7 +118,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img className="productImage" src={Italy} alt="Sixth slide" />
+            <img className="productImage" src={Amazon} alt="Sixth slide" />
             <div className="productInfo">
               <h3>{itemTitle[5]}</h3>
               <p>{itemDescrip[5]}</p>
@@ -134,7 +135,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img className="productImage" src={Italy} alt="Seventh slide" />
+            <img className="productImage" src={Amazon} alt="Seventh slide" />
             <div className="productInfo">
               <h3>{itemTitle[6]}</h3>
               <p>{itemDescrip[6]}</p>
@@ -151,7 +152,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img className="productImage" src={Italy} alt="Eighth slide" />
+            <img className="productImage" src={Amazon} alt="Eighth slide" />
             <div className="productInfo">
               <h3>{itemTitle[7]}</h3>
               <p>{itemDescrip[7]}</p>
@@ -168,7 +169,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img className="productImage" src={Italy} alt="Nine slide" />
+            <img className="productImage" src={Amazon} alt="Nine slide" />
             <div className="productInfo">
               <h3>{itemTitle[8]}</h3>
               <p>{itemDescrip[8]}</p>
@@ -185,7 +186,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img className="productImage" src={Italy} alt="Ten slide" />
+            <img className="productImage" src={Amazon} alt="Ten slide" />
             <div className="productInfo">
               <h3>{itemTitle[9]}</h3>
               <p>{itemDescrip[9]}</p>

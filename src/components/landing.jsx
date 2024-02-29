@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import GiftfairyImage from "../images/giftfairy3.png";
-import RightArrow from "../images/right-arrow.png";
+import RightArrow from "../images/right.png";
 
 const Landing = () => {
-
   return (
     <>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 1440 290">
