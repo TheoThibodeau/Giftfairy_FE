@@ -1,6 +1,6 @@
 import React from "react";
-import GiftfairyImage from "../images/giftfairy3.png";
 import GiftFairy1 from "../images/giftFairy.png";
+import Italy from "../images/italyPicture.jpeg";
 
 const ProductCarousel = ({ itemTitle, itemDescrip }) => {
   return (
@@ -11,9 +11,10 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
         data-ride="carousel"
         data-interval="10000"
       >
-        <ol 
-        className="carousel-indicators" 
-        style={{ paddingBottom: "35px", borderRadius: "1px" }}>
+        <ol
+          className="carousel-indicators"
+          style={{ paddingBottom: "35px", borderRadius: "1px" }}
+        >
           <li
             data-target="#carouselExampleIndicators"
             data-slide-to="0"
@@ -31,13 +32,11 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img
-              className="productImage"
-              src={GiftfairyImage}
-              alt="First slide"
-            />
-            <h2>{itemTitle[0]}</h2>
-            <p>{itemDescrip[0]}</p>
+            <img className="productImage" src={Italy} alt="First slide" />
+            <div className="productInfo">
+              <h3>{itemTitle[0]}</h3>
+              <p>{itemDescrip[0]}</p>
+            </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
                 itemTitle[0]
@@ -50,13 +49,11 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img
-              className="productImage"
-              src={GiftFairy1}
-              alt="Second slide"
-            />
-            <h2>{itemTitle[1]}</h2>
-            <p>{itemDescrip[1]}</p>
+            <img className="productImage" src={Italy} alt="Second slide" />
+            <div className="productInfo">
+              <h3>{itemTitle[1]}</h3>
+              <p>{itemDescrip[1]}</p>
+            </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
                 itemTitle[1]
@@ -69,13 +66,11 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img
-              className="productImage"
-              src={GiftfairyImage}
-              alt="Third slide"
-            />
-            <h2>{itemTitle[2]}</h2>
-            <p>{itemDescrip[2]}</p>
+            <img className="productImage" src={Italy} alt="Third slide" />
+            <div className="productInfo">
+              <h3>{itemTitle[2]}</h3>
+              <p>{itemDescrip[2]}</p>
+            </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
                 itemTitle[2]
@@ -88,13 +83,11 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img
-              className="productImage"
-              src={GiftfairyImage}
-              alt="Fourth slide"
-            />
-            <h2>{itemTitle[3]}</h2>
-            <p>{itemDescrip[3]}</p>
+            <img className="productImage" src={Italy} alt="Fourth slide" />
+            <div className="productInfo">
+              <h3>{itemTitle[3]}</h3>
+              <p>{itemDescrip[3]}</p>
+            </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
                 itemTitle[3]
@@ -107,13 +100,11 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img
-              className="productImage"
-              src={GiftfairyImage}
-              alt="Fifth slide"
-            />
-            <h2>{itemTitle[4]}</h2>
-            <p>{itemDescrip[4]}</p>
+            <img className="productImage" src={Italy} alt="Fifth slide" />
+            <div className="productInfo">
+              <h3>{itemTitle[4]}</h3>
+              <p>{itemDescrip[4]}</p>
+            </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
                 itemTitle[4]
@@ -126,13 +117,11 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img
-              className="productImage"
-              src={GiftfairyImage}
-              alt="Sixth slide"
-            />
-            <h2>{itemTitle[5]}</h2>
-            <p>{itemDescrip[5]}</p>
+            <img className="productImage" src={Italy} alt="Sixth slide" />
+            <div className="productInfo">
+              <h3>{itemTitle[5]}</h3>
+              <p>{itemDescrip[5]}</p>
+            </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
                 itemTitle[5]
@@ -145,13 +134,11 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img
-              className="productImage"
-              src={GiftfairyImage}
-              alt="Seventh slide"
-            />
-            <h2>{itemTitle[6]}</h2>
-            <p>{itemDescrip[6]}</p>
+            <img className="productImage" src={Italy} alt="Seventh slide" />
+            <div className="productInfo">
+              <h3>{itemTitle[6]}</h3>
+              <p>{itemDescrip[6]}</p>
+            </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
                 itemTitle[6]
@@ -162,15 +149,13 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               <button className="buyProduct">Buy Product</button>
             </a>
           </div>
-          
+
           <div className="carousel-item">
-            <img
-              className="productImage"
-              src={GiftfairyImage}
-              alt="Eighth slide"
-            />
-            <h2>{itemTitle[7]}</h2>
-            <p>{itemDescrip[7]}</p>
+            <img className="productImage" src={Italy} alt="Eighth slide" />
+            <div className="productInfo">
+              <h3>{itemTitle[7]}</h3>
+              <p>{itemDescrip[7]}</p>
+            </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
                 itemTitle[7]
@@ -183,13 +168,11 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img
-              className="productImage"
-              src={GiftfairyImage}
-              alt="Nine slide"
-            />
-            <h2>{itemTitle[8]}</h2>
-            <p>{itemDescrip[8]}</p>
+            <img className="productImage" src={Italy} alt="Nine slide" />
+            <div className="productInfo">
+              <h3>{itemTitle[8]}</h3>
+              <p>{itemDescrip[8]}</p>
+            </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
                 itemTitle[8]
@@ -202,13 +185,11 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
           </div>
 
           <div className="carousel-item">
-            <img
-              className="productImage"
-              src={GiftfairyImage}
-              alt="Ten slide"
-            />
-            <h2>{itemTitle[9]}</h2>
-            <p>{itemDescrip[9]}</p>
+            <img className="productImage" src={Italy} alt="Ten slide" />
+            <div className="productInfo">
+              <h3>{itemTitle[9]}</h3>
+              <p>{itemDescrip[9]}</p>
+            </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
                 itemTitle[9]
@@ -219,7 +200,6 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               <button className="buyProduct">Buy Product</button>
             </a>
           </div>
-
         </div>
         <a
           className="carousel-control-prev"
