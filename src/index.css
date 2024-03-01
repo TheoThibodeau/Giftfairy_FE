@@ -624,6 +624,13 @@ polygon {
   .carousel-indicators .active {
     background-color: #ffa514;
   }
+
+  .buyProduct {
+    margin: 40px 15px 0 15px;
+    width: 90%;
+    position: relative;
+    top: 0px;
+  }
 }
 
 /* MOBILE */
