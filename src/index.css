@@ -534,24 +534,23 @@ polygon {
   .landingButton{
     margin-bottom: 10px;
     margin-top: 15px;
-    width: 15rem;
+    width: 22rem;
     text-align: left;
     border-radius: 50px;
-    vertical-align: center;
     font-size: larger;
-    padding-top: 0px;
+    padding-top: 10px;
     padding-bottom: 13px;
   }
 
   .landingButton img {
-    margin-left: 57px;
+    margin-left: 150px;
     vertical-align: bottom;
   }
 
   .version {
     opacity: 35%;
     position: fixed;
-    bottom: -20px;
+    bottom: 0px;
   }
 
   .generateButton {
@@ -781,11 +780,10 @@ polygon {
     border-radius: 50px;
     width: 80vw;
     box-sizing: content-box;
-    padding-top: 10px;
   }
 
   .landingButton img {
-    margin-left: 150px;
+    margin-left: 160px;
     vertical-align: bottom;
   }
 

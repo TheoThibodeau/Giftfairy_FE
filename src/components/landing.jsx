@@ -29,7 +29,7 @@ const Landing = () => {
       <Link to="/selections">
         <button className="landingButton oxygen-bold">
           Get Started
-          <img src={RightArrow} height={30} width={30} />
+          <img src={RightArrow} height={25} width={25} />
         </button>
       </Link>
       <h6 className="version">version 4.0.0</h6>
