@@ -79,6 +79,8 @@ h4 {
   z-index: 2;
   width: 100%;
   height: 6.5625em;
+  display: flex;
+  justify-content: center;
 }
 
 .navbarContainer .d-flex {
@@ -97,10 +99,15 @@ nav {
   height: 5.0625em;
 }
 
+a.navbar-brand {
+  margin: 0 20rem;
+}
+
 nav a {
   width: 25%;
   display: flex;
   justify-content: center;
+  margin: 0 20rem;
 }
 
 nav a img {
@@ -332,11 +339,16 @@ polygon {
   .container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 25%;
     height: auto;
     justify-items: center;
     align-items: center;
     text-align: center;
+    border-radius: 10px;
+    padding: 0px;
+    background-color: whitesmoke;
+    margin: 0;
+    height: 550px;
   }
 
   svg {
@@ -526,10 +538,10 @@ polygon {
     margin-bottom: 0px;
   }
 
-    .landingDescription i {
-      color: #ffa514;
-      font-style: normal;
-    }
+  .landingDescription i {
+    color: #ffa514;
+    font-style: normal;
+  }
 
   .landingButton{
     margin-bottom: 10px;
@@ -566,6 +578,51 @@ polygon {
   input[type="checkbox"]:checked + label.checkbox-button {
     border: 3px solid #ffa514;
     opacity: 100%;
+  }
+
+  .productInfo {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-top: 10px;
+  }
+
+  .productInfo p {
+    width: 100%;
+  }
+
+  .productImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+
+  #carouselExampleIndicators {
+    width: 100%;
+  }
+
+  .carousel-control-next-icon {
+    background-image: url("./images/rightArrow.png");
+    margin-top: 265px;
+  }
+
+  .carousel-control-prev-icon {
+    background-image: url("./images/leftArrow.png");
+    margin-top: 265px;
+  }
+
+  .carousel-indicators li {
+    background-color: black;
+    border-radius: 20px;
+    width: 12px;
+    height: 12px;
+    margin-bottom: 10px;
+  }
+
+  .carousel-indicators .active {
+    background-color: #ffa514;
   }
 }
 
@@ -814,5 +871,17 @@ polygon {
 
   .userHistoryByDate {
     padding: 0 0.5rem 0 1rem;
+  }
+
+  a.navbar-brand {
+    margin: 0;
+  }
+  
+  nav a {
+    margin: 0;
+  }
+
+  .navbar-ProgressBar-Container {
+    display: block;
   }
 }

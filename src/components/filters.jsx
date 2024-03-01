@@ -380,8 +380,8 @@ const Filters = ({ handleUserLogin, authentication }) => {
           {!isLoading && (
             <p className="openaiDescrip">
               {gifteeName === "No name selected"
-                ? "Press Generate to see 10 gift ideas that I think your giftee would love!"
-                : `Press Generate to see 10 gift ideas that I think ${gifteeName} would love!`}
+                ? `Press 'Generate' to see 10 gift ideas that I think your giftee would love!`
+                : `Press 'Generate' to see 10 gift ideas that I think ${gifteeName} would love!`}
             </p>
           )}
           {isLoading ? (
