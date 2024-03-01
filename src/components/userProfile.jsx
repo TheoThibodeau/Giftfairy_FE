@@ -96,7 +96,7 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
                 .map((item, index) => (
                   <div key={index} className="userHistoryByDate">
                     <div key={index} className="userHistoryByDateHeader">
-                      <h3>Recipient: {item.giftee_name}</h3>
+                      <h4>Recipient: {item.giftee_name}</h4>
                       {selectedDate == index ? (
                         <svg
                           id="more-arrows"
@@ -139,12 +139,12 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
                     </div>
                     {selectedDate == index && (
                       <div className="userHistory">
-                        <h3>
+                        <h4>
                           Date:{" "}
                           {dayjs(item.created_at).format("MM-DD-YY hh:mm A")}
-                        </h3>
+                        </h4>
                         <div className="userHistorySelections">
-                          <h3>Selections:</h3>
+                          <h4>Selections:</h4>
                           {selectedItem == index ? (
                             <svg
                               id="more-arrows"
@@ -187,20 +187,20 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
                         </div>
                         {selectedItem === index && (
                           <div className="details">
-                            <h3>Age: {item.age}</h3>
-                            <h3>Gender: {item.gender}</h3>
-                            <h3>Relationship: {item.relationship}</h3>
-                            <h3>Price Range: {item.price_range}</h3>
-                            <h3>Occasion: {item.occasion}</h3>
-                            <h3>Gift Type: {item.gift_type}</h3>
-                            <h3>Interest: {item.interest}</h3>
-                            <h3>Activity: {item.activity_level}</h3>
-                            <h3>Personality: {item.personality}</h3>
-                            <h3>Nature: {item.nature}</h3>
+                            <h4>Age: {item.age}</h4>
+                            <h4>Gender: {item.gender}</h4>
+                            <h4>Relationship: {item.relationship}</h4>
+                            <h4>Price Range: {item.price_range}</h4>
+                            <h4>Occasion: {item.occasion}</h4>
+                            <h4>Gift Type: {item.gift_type}</h4>
+                            <h4>Interest: {item.interest}</h4>
+                            <h4>Activity: {item.activity_level}</h4>
+                            <h4>Personality: {item.personality}</h4>
+                            <h4>Nature: {item.nature}</h4>
                           </div>
                         )}
                         <div className="userHistoryGeneratedGifts">
-                          <h3>Generated Gift Ideas:</h3>
+                          <h4>Generated Gift Ideas:</h4>
                           {item.item_title_string
                             .split(",")
                             .map((gift, index) => (
@@ -212,9 +212,9 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
                                 target="_blank"
                                 rel="noreferrer"
                               >
-                                <h3 key={index}>
+                                <h4 key={index}>
                                   {index + 1}. {gift}
-                                </h3>
+                                </h4>
                               </a>
                             ))}
                         </div>
