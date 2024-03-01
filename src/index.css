@@ -468,7 +468,7 @@ polygon {
   }
 
   .regenButton-div {
-    width: 98%;
+    width: 45%;
     margin: 10px;
     position: fixed;
     bottom: .5rem;
@@ -586,6 +586,7 @@ polygon {
     flex-direction: column;
     justify-content: start;
     margin-top: 10px;
+    padding: 0 15px;
   }
 
   .productInfo p {
