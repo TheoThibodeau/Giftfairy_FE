@@ -1,6 +1,4 @@
 import React from "react";
-import GiftFairy1 from "../images/giftFairy.png";
-import Italy from "../images/italyPicture.jpeg";
 import Amazon from "../images/amazon.png";
 
 const ProductCarousel = ({ itemTitle, itemDescrip }) => {
