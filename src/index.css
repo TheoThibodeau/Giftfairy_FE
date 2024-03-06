@@ -273,8 +273,15 @@ button:focus-visible {
   text-align: left;
 }
 
+.userHistoryGeneratedGifts a {
+  color: #9e9EFF;
+}
+
 .details {
   color: #9e9EFF;
+  font-style: normal;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black;
 }
 
 #more-arrows {

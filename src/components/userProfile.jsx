@@ -187,16 +187,16 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
                         </div>
                         {selectedItem === index && (
                           <div className="details">
-                            <h4>Age: {item.age}</h4>
-                            <h4>Gender: {item.gender}</h4>
-                            <h4>Relationship: {item.relationship}</h4>
-                            <h4>Price Range: {item.price_range}</h4>
-                            <h4>Occasion: {item.occasion}</h4>
-                            <h4>Gift Type: {item.gift_type}</h4>
-                            <h4>Interest: {item.interest}</h4>
-                            <h4>Activity: {item.activity_level}</h4>
-                            <h4>Personality: {item.personality}</h4>
-                            <h4>Nature: {item.nature}</h4>
+                            <h5>Age: {item.age}</h5>
+                            <h5>Gender: {item.gender}</h5>
+                            <h5>Relationship: {item.relationship}</h5>
+                            <h5>Price Range: {item.price_range}</h5>
+                            <h5>Occasion: {item.occasion}</h5>
+                            <h5>Gift Type: {item.gift_type}</h5>
+                            <h5>Interest: {item.interest}</h5>
+                            <h5>Activity: {item.activity_level}</h5>
+                            <h5>Personality: {item.personality}</h5>
+                            <h5>Nature: {item.nature}</h5>
                           </div>
                         )}
                         <div className="userHistoryGeneratedGifts">
@@ -212,9 +212,9 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
                                 target="_blank"
                                 rel="noreferrer"
                               >
-                                <h4 key={index}>
+                                <h5 key={index}>
                                   {index + 1}. {gift}
-                                </h4>
+                                </h5>
                               </a>
                             ))}
                         </div>
