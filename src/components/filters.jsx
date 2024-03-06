@@ -347,7 +347,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
         <NavBar />
       </div>
 
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 1440 200">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 80 1440 200">
         <path
           fill="#ffa517"
           fill-opacity=".75"
