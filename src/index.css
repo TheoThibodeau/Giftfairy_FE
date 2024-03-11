@@ -643,6 +643,16 @@ polygon {
     background-color: #ffa514;
   }
 
+  .carousel-item p:last-child{
+    font-size: x-small;
+    padding: 0 35px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .amazonAffiliateText {
+    font-size: 16px;
+  }
+
   .buyProduct {
     margin: 40px 15px 0 15px;
     width: 90%;
@@ -736,6 +746,7 @@ polygon {
     margin-top: 10px;
     font-size: small;
     padding: 0 15px;
+    margin-bottom: 0px;
   }
 
   .carousel-item h3 {

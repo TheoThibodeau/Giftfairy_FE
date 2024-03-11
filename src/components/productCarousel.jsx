@@ -35,6 +35,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
             <div className="productInfo">
               <h3>{itemTitle[0]}</h3>
               <p>{itemDescrip[0]}</p>
+              <p className="amazonAffiliateText">
+                (Products contain Amazon.com affiliate links)
+              </p>
             </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
@@ -52,6 +55,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
             <div className="productInfo">
               <h3>{itemTitle[1]}</h3>
               <p>{itemDescrip[1]}</p>
+              <p className="amazonAffiliateText">
+                (Products contain Amazon.com affiliate links)
+              </p>
             </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
@@ -69,6 +75,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
             <div className="productInfo">
               <h3>{itemTitle[2]}</h3>
               <p>{itemDescrip[2]}</p>
+              <p className="amazonAffiliateText">
+                (Products contain Amazon.com affiliate links)
+              </p>
             </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
@@ -86,6 +95,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
             <div className="productInfo">
               <h3>{itemTitle[3]}</h3>
               <p>{itemDescrip[3]}</p>
+              <p className="amazonAffiliateText">
+                (Products contain Amazon.com affiliate links)
+              </p>
             </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
@@ -103,6 +115,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
             <div className="productInfo">
               <h3>{itemTitle[4]}</h3>
               <p>{itemDescrip[4]}</p>
+              <p className="amazonAffiliateText">
+                (Products contain Amazon.com affiliate links)
+              </p>
             </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
@@ -120,6 +135,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
             <div className="productInfo">
               <h3>{itemTitle[5]}</h3>
               <p>{itemDescrip[5]}</p>
+              <p className="amazonAffiliateText">
+                (Products contain Amazon.com affiliate links)
+              </p>
             </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
@@ -137,6 +155,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
             <div className="productInfo">
               <h3>{itemTitle[6]}</h3>
               <p>{itemDescrip[6]}</p>
+              <p className="amazonAffiliateText">
+                (Products contain Amazon.com affiliate links)
+              </p>
             </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
@@ -154,6 +175,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
             <div className="productInfo">
               <h3>{itemTitle[7]}</h3>
               <p>{itemDescrip[7]}</p>
+              <p className="amazonAffiliateText">
+                (Products contain Amazon.com affiliate links)
+              </p>
             </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
@@ -171,6 +195,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
             <div className="productInfo">
               <h3>{itemTitle[8]}</h3>
               <p>{itemDescrip[8]}</p>
+              <p className="amazonAffiliateText">
+                (Products contain Amazon.com affiliate links)
+              </p>
             </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
@@ -188,6 +215,9 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
             <div className="productInfo">
               <h3>{itemTitle[9]}</h3>
               <p>{itemDescrip[9]}</p>
+              <p className="amazonAffiliateText">
+                (Products contain Amazon.com affiliate links)
+              </p>
             </div>
             <a
               href={`https://www.amazon.com/s?k=${encodeURIComponent(
