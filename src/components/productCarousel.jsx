@@ -12,7 +12,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
       >
         <ol
           className="carousel-indicators"
-          style={{ paddingBottom: "35px", borderRadius: "1px" }}
+          style={{ paddingBottom: "25px", borderRadius: "1px" }}
         >
           <li
             data-target="#carouselExampleIndicators"
@@ -46,7 +46,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <button className="buyProduct">Buy Product</button>
+              <button className="buyProduct">View Product on Amazon</button>
             </a>
           </div>
 
@@ -66,7 +66,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <button className="buyProduct">Buy Product</button>
+              <button className="buyProduct">View Product on Amazon</button>
             </a>
           </div>
 
@@ -86,7 +86,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <button className="buyProduct">Buy Product</button>
+              <button className="buyProduct">View Product on Amazon</button>
             </a>
           </div>
 
@@ -106,7 +106,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <button className="buyProduct">Buy Product</button>
+              <button className="buyProduct">View Product on Amazon</button>
             </a>
           </div>
 
@@ -126,7 +126,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <button className="buyProduct">Buy Product</button>
+              <button className="buyProduct">View Product on Amazon</button>
             </a>
           </div>
 
@@ -146,7 +146,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <button className="buyProduct">Buy Product</button>
+              <button className="buyProduct">View Product on Amazon</button>
             </a>
           </div>
 
@@ -166,7 +166,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <button className="buyProduct">Buy Product</button>
+              <button className="buyProduct">View Product on Amazon</button>
             </a>
           </div>
 
@@ -186,7 +186,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <button className="buyProduct">Buy Product</button>
+              <button className="buyProduct">View Product on Amazon</button>
             </a>
           </div>
 
@@ -206,7 +206,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <button className="buyProduct">Buy Product</button>
+              <button className="buyProduct">View Product on Amazon</button>
             </a>
           </div>
 
@@ -226,7 +226,7 @@ const ProductCarousel = ({ itemTitle, itemDescrip }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <button className="buyProduct">Buy Product</button>
+              <button className="buyProduct">View Product on Amazon</button>
             </a>
           </div>
         </div>

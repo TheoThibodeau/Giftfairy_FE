@@ -405,20 +405,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
         <>
           <div className="container">
             <ProductCarousel itemTitle={itemTitle} itemDescrip={itemDescrip} />
-            {/* {itemTitle.map((title, index) => (
-            <div className="individual-responses-container" key={index}>
-              <h2>{title}</h2>
-              <p>{itemDescrip[index]}</p>
-              <a
-                key={index}
-                href={`https://www.amazon.com/s?k=${encodeURIComponent(title)}&tag=${'giftfairy0c9-20'}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <button>Buy Product</button>
-              </a>
-            </div>
-          ))} */}
           </div>
         </>
       )}

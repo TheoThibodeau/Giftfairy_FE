@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import GiftfairyImage from "../images/giftfairy3.png";
 import RightArrow from "../images/right.png";
+import InfoIcon from "../images/info.png";
+import Popup from "reactjs-popup";
 
 const Landing = () => {
   return (
@@ -14,6 +16,21 @@ const Landing = () => {
         ></path>
       </svg>
 
+      <Popup
+        trigger={
+          <img
+            className="infoIconImg"
+            style={{ zIndex: 4 }}
+            src={InfoIcon}
+            height={30}
+            width={30}
+          ></img>
+        }
+        arrow={false}
+        position="right right"
+      >
+        <div>Giftfairy is an Amazon Affiliate</div>
+      </Popup>
       <h1 className="landingTitle">
         giftf<i>ai</i>ry
       </h1>
