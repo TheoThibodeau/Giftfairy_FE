@@ -512,7 +512,6 @@ polygon {
   }
 
   .prompt-div p:last-child {
-    font-size: 0.75rem;
     margin: 0;
   }
   .prompt-div p:first-child {
@@ -660,6 +659,20 @@ polygon {
     top: 0px;
     /* background-color: #242f3e;
     color: white; */
+  }
+
+  .popup-content {
+    margin: 30px auto auto auto;
+    background: rgba(255, 255, 255, 0.632);
+    width: 30%;
+    padding: 5px 20px;
+    left: 35% !important;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -833,7 +846,6 @@ polygon {
   }
 
   .prompt-div p:last-child {
-    font-size: 0.75rem;
     margin: 0;
   }
   .prompt-div p:first-child {
@@ -927,34 +939,34 @@ polygon {
   .navbar-ProgressBar-Container {
     display: block;
   }
+
+  .popup-content {
+    margin: 30px auto auto auto;
+    background: rgba(255, 255, 255, 0.632);
+    width: 50%;
+    padding: 5px 20px;
+    left: 23.5% !important;
+    text-align: center;
+  }
+  
+  .popup-arrow {
+    color: rgb(255, 255, 255);
+  }
+  [role='tooltip'].popup-content {
+    width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+  }
+  
+  .popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  [data-popup='tooltip'].popup-overlay {
+    background: transparent;
+  }
 }
 
 .infoIconImg {
   position: fixed;
   top: 15px;
   right: 20px;
-}
-
-.popup-content {
-  margin: 30px auto auto auto;
-  background: rgba(255, 255, 255, 0.632);
-  width: 50%;
-  padding: 5px 20px;
-  left: 23.5% !important;
-  text-align: center;
-}
-
-.popup-arrow {
-  color: rgb(255, 255, 255);
-}
-[role='tooltip'].popup-content {
-  width: 200px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
-}
-
-.popup-overlay {
-  background: rgba(0, 0, 0, 0.5);
-}
-[data-popup='tooltip'].popup-overlay {
-  background: transparent;
 }
