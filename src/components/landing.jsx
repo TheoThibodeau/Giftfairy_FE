@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import GiftfairyImage from "../images/giftfairy3.png";
 import RightArrow from "../images/right.png";
 import InfoIcon from "../images/info.png";
+import Amazon from "../images/amazon1.png";
 import Popup from "reactjs-popup";
 
 const Landing = () => {
@@ -29,7 +30,11 @@ const Landing = () => {
         arrow={false}
         position="right right"
       >
-        <div>Giftfairy is an Amazon Affiliate</div>
+        <div>
+          giftfairy is an Amazon Associate 
+          <br />
+          <img src={Amazon} height={35} width={120}></img>
+        </div>
       </Popup>
       <h1 className="landingTitle">
         giftf<i>ai</i>ry
