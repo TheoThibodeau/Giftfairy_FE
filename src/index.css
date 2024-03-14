@@ -71,6 +71,14 @@ h4 {
   margin-bottom: 60px;
 }
 
+h5 {
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}
+
 /* Nav bar - home button */
 .navbar-ProgressBar-Container {
   position: fixed;
@@ -354,6 +362,17 @@ a:not([href]):not([tabindex]){
 a:not([href]):not([tabindex]):hover {
   color: blue;
   cursor: pointer;
+}
+
+.googleIcon {
+  margin-right: 10px;
+}
+
+hr {
+  border: 1px solid black;
+  display: inline-flex;
+  align-content: center;
+  width: 60%;
 }
 
 /* DESKTOP */

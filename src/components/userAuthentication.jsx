@@ -8,8 +8,10 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   sendEmailVerification,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  GoogleAuthProvider,
 } from "firebase/auth";
+import GoogleIcon from "../images/googleIcon.png";
 
 const UserAuthentication = ({ handleUserLogin, authentication }) => {
   const [password, setPassword] = useState("");
@@ -155,8 +157,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
 
   const handlePasswordReset = () => {
     const auth = getAuth();
-    sendPasswordResetEmail(auth, emailInput)
-        .then(() => {
+    sendPasswordResetEmail(auth, emailInput).then(() => {
       // Password reset email sent!
       alert("Password reset email sent, please check your email!");
     });
@@ -175,6 +176,22 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
           {!authCurrentUser && (
             <button type="submit" onClick={handleRegisterClick}>
               Register
+            </button>
+          )}
+          <h5>
+            <hr></hr>
+                or
+            <hr></hr>
+          </h5>
+          {!authCurrentUser && (
+            <button type="submit">
+              <img
+                src={GoogleIcon}
+                width={25}
+                height={25}
+                className="googleIcon"
+              ></img>
+              Continue with Google
             </button>
           )}
         </>
