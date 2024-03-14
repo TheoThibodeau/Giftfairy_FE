@@ -6,7 +6,8 @@ import {
     createUserWithEmailAndPassword, 
     signOut, 
     signInWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    sendEmailVerification
  } from "firebase/auth";
 
 
@@ -57,8 +58,12 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
             .then((userCredential) => {
             // Signed up 
             handleUserLogin(userCredential.user);
-            alert("Successful User created")
             // ..
+            sendEmailVerification(userCredential.user)
+            .then(() => {
+                // Email verification sent!                
+                alert("Successful user created, email verification sent!")
+            })
         })
         .catch((error) => {
             const errorCode = error.code;
