@@ -345,6 +345,16 @@ polygon {
   margin-bottom: 10px;
 }
 
+a:not([href]):not([tabindex]){
+  color: blue;
+  font-size: 10px;
+  text-decoration: underline;
+}
+
+a:not([href]):not([tabindex]):hover {
+  color: blue;
+  cursor: pointer;
+}
 
 /* DESKTOP */
 @media only screen and (max-width: 2560px) {
@@ -657,8 +667,8 @@ polygon {
     width: 90%;
     position: relative;
     top: 0px;
-    /* background-color: #242f3e;
-    color: white; */
+    color: white;
+    background-color: #28A745;
   }
 
   .popup-content {
