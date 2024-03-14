@@ -733,6 +733,8 @@ polygon {
     width: 90%;
     position: relative;
     top: 0px;
+    color: white;
+    background-color: #28A745;
   }
 
   .carousel-control-next-icon {
