@@ -19,11 +19,14 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   const [emailInput, setEmailInput] = useState("");
   const [loginSelected, setLoginSelected] = useState(false);
   const [registerSelected, setRegisterSelected] = useState(false);
-  const [authCurrentUser, setAuthCurrentUser] = useState(null);
+  const [authCurrentUser, setAuthCurrentUser] = useState(true);
   const [loading, setLoading] = useState(true);
   const [userID, setUserID] = useState(null);
   const [userEmail, setUserEmail] = useState("");
   const [nameInput, setNameInput] = useState("");
+  const [userIdGoogle, setUserIdGoogle] = useState("");
+
+  const auth = getAuth();
 
   const handlePasswordInput = (e) => {
     setPassword(e.target.value);
@@ -54,6 +57,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   };
 
   const handleRegisterSubmit = (e) => {
+    //Call function that creates new user being registered to giftfairy backend on Render/postgreSQL
     handleUserPost();
     e.preventDefault();
     createUserWithEmailAndPassword(authentication, emailInput, password)
@@ -92,7 +96,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
       });
   };
 
-  //Creates a new User in the User Table Database
+  //Creates a new user in backend database for giftfairy (postgreSQL/Render)
   const handleUserPost = () => {
     axios
       .post("https://giftfairy-be-server.onrender.com/api/user/generate", {
@@ -119,32 +123,6 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   //userAuthentication.jsx - User Authentication Observer
   //The observer tracks the user authentication token across the different components
 
-  console.log("Auth Current User is: " + authCurrentUser);
-
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in
-        setAuthCurrentUser(user);
-        console.log("User is: " + user);
-        handleUserLogin(user); // Call the handler to update user state in parent component
-        setUserID(user.uid);
-        setUserEmail(user.email);
-      } else {
-        // No user is signed in
-        setAuthCurrentUser(null);
-      }
-      setLoading(false);
-    });
-
-    return () => unsubscribe(); // Cleanup function to unsubscribe from the observer
-  }, [handleLoginSubmit, handleLogOut, handleRegisterSubmit]);
-
-  if (loading) {
-    return <div></div>;
-  }
-
   const handleLoginClick = () => {
     setLoginSelected(true);
   };
@@ -157,23 +135,27 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   console.log(registerSelected);
 
   const handlePasswordReset = () => {
-    const auth = getAuth();
+    // const auth = getAuth();
     sendPasswordResetEmail(auth, emailInput).then(() => {
       // Password reset email sent!
       alert("Password reset email sent, please check your email!");
     });
   };
 
+  // Google Third-Party Authentication Function/handler
   const handleGoogleAuth = () => {
     const provider = new GoogleAuthProvider();
-    const auth = getAuth();
+    // const auth = getAuth();
         signInWithPopup(auth, provider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
                 const credential = GoogleAuthProvider.credentialFromResult(result);
+                console.log(result)
+                console.log(credential);
                 const token = credential.accessToken;
                 // The signed-in user info.
                 const user = result.user;
+                setUserIdGoogle(result.user);
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
             }).catch((error) => {
@@ -187,6 +169,38 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
                 // ...
             });
     }
+
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in
+          setAuthCurrentUser(user);
+          console.log("User is: " + user);
+          handleUserLogin(user); // Call the handler to update user state in parent component
+          setUserID(user.uid);
+          setUserEmail(user.email);
+        } else {
+          // No user is signed in
+          setAuthCurrentUser(null);
+        }
+        setLoading(false);
+      });
+  
+      return () => unsubscribe(); // Cleanup function to unsubscribe from the observer
+    }, [handleLoginSubmit, handleLogOut, handleRegisterSubmit]);
+
+    console.log("Test for current user via Google Auth: " + userIdGoogle);
+    console.log("Current user email: " + userEmail);
+
+    console.log("Auth Current User is: " + authCurrentUser);
+    // console.log("Test for current user id via Google Auth: " + userID);
+    // console.log("Test for current user email via Google Auth: " + userEmail);
+
+  //While firebase/third-party is logging in user, current component is in a loading state (very quick).
+  // So display nothing.
+  if (loading) {
+    return <div></div>;
+  }
 
   return (
     <>
@@ -224,12 +238,9 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
           )}
         </>
       )}
-
-      {authCurrentUser && (
         <button type="submit" onClick={handleLogOut}>
           Logout
         </button>
-      )}
 
       {registerSelected && (
         <>

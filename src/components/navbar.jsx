@@ -8,12 +8,15 @@ function NavBar() {
   return (
     <>
       <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+        {/* Home button navigation link */}
         <Link to="/" className="navbar-brand">
           <img src={Home} alt="Home" height={45} width={45} />
         </Link>
+        {/* Title header across app */}
         <h2 className="titleHeader">
           giftf<i>ai</i>ry
         </h2>
+        {/* Profile button navigation link */}
         <Link to="/profile">
           <img src={UserImage} alt="User Image" height={40} width={40} />
         </Link>
