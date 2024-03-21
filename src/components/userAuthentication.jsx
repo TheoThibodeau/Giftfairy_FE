@@ -40,60 +40,12 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
     setNameInput(e.target.value);
   };
 
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(authentication, emailInput, password)
-      .then((userCredential) => {
-        // Signed in
-        handleUserLogin(userCredential.user);
-        alert("Successful User Login");
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert("Incorrect password or email address, please try again.");
-      });
+  const handleLoginClick = () => {
+    setLoginSelected(true);
   };
 
-  const handleRegisterSubmit = (e) => {
-    //Call function that creates new user being registered to giftfairy backend on Render/postgreSQL
-    handleUserPost();
-    e.preventDefault();
-    createUserWithEmailAndPassword(authentication, emailInput, password)
-      .then((userCredential) => {
-        // Signed up
-        handleUserLogin(userCredential.user);
-        // ..
-        sendEmailVerification(userCredential.user).then(() => {
-          // Email verification sent!
-          alert("Successful user created, email verification sent!");
-        });
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        if (errorCode == "auth/email-already-in-use") {
-          alert(
-            "Email is already in use, please use a different email to sign-up for an account."
-          );
-        }
-        console.log(errorCode);
-        alert(errorMessage);
-        // ..
-      });
-  };
-
-  const handleLogOut = (e) => {
-    signOut(authentication)
-      .then(() => {
-        console.log("Your signout was successful");
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        console.log(error);
-        // An error happened.
-      });
+  const handleRegisterClick = () => {
+    setRegisterSelected(true);
   };
 
   //Creates a new user in backend database for giftfairy (postgreSQL/Render)
@@ -107,45 +59,73 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         first_name: nameInput,
       })
       .then((response) => {
-        if (response) {
-          console.log("Your post was successful!");
-        }
+        console.log("Your post was successful!");
       })
       .catch((error) => {
-        if (error) {
-          alert(
-            "Oops, there was an error when creating your account. (Render)"
-          );
-        }
+        alert("Oops, there was an error when creating your account. (Render)");
       });
   };
 
-  //userAuthentication.jsx - User Authentication Observer
-  //The observer tracks the user authentication token across the different components
-
-  const handleLoginClick = () => {
-    setLoginSelected(true);
+  // Handle user login through Firebase
+  const handleLoginSubmit = (e) => {
+    e.preventDefault(); //Prevent browser reload on from submit
+    signInWithEmailAndPassword(authentication, emailInput, password) //Firebase function to sign-in user 
+      .then((userCredential) => {
+        handleUserLogin(userCredential.user); //Pass user up to parent component
+        alert("Successful User Login");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert("Incorrect password or email address, please try again. \n" + errorMessage);
+      });
   };
 
-  const handleRegisterClick = () => {
-    setRegisterSelected(true);
+  // Handle registering new user
+  const handleRegisterSubmit = (e) => {
+    //Call function that creates new user being registered to giftfairy backend on Render/postgreSQL
+    handleUserPost();
+    e.preventDefault();
+    createUserWithEmailAndPassword(authentication, emailInput, password)
+      .then((userCredential) => {
+        handleUserLogin(userCredential.user); //Send user up to parent component
+        sendEmailVerification(userCredential.user).then(() => {
+          alert("Successful user created, email verification sent!"); //Successful email verification sent
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode == "auth/email-already-in-use") {
+          alert(
+            "Email is already in use, please use a different email to sign-up for an account."
+          );
+        }
+        alert(errorMessage);
+      });
   };
 
-  console.log(loginSelected);
-  console.log(registerSelected);
+  //Handle user logout! **MAY WANT TO CLEAR OUT FIELDS FOR THIRDPARTY LOGINS/LOGOUTS
+  const handleLogOut = (e) => {
+    signOut(authentication)
+      .then(() => {
+        console.log("Your signout was successful"); // Sign-out successful.
+      })
+      .catch((error) => {
+        console.log(error); // An error happened.
+      });
+  };
 
+  // Handle user password reset!
   const handlePasswordReset = () => {
-    // const auth = getAuth();
     sendPasswordResetEmail(auth, emailInput).then(() => {
-      // Password reset email sent!
-      alert("Password reset email sent, please check your email!");
+      alert("Password reset email sent, please check your email!");// Password reset email sent!
     });
+    //MAY WANT TO INCLUDE A ERROR CATCH HERE
   };
 
   // Google Third-Party Authentication Function/handler
   const handleGoogleAuth = () => {
     const provider = new GoogleAuthProvider();
-    // const auth = getAuth();
         signInWithPopup(auth, provider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
@@ -153,23 +133,29 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
                 console.log(result)
                 console.log(credential);
                 const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
+                const user = result.user; // The signed-in user info.
                 setUserIdGoogle(result.user);
                 // IdP data available using getAdditionalUserInfo(result)
-                // ...
+
+                // WHAT NEEDS TO HAPPEN:
+                // RESULT IS THE PROMISE WE GET BACK FROM 3RD PARTY PROVIDER, THE RESULT WILL HOLD USER DETAILS
+                // 1. SEND A GET REQUEST BACK TO RENDER/POSTGRESQL TO CHECK TO SEE IF THERE IS A USER WITH THAT EMAIL ALREADY
+                // 2. AWAIT RESPONSE, IF USER FOUND THEN USER ALREADY HAS AN ASSOCIATED ACCOUNT AND USER/APP CAN PROCEED WITHOUT ANY FURTHER STEPS
+                // 3. IF USER IS NOT FOUND, THEN CALL FUNCTION HANDLEUSERPOST. WILL NEED EMAIL, UID, AND FIRSTNAME IF ABLE TO RETRIEVE 
+
+
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.customData.email;
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
+                const email = error.customData.email; // The email of the user's account used.
+                const credential = GoogleAuthProvider.credentialFromError(error); // The AuthCredential type that was used.
+
             });
     }
 
+    // User Authentication Observer
+    // The observer tracks the user authentication token across the different components
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (user) => {
         if (user) {
