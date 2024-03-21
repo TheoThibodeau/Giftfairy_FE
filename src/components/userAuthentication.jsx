@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import LoginForm from "./User Login Forms/loginForm";
+import RegisterForm from "./User Login Forms/registerForm";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -192,107 +194,38 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
     <>
       {!loginSelected && !registerSelected && !authCurrentUser && (
         <>
-          {!authCurrentUser && (
-            <button type="submit" onClick={handleLoginClick}>
-              Login
-            </button>
-          )}
+          <button type="submit" onClick={handleLoginClick}>Login</button>
+          <button type="submit" onClick={handleRegisterClick}>Register</button>
 
-          {!authCurrentUser && (
-            <button type="submit" onClick={handleRegisterClick}>
-              Register
-            </button>
-          )}
-          <h5>
-            <hr></hr>
-                or
-            <hr></hr>
-          </h5>
-          {!authCurrentUser && (
-            <button 
-                type="submit"
-                onClick={handleGoogleAuth}
-            >
-              <img
-                src={GoogleIcon}
-                width={25}
-                height={25}
-                className="googleIcon"
-              ></img>
-              Continue with Google
-            </button>
-          )}
+          <h5><hr></hr>or<hr></hr></h5>
+
+          <button type="submit" onClick={handleGoogleAuth}>
+            <img src={GoogleIcon} width={25} height={25} className="googleIcon"></img>
+            Continue with Google
+          </button>
         </>
       )}
-        <button type="submit" onClick={handleLogOut}>
-          Logout
-        </button>
 
       {registerSelected && (
-        <>
-          <h2>Register</h2>
-          <form onSubmit={handleRegisterSubmit}>
-            <input
-              type="string"
-              placeholder="First Name"
-              name="First Name"
-              value={nameInput}
-              onChange={handleNameInput}
-              className={`inputButton `}
-              required
-            ></input>
-
-            <input
-              type="string"
-              placeholder="Email"
-              name="Email"
-              value={emailInput}
-              onChange={handleEmailInput}
-              className={`inputButton `}
-              required
-            ></input>
-
-            <input
-              type="string"
-              placeholder="Password"
-              name="Password"
-              value={password}
-              onChange={handlePasswordInput}
-              className={`inputButton `}
-              required
-            ></input>
-            <button type="submit">Submit</button>
-          </form>
-        </>
+        <RegisterForm 
+          handleRegisterSubmit={handleRegisterSubmit}
+          nameInput={nameInput} handleNameInput={handleNameInput}
+          emailInput={emailInput} handleEmailInput={handleEmailInput}
+          password={password} handlePasswordInput={handlePasswordInput}
+        />
       )}
 
       {loginSelected && (
-        <>
-          <h2>Login</h2>
-          <form onSubmit={handleLoginSubmit}>
-            <input
-              type="string"
-              placeholder="Email"
-              name="Email"
-              value={emailInput}
-              onChange={handleEmailInput}
-              className={`inputButton `}
-            ></input>
+        <LoginForm 
+          handleLoginSubmit={handleLoginSubmit} 
+          emailInput={emailInput} handleEmailInput={handleEmailInput}
+          password={password} handlePasswordInput={handlePasswordInput}
+          handlePasswordReset={handlePasswordReset}
+        />
+      )}
 
-            <input
-              type="string"
-              placeholder="Password"
-              name="Password"
-              value={password}
-              onChange={handlePasswordInput}
-              className={`inputButton `}
-            ></input>
-            <button type="submit">Submit</button>
-            <a className="forgotPassword" onClick={handlePasswordReset}>
-              Forgot Password
-            </a>
-          </form>
-        </>
+      {authCurrentUser && (
+        <button type="submit" onClick={handleLogOut}>Logout</button>
       )}
     </>
   );

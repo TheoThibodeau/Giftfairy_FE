@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
 import NavBar from "./navbar";
-import UpArrows from "./upArrows.jsx";
-import DownArrows from "./downArrows.jsx";
 import Arrows from './arrows.jsx';
 import UserAuthentication from "./userAuthentication.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -112,13 +110,11 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
                       <h4>Recipient: {item.giftee_name}</h4>
                       {selectedDate == index ? 
                       (
-                        // <Arrows onClickHandler={handleDateClick} index={index} direction={'up'}/>
-                        <UpArrows onClickHandler={handleDateClick} index={index} />
+                        <Arrows onClickHandler={handleDateClick} index={index} direction={'up'}/>
                       ) 
                         : 
                       (
-                        // <Arrows onClickHandler={handleDateClick} index={index} direction={'down'}/>
-                        <DownArrows onClickHandler={handleDateClick} index={index} />
+                        <Arrows onClickHandler={handleDateClick} index={index} direction={'down'}/>
                       )
                       }
                     </div>
@@ -132,13 +128,11 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
                           <h4>Selections:</h4>
                           {selectedItem == index ? 
                             (
-                              // <Arrows onClickHandler={handleSelectionsClick} index={index} direction={'up'}/>
-                              <UpArrows onClickHandler={handleSelectionsClick} index={index} />
+                              <Arrows onClickHandler={handleSelectionsClick} index={index} direction={'up'}/>
                             ) 
                               : 
                             (
-                               // <Arrows onClickHandler={handleSelectionsClick} index={index} direction={'down'}/>
-                              <DownArrows onClickHandler={handleSelectionsClick} index={index} />
+                               <Arrows onClickHandler={handleSelectionsClick} index={index} direction={'down'}/>
                             )
                           }
                         </div>
