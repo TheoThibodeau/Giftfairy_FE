@@ -7,7 +7,7 @@ https://github.com/kekedezha/GiftFairy-FE/assets/105559393/5708a738-6fe9-4fc5-90
 
 
 ## 🤓 Motivation
-Funny enough, [Christian Dezha](https://github.com/kekedezha) and I created this project to make up for my serious lack of gift giving skills. 
+Funny enough, [Theodore Thibodeau](https://github.com/theothibodeau) and I created this project to make up for my serious lack of gift giving skills. 
 
 Both transitioning over to software development, we thought it would be a great idea to have AI help us out with gift ideas as we expand and grow our knowledge in software engineering. This project helped us explore and learn both the Front-End and Back-End side of software/app development and hopefully helps others when it comes to gift giving! 
 
