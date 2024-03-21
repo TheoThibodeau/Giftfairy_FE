@@ -1,7 +1,7 @@
 # GIFTFaiRY
 GIFTFaiRY🧚🏻 is your personal shopping assistant powered by artificial intelligence (OpenAI/ChatGPT 3.5 API). By asking you a series of tailored questions about the recipient, it harnesses the capabilities of AI to provided you with a curated list of ideal gift options! 
 
-Shop Now: [GIFTFaiRY](https://giftfairy.netlify.app/)
+Shop Now: [GIFTFaiRY](https://aigiftfairy.com/)
 
 https://github.com/kekedezha/GiftFairy-FE/assets/105559393/5708a738-6fe9-4fc5-90b4-41e775e10af5
 
