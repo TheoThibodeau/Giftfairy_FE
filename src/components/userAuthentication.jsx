@@ -26,7 +26,9 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   const [userID, setUserID] = useState(null);
   const [userEmail, setUserEmail] = useState("");
   const [nameInput, setNameInput] = useState("");
-  const [userIdGoogle, setUserIdGoogle] = useState("");
+  const [userIdGoogle, setUserIdGoogle] = useState(""); //Possible temp state variable, using for testing
+  const [credentialTest, setCredentialTest] = useState(""); // temp state variable, using for testing
+  const [resultTest, setResultTest] = useState(""); // temp state variable, using for testing
 
   const auth = getAuth();
 
@@ -130,22 +132,31 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
     const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
             .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                console.log(result)
-                console.log(credential);
-                const token = credential.accessToken;
                 const user = result.user; // The signed-in user info.
-                setUserIdGoogle(result.user);
-                // IdP data available using getAdditionalUserInfo(result)
-
-                // WHAT NEEDS TO HAPPEN:
-                // RESULT IS THE PROMISE WE GET BACK FROM 3RD PARTY PROVIDER, THE RESULT WILL HOLD USER DETAILS
-                // 1. SEND A GET REQUEST BACK TO RENDER/POSTGRESQL TO CHECK TO SEE IF THERE IS A USER WITH THAT EMAIL ALREADY
-                // 2. AWAIT RESPONSE, IF USER FOUND THEN USER ALREADY HAS AN ASSOCIATED ACCOUNT AND USER/APP CAN PROCEED WITHOUT ANY FURTHER STEPS
-                // 3. IF USER IS NOT FOUND, THEN CALL FUNCTION HANDLEUSERPOST. WILL NEED EMAIL, UID, AND FIRSTNAME IF ABLE TO RETRIEVE 
-
-
+                axios
+                  .get(
+                    `https://giftfairy-be-server.onrender.com/api/user/response/${user.email}/`
+                  )
+                  .then((response) => {
+                    const items = response.data;
+                    setUserFirstName(items);
+                  })
+                  .catch((err) => {
+                    axios
+                      .post("https://giftfairy-be-server.onrender.com/api/user/generate", {
+                        uid: result.user.uid,
+                        password: " ",
+                        username: result.user.email,  //Get the email from Google Authentication Popup sign in
+                        email: result.user.email,
+                        first_name: result.user.displayName,
+                      })
+                      .then((response) => {
+                        alert("Successfully created a new user account on giftfairy with your gmail!");
+                      })
+                      .catch((error) => {
+                        alert("Oops, there was an error when creating your account with your gmail. (Render db)");
+                      });
+                  });
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
@@ -163,7 +174,6 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         if (user) {
           // User is signed in
           setAuthCurrentUser(user);
-          console.log("User is: " + user);
           handleUserLogin(user); // Call the handler to update user state in parent component
           setUserID(user.uid);
           setUserEmail(user.email);
@@ -176,13 +186,6 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   
       return () => unsubscribe(); // Cleanup function to unsubscribe from the observer
     }, [handleLoginSubmit, handleLogOut, handleRegisterSubmit]);
-
-    console.log("Test for current user via Google Auth: " + userIdGoogle);
-    console.log("Current user email: " + userEmail);
-
-    console.log("Auth Current User is: " + authCurrentUser);
-    // console.log("Test for current user id via Google Auth: " + userID);
-    // console.log("Test for current user email via Google Auth: " + userEmail);
 
   //While firebase/third-party is logging in user, current component is in a loading state (very quick).
   // So display nothing.
