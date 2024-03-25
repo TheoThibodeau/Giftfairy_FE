@@ -141,29 +141,26 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
                     const items = response.data;
                     setUserFirstName(items);
                   })
-                  .catch((err) => {
-                    axios
-                      .post("https://giftfairy-be-server.onrender.com/api/user/generate", {
-                        uid: result.user.uid,
-                        password: " ",
-                        username: result.user.email,  //Get the email from Google Authentication Popup sign in
-                        email: result.user.email,
-                        first_name: result.user.displayName,
-                      })
-                      .then((response) => {
-                        alert("Successfully created a new user account on giftfairy with your gmail!");
-                      })
-                      .catch((error) => {
-                        alert("Oops, there was an error when creating your account with your gmail. (Render db)");
-                      });
-                  });
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 const email = error.customData.email; // The email of the user's account used.
                 const credential = GoogleAuthProvider.credentialFromError(error); // The AuthCredential type that was used.
-
+                  axios
+                    .post("https://giftfairy-be-server.onrender.com/api/user/generate", {
+                      uid: result.user.uid,
+                      password: " ",
+                      username: result.user.email,  //Get the email from Google Authentication Popup sign in
+                      email: result.user.email,
+                      first_name: result.user.displayName,
+                    })
+                    .then((response) => {
+                      alert("Successfully created a new user account on giftfairy with your gmail!");
+                    })
+                    .catch((error) => {
+                      alert("Oops, there was an error when creating your account with your gmail. (Render db)");
+                    });
             });
     }
 
