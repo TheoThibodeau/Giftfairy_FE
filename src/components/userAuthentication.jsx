@@ -139,7 +139,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
                   )
                   .then((response) => {
                     const items = response.data;
-                    setUserFirstName(items);
+                    setNameInput(items);
                   })
             }).catch((error) => {
                 // Handle Errors here.
