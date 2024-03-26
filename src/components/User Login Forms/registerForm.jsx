@@ -1,6 +1,6 @@
 import React from "react";
 
-const RegisterForm = ({ handleRegisterSubmit, nameInput, handleNameInput, emailInput, handleEmailInput, password, handlePasswordInput}) => {
+const RegisterForm = ({ handleRegisterSubmit, nameInput, handleNameInput, emailInput, handleEmailInput, password, handlePasswordInput, handleLoginRegisterReturn}) => {
 
     return (
         <>
@@ -36,6 +36,11 @@ const RegisterForm = ({ handleRegisterSubmit, nameInput, handleNameInput, emailI
                 required
                 ></input>
                 <button type="submit">Submit</button>
+                <button 
+                    type="button"
+                    onClick={handleLoginRegisterReturn}
+                    >Return to Login/Register Selection
+                </button>
             </form>
         </>
     )

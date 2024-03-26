@@ -26,9 +26,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   const [userID, setUserID] = useState(null);
   const [userEmail, setUserEmail] = useState("");
   const [nameInput, setNameInput] = useState("");
-  const [userIdGoogle, setUserIdGoogle] = useState(""); //Possible temp state variable, using for testing
-  const [credentialTest, setCredentialTest] = useState(""); // temp state variable, using for testing
-  const [resultTest, setResultTest] = useState(""); // temp state variable, using for testing
+  const [currentState, setCurrentState] = useState("login-register");
 
   const auth = getAuth();
 
@@ -46,11 +44,19 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
 
   const handleLoginClick = () => {
     setLoginSelected(true);
+    setCurrentState("login-register-form");
+    setRegisterSelected(false);
   };
 
   const handleRegisterClick = () => {
     setRegisterSelected(true);
+    setCurrentState("login-register-form");
+    setLoginSelected(false);
   };
+
+  const handleLoginRegisterReturn = () => {
+    setCurrentState("login-register");
+  }
 
   //Creates a new user in backend database for giftfairy (postgreSQL/Render)
   const handleUserPost = () => {
@@ -192,7 +198,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
 
   return (
     <>
-      {!loginSelected && !registerSelected && !authCurrentUser && (
+      {currentState == "login-register" && !authCurrentUser && (
         <>
           <button type="submit" onClick={handleLoginClick}>Login</button>
           <button type="submit" onClick={handleRegisterClick}>Register</button>
@@ -206,21 +212,23 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         </>
       )}
 
-      {registerSelected && (
+      {registerSelected && currentState == "login-register-form" && (
         <RegisterForm 
           handleRegisterSubmit={handleRegisterSubmit}
           nameInput={nameInput} handleNameInput={handleNameInput}
           emailInput={emailInput} handleEmailInput={handleEmailInput}
           password={password} handlePasswordInput={handlePasswordInput}
+          handleLoginRegisterReturn={handleLoginRegisterReturn}
         />
       )}
 
-      {loginSelected && (
+      {loginSelected && currentState == "login-register-form" && (
         <LoginForm 
           handleLoginSubmit={handleLoginSubmit} 
           emailInput={emailInput} handleEmailInput={handleEmailInput}
           password={password} handlePasswordInput={handlePasswordInput}
           handlePasswordReset={handlePasswordReset}
+          handleLoginRegisterReturn={handleLoginRegisterReturn}
         />
       )}
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const LoginForm = ({ handleLoginSubmit, emailInput, handleEmailInput, password, handlePasswordInput, handlePasswordReset}) => {
+const LoginForm = ({ handleLoginSubmit, emailInput, handleEmailInput, password, handlePasswordInput, handlePasswordReset, handleLoginRegisterReturn }) => {
 
     return (
         <>
@@ -24,6 +24,10 @@ const LoginForm = ({ handleLoginSubmit, emailInput, handleEmailInput, password, 
               className={`inputButton `}
             ></input>
             <button type="submit">Submit</button>
+            <button 
+            type="button"
+            onClick={handleLoginRegisterReturn}
+            >Return to Login/Register Selection</button>
             <a className="forgotPassword" onClick={handlePasswordReset}>
               Forgot Password
             </a>
