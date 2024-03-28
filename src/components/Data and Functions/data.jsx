@@ -28,5 +28,35 @@ const progressValues = {
     nature: "Do they prefer being inside or outside?",
     generate: "",
   };
+
+    // Define the mapping of previous states here
+    const previousStateMap = {
+    gender: "gifteeName",
+    age: "gender",
+    relationship: "age",
+    priceRange: "relationship",
+    occasion: "priceRange",
+    giftType: "occasion",
+    interests: "giftType",
+    activity: "interests",
+    personality: "activity",
+    nature: "personality",
+    generate: "nature",
+    };
+
+    // Define the mapping of next states here
+    const nextStateMap = {
+        gifteeName: "gender",
+        gender: "age",
+        age: "relationship",
+        relationship: "priceRange",
+        priceRange: "occasion",
+        occasion: "giftType",
+        giftType: "interests",
+        interests: "activity",
+        activity: "personality",
+        personality: "nature",
+        nature: "generate",
+        };
   
-  export { progressValues, promptMessages };
+  export { progressValues, promptMessages, previousStateMap, nextStateMap };

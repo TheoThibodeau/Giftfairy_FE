@@ -9,7 +9,7 @@ import TypeWriter from "./typewriter";
 import UserAuthentication from "./userAuthentication";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProductCarousel from "./productCarousel";
-import { progressValues, promptMessages } from "./Data and Functions/data";
+import { progressValues, promptMessages, previousStateMap, nextStateMap } from "./Data and Functions/data";
 
 const Filters = ({ handleUserLogin, authentication }) => {
   const [age, setAge] = useState("");
@@ -180,22 +180,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
     setGenerate(selectedGenerate);
   };
 
-  //Object containing messages for each selection page
-  // const promptMessages = {
-  //   gifteeName:
-  //     "Beefore we get started, I'm curious, what is your giftee's name?",
-  //   gender: "What is their gender?",
-  //   age: "How old are they?",
-  //   relationship: "What is your relationship with them?",
-  //   priceRange: "What is your price range?",
-  //   occasion: "What's the occasion?",
-  //   giftType: "What gifts would they be interested in?",
-  //   interests: "What are their interests?",
-  //   activity: "What is their activity level?",
-  //   personality: "What is their personality type?",
-  //   nature: "Do they prefer being inside or outside?",
-  //   generate: "",
-  // };
 
   const handleStateSet = (key, value) => {
     if (key === "Giftee Name") {
@@ -249,20 +233,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
   };
 
   const handlePreviousElement = () => {
-    // Define the mapping of previous states here
-    const previousStateMap = {
-      gender: "gifteeName",
-      age: "gender",
-      relationship: "age",
-      priceRange: "relationship",
-      occasion: "priceRange",
-      giftType: "occasion",
-      interests: "giftType",
-      activity: "interests",
-      personality: "activity",
-      nature: "personality",
-      generate: "nature",
-    };
 
     if (activeElement !== "gifteeName" && previousStateMap[activeElement]) {
       const previousElement = previousStateMap[activeElement];
@@ -275,20 +245,20 @@ const Filters = ({ handleUserLogin, authentication }) => {
   };
 
   const handleNextElement = () => {
-    // Define the mapping of next states here
-    const nextStateMap = {
-      gifteeName: "gender",
-      gender: "age",
-      age: "relationship",
-      relationship: "priceRange",
-      priceRange: "occasion",
-      occasion: "giftType",
-      giftType: "interests",
-      interests: "activity",
-      activity: "personality",
-      personality: "nature",
-      nature: "generate",
-    };
+    // // Define the mapping of next states here
+    // const nextStateMap = {
+    //   gifteeName: "gender",
+    //   gender: "age",
+    //   age: "relationship",
+    //   relationship: "priceRange",
+    //   priceRange: "occasion",
+    //   occasion: "giftType",
+    //   giftType: "interests",
+    //   interests: "activity",
+    //   activity: "personality",
+    //   personality: "nature",
+    //   nature: "generate",
+    // };
 
     if (activeElement !== "generate" && nextStateMap[activeElement]) {
       const nextElement = nextStateMap[activeElement];
