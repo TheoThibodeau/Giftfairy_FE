@@ -11,6 +11,7 @@ import ProductCarousel from "./productCarousel";
 import { progressValues, promptMessages, previousStateMap, nextStateMap } from "./Data and Functions/data";
 import OrangeSwoop from "./Headers and Footers/orangeSwoop";
 import Footer from "./Headers and Footers/footer";
+import PromptDiv from "./Selections Components/promptDiv";
 
 const Filters = ({ handleUserLogin, authentication }) => {
   const [age, setAge] = useState("");
@@ -273,40 +274,13 @@ const Filters = ({ handleUserLogin, authentication }) => {
 
       <br />
 
-      {/* While going through selections and before making it to the generate page, show this 
-      version of the "prompt-div" div */}
-      {activeElement !== "generate" && (
-        <div className="prompt-div">
-          {/* Christian Dezha - 12/12/2023 */}
-          <TypeWriter text={promptMessages[activeElement]} />
-          {activeElement !== "generate" && activeElement !== "gifteeName" ? (
-            activeElement !== "giftType" && activeElement !== "interests" ? (
-              <p>(Select One Option)</p>
-            ) : (
-              <p>(Select Multiple Options)</p>
-            )
-          ) : (
-            <p>(Optional)</p>
-          )}
-        </div>
-      )}
-
-      {activeElement == "generate" && authCurrentUser && !isGenerated && (
-        <div className="prompt-div">
-          {!isLoading && (
-            <p className="openaiDescrip">
-              {gifteeName === "No name selected"
-                ? `Press 'Generate' to see 10 gift ideas that I think your giftee would love!`
-                : `Press 'Generate' to see 10 gift ideas that I think ${gifteeName} would love!`}
-            </p>
-          )}
-          {isLoading ? (
-            <RingLoader color="black" />
-          ) : (
-            <TypeWriter text={promptMessages[activeElement]} />
-          )}
-        </div>
-      )}
+      <PromptDiv 
+        activeElement={activeElement}
+        isLoading={isLoading}
+        authCurrentUser={authCurrentUser}
+        isGenerated={isGenerated}
+        gifteeName={gifteeName}
+      />
 
       <div className="paramCompContainer">
         <ParameterComponent
@@ -363,75 +337,15 @@ const Filters = ({ handleUserLogin, authentication }) => {
             />
           </>
         )}
-{/* 
-      <div className="footer">
-        {!isGenerated && (
-          <>
-            <div className="backButton-div">
-              {activeElement !== "gifteeName" && (
-                <button
-                  onClick={handlePreviousElement}
-                  disabled={isLoading}
-                  className={`backButton ${
-                    isLoading ? "opacity1" : "opacity2"
-                  }`}
-                >
-                  Previous
-                </button>
-              )}
-            </div>
 
-            <div className="nextButton-div">
-              {(activeElement == "age" ||
-                activeElement == "gender" ||
-                activeElement == "activity" ||
-                activeElement == "personality" ||
-                activeElement == "nature" ||
-                activeElement == "priceRange" ||
-                activeElement == "relationship") && (
-                <button
-                  disabled={!selectionMade}
-                  onClick={handleNextElement}
-                  className={`${selectionMade ? "opacity2" : "opacity1"}`}
-                >
-                  Next
-                </button>
-              )}
-
-              {(activeElement == "giftType" ||
-                activeElement == "interests" ||
-                activeElement == "occasion") && (
-                <button
-                  disabled={!hasSelections || !selectionMade}
-                  onClick={handleNextElement}
-                  className={`${
-                    hasSelections && selectionMade ? "opacity2" : "opacity1"
-                  }`}
-                >
-                  Next
-                </button>
-              )}
-
-              {activeElement == "gifteeName" && (
-                <button
-                  onClick={handleNextElement}
-                  className={`${selectionMade}`}
-                >
-                  Next
-                </button>
-              )}
-            </div>
-          </>
-        )}
-      </div> */}
       <Footer 
-      activeElement={activeElement} 
-      handleNextElement={handleNextElement}
-      handlePreviousElement={handlePreviousElement}
-      isLoading={isLoading}
-      selectionMade={selectionMade}
-      hasSelections={hasSelections}
-      isGenerated={isGenerated}
+        activeElement={activeElement} 
+        handleNextElement={handleNextElement}
+        handlePreviousElement={handlePreviousElement}
+        isLoading={isLoading}
+        selectionMade={selectionMade}
+        hasSelections={hasSelections}
+        isGenerated={isGenerated}
       />
     </>
   );
