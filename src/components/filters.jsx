@@ -3,7 +3,6 @@ import axios from "axios";
 import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
 import NavBar from "./navbar";
-import ProgressBar from "react-bootstrap/ProgressBar";
 import { RingLoader } from "react-spinners";
 import TypeWriter from "./typewriter";
 import UserAuthentication from "./userAuthentication";
@@ -11,6 +10,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProductCarousel from "./productCarousel";
 import { progressValues, promptMessages, previousStateMap, nextStateMap } from "./Data and Functions/data";
 import OrangeSwoop from "./Headers and Footers/orangeSwoop";
+import Footer from "./Headers and Footers/footer";
 
 const Filters = ({ handleUserLogin, authentication }) => {
   const [age, setAge] = useState("");
@@ -363,7 +363,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
             />
           </>
         )}
-
+{/* 
       <div className="footer">
         {!isGenerated && (
           <>
@@ -381,7 +381,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
               )}
             </div>
 
-            {/* Next Button Logic for Single Selections */}
             <div className="nextButton-div">
               {(activeElement == "age" ||
                 activeElement == "gender" ||
@@ -399,7 +398,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
                 </button>
               )}
 
-              {/* Next Button Logic for Multi Selections */}
               {(activeElement == "giftType" ||
                 activeElement == "interests" ||
                 activeElement == "occasion") && (
@@ -414,7 +412,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
                 </button>
               )}
 
-              {/* Next button logic for 'Optional' gifteeName */}
               {activeElement == "gifteeName" && (
                 <button
                   onClick={handleNextElement}
@@ -426,24 +423,16 @@ const Filters = ({ handleUserLogin, authentication }) => {
             </div>
           </>
         )}
-      </div>
-      <ProgressBar
-        now={progressValues[activeElement]}
-        label={``}
-        style={{
-          backgroundColor: "white",
-          width: "100%",
-          opacity: ".75",
-          height: "8px",
-        }}
-      >
-        <ProgressBar
-          variant="success"
-          now={progressValues[activeElement]}
-          label={``}
-          style={{ background: "#ffa514", height: "8px" }}
-        />
-      </ProgressBar>
+      </div> */}
+      <Footer 
+      activeElement={activeElement} 
+      handleNextElement={handleNextElement}
+      handlePreviousElement={handlePreviousElement}
+      isLoading={isLoading}
+      selectionMade={selectionMade}
+      hasSelections={hasSelections}
+      isGenerated={isGenerated}
+      />
     </>
   );
 };
