@@ -109,27 +109,22 @@ const Filters = ({ handleUserLogin, authentication }) => {
 
   const handleAgeChange = (selectedAge) => {
     setAge(selectedAge);
-    console.log(selectedAge);
   };
 
   const handleGenderChange = (selectedGender) => {
     setGender(selectedGender);
-    console.log(selectedGender);
   };
 
   const handleRelationshipChange = (selectedRelationship) => {
     setRelationship(selectedRelationship);
-    console.log(selectedRelationship);
   };
 
   const handlePriceRangeChange = (selectedPriceRange) => {
     setPriceRange(selectedPriceRange);
-    console.log(selectedPriceRange);
   };
 
   const handleOccasionChange = (selectedOccasion) => {
     setOccasion(selectedOccasion);
-    console.log(selectedOccasion);
   };
 
   const handleGiftTypeChange = (selectedGiftType) => {
@@ -141,7 +136,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
     } else {
       setGiftType([...giftType, selectedGiftType]);
     }
-    console.log(giftType);
   };
 
   const handleInterestsChange = (selectedInterests) => {
@@ -153,27 +147,22 @@ const Filters = ({ handleUserLogin, authentication }) => {
     } else {
       setInterests([...interests, selectedInterests]);
     }
-    console.log(interests);
   };
 
   const handleActivityChange = (selectedActivity) => {
     setActivity(selectedActivity);
-    console.log(selectedActivity);
   };
 
   const handlePersonalityChange = (selectedPersonality) => {
     setPersonality(selectedPersonality);
-    console.log(selectedPersonality);
   };
 
   const handleNatureChange = (selectedNature) => {
     setNature(selectedNature);
-    console.log(selectedNature);
   };
 
   const handleGifteeName = (selectedGifteeName) => {
     setGifteeName(selectedGifteeName);
-    console.log(selectedGifteeName);
   };
 
   const handleGenerate = (selectedGenerate) => {
@@ -233,7 +222,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
   };
 
   const handlePreviousElement = () => {
-
     if (activeElement !== "gifteeName" && previousStateMap[activeElement]) {
       const previousElement = previousStateMap[activeElement];
       setActiveElement(previousElement);
@@ -241,25 +229,9 @@ const Filters = ({ handleUserLogin, authentication }) => {
         setSelectionMade(true);
       }
     }
-    console.log(selectionMade);
   };
 
   const handleNextElement = () => {
-    // // Define the mapping of next states here
-    // const nextStateMap = {
-    //   gifteeName: "gender",
-    //   gender: "age",
-    //   age: "relationship",
-    //   relationship: "priceRange",
-    //   priceRange: "occasion",
-    //   occasion: "giftType",
-    //   giftType: "interests",
-    //   interests: "activity",
-    //   activity: "personality",
-    //   personality: "nature",
-    //   nature: "generate",
-    // };
-
     if (activeElement !== "generate" && nextStateMap[activeElement]) {
       const nextElement = nextStateMap[activeElement];
       setActiveElement(nextElement);
@@ -269,21 +241,16 @@ const Filters = ({ handleUserLogin, authentication }) => {
       setPromptMess(newPrompt);
       setSelectionMade(false);
     }
-    console.log(selectionMade);
   };
 
   //Filters.jsx - User Authentication Observer
   //The observer tracks the user authentication token across the different components
-
-  console.log("Auth Current User is: " + authCurrentUser);
-
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
         setAuthCurrentUser(user);
-        console.log("User is: " + user);
         setUserEmail(user.email);
         handleUserLogin(user); // Call the handler to update user state in parent component
       } else {
@@ -294,8 +261,6 @@ const Filters = ({ handleUserLogin, authentication }) => {
 
     return () => unsubscribe(); // Cleanup function to unsubscribe from the observer
   }, []);
-
-  console.log(authCurrentUser);
 
   return (
     <>
