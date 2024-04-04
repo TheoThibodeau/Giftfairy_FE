@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GetProfileResponse from "./components/userProfile";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-require('dotenv').config();
+import 'dotenv/config';
 
 function App() {
   const [user, setUser] = useState("");
