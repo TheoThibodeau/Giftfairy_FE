@@ -77,7 +77,13 @@
     "Travel",
     "Cooking",
     "Music",
-    "Reading"
+    "Reading",
+    "Home",
+    "Pets",
+    "Automotive",
+    "Hiking/Camping",
+    "Working Out",
+    "Gaming"
   ]},
   "activity":{
     "title": "Activity Level",

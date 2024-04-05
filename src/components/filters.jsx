@@ -3,7 +3,6 @@ import axios from "axios";
 import ParameterComponent from "./parameterComponent";
 import data from "/filters.json";
 import NavBar from "./navbar";
-import { RingLoader } from "react-spinners";
 import TypeWriter from "./typewriter";
 import UserAuthentication from "./userAuthentication";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -38,6 +37,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const [hasSelections, setHasSelections] = useState(false);
   const [authCurrentUser, setAuthCurrentUser] = useState(null);
   const [userEmail, setUserEmail] = useState("");
+  const [currentInterests, setCurrentInterests] = useState([]);
 
   const handlePost = () => {
     setIsLoading(true);
@@ -236,6 +236,9 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const handleNextElement = () => {
     if (activeElement !== "generate" && nextStateMap[activeElement]) {
       const nextElement = nextStateMap[activeElement];
+      if (nextElement == "interests"){
+        getRandomInterests()
+      }
       setActiveElement(nextElement);
       const newProgress = progressValues[nextElement];
       setProgress(newProgress);
@@ -243,6 +246,17 @@ const Filters = ({ handleUserLogin, authentication }) => {
       setPromptMess(newPrompt);
       setSelectionMade(false);
     }
+  };
+
+  //We want to get 6 random elements from the interests array in the json file
+  const getRandomInterests = () => {
+    let tempArray = new Array(6)
+    for (let i=0; i<6; i++) {
+      const newElement = data.interests.data[Math.floor(Math.random()*12)];//Gets random element from the interests array
+      console.log(newElement)
+      tempArray[i] = newElement
+    }
+    setCurrentInterests(tempArray)
   };
 
   //Filters.jsx - User Authentication Observer
@@ -288,6 +302,8 @@ const Filters = ({ handleUserLogin, authentication }) => {
           data={data[activeElement]}
           handler={handleStateSet}
           hasSelectionsHandler={setHasSelections}
+          getRandomInterests={getRandomInterests}
+          currentInterests={currentInterests}
         />
       </div>
 

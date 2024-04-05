@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ParameterComponent = ({ data, handler, hasSelectionsHandler }) => {
+const ParameterComponent = ({ data, handler, hasSelectionsHandler, getRandomInterests, currentInterests }) => {
   const title = data.title;
   const entries = data.data;
   const [selectedEntry, setSelectedEntry] = useState(null);
@@ -19,6 +19,10 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler }) => {
     setSelectedEntry(e.target.value);
     handler(title, e.target.value);
   };
+
+  const handleInterestsRefresh = () => {
+    getRandomInterests()
+  }
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
@@ -112,7 +116,7 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler }) => {
             />
           )}
           {/*  Multi Select Button */}
-          {(title == "Gift Type" || title == "Interests") && (
+          {(title == "Gift Type") && (
             <>
               <input
                 type="checkbox"
@@ -126,8 +130,31 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler }) => {
               </label>
             </>
           )}
+
         </div>
       ))}
+
+      {/*  Multi Select Button */}
+      {currentInterests.map((interestEntries) => (
+        (title === "Interests") && (
+          <div key={interestEntries}>
+            <input
+              type="checkbox"
+              name={interestEntries}
+              value={interestEntries}
+              id={interestEntries}
+              onClick={() => handleClick(interestEntries)}
+            />
+            <label htmlFor={interestEntries} className="checkbox-button">
+              {interestEntries}
+            </label>
+          </div>
+        )
+      ))}
+        
+          {(title == "Interests") && (
+            <a className="forgotPassword" onClick={handleInterestsRefresh}>Refresh for new ideas!</a>
+          )}
     </form>
   );
 };
