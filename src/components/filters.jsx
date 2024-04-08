@@ -252,12 +252,16 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const getRandomInterests = () => {
     let tempArray = new Array(6)
     for (let i=0; i<6; i++) {
-      const newElement = data.interests.data[Math.floor(Math.random()*12)];//Gets random element from the interests array
-      console.log(newElement)
+      let newElement = data.interests.data[Math.floor(Math.random()*12)]; //Gets random element from the interests array
+      while (tempArray.includes(newElement)) { //While Loop checks newElement is not in the currentInterests array and not in tempArray
+        newElement = data.interests.data[Math.floor(Math.random()*12)];
+      }
       tempArray[i] = newElement
+      console.log(tempArray)
     }
     setCurrentInterests(tempArray)
   };
+  console.log(currentInterests);
 
   //Filters.jsx - User Authentication Observer
   //The observer tracks the user authentication token across the different components
