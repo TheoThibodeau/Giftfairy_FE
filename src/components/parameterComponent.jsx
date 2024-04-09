@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ParameterComponent = ({ data, handler, hasSelectionsHandler, getRandomInterests, currentInterests }) => {
+const ParameterComponent = ({ data, handler, hasSelectionsHandler, getRandomInterests, currentInterests, currentGiftType, getRandomGiftTypes }) => {
   const title = data.title;
   const entries = data.data;
   const [selectedEntry, setSelectedEntry] = useState(null);
@@ -22,6 +22,10 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler, getRandomInte
 
   const handleInterestsRefresh = () => {
     getRandomInterests()
+  }
+
+  const handleGiftTypeRefresh = () => {
+    getRandomGiftTypes()
   }
 
   return (
@@ -115,24 +119,31 @@ const ParameterComponent = ({ data, handler, hasSelectionsHandler, getRandomInte
               onClick={() => handleClick(entry)}
             />
           )}
-          {/*  Multi Select Button */}
-          {(title == "Gift Type") && (
-            <>
-              <input
-                type="checkbox"
-                name={entry}
-                value={entry}
-                id={entry}
-                onClick={() => handleClick(entry)}
-              />
-              <label htmlFor={entry} className="checkbox-button">
-                {entry}
-              </label>
-            </>
-          )}
 
         </div>
       ))}
+
+      {/*  Multi Select Button */}
+      {currentGiftType.map((giftTypeEntries) => (
+      (title == "Gift Type") && (
+        <>
+          <input
+            type="checkbox"
+            name={giftTypeEntries}
+            value={giftTypeEntries}
+            id={giftTypeEntries}
+            onClick={() => handleClick(giftTypeEntries)}
+          />
+          <label htmlFor={giftTypeEntries} className="checkbox-button">
+            {giftTypeEntries}
+          </label>
+        </>
+        ))
+      )}
+
+          {(title == "Gift Type") && (
+            <a className="forgotPassword" onClick={handleGiftTypeRefresh}>Refresh for new ideas!</a>
+          )}
 
       {/*  Multi Select Button */}
       {currentInterests.map((interestEntries) => (

@@ -355,7 +355,7 @@ polygon {
 
 a:not([href]):not([tabindex]){
   color: blue;
-  font-size: 10px;
+  font-size: 13px;
   text-decoration: underline;
 }
 

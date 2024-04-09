@@ -38,6 +38,7 @@ const Filters = ({ handleUserLogin, authentication }) => {
   const [authCurrentUser, setAuthCurrentUser] = useState(null);
   const [userEmail, setUserEmail] = useState("");
   const [currentInterests, setCurrentInterests] = useState([]);
+  const [currentGiftType, setCurrentGiftType] = useState([]);
 
   const handlePost = () => {
     setIsLoading(true);
@@ -238,6 +239,9 @@ const Filters = ({ handleUserLogin, authentication }) => {
       const nextElement = nextStateMap[activeElement];
       if (nextElement == "interests"){
         getRandomInterests()
+      }      
+      if (nextElement == "giftType"){
+        getRandomGiftTypes()
       }
       setActiveElement(nextElement);
       const newProgress = progressValues[nextElement];
@@ -257,11 +261,22 @@ const Filters = ({ handleUserLogin, authentication }) => {
         newElement = data.interests.data[Math.floor(Math.random()*12)];
       }
       tempArray[i] = newElement
-      console.log(tempArray)
     }
     setCurrentInterests(tempArray)
   };
-  console.log(currentInterests);
+
+    //We want to get 6 random elements from the interests array in the json file
+    const getRandomGiftTypes = () => {
+      let tempArray = new Array(6)
+      for (let i=0; i<6; i++) {
+        let newElement = data.giftType.data[Math.floor(Math.random()*12)]; //Gets random element from the interests array
+        while (tempArray.includes(newElement)) { //While Loop checks newElement is not in the currentInterests array and not in tempArray
+          newElement = data.giftType.data[Math.floor(Math.random()*12)];
+        }
+        tempArray[i] = newElement
+      }
+      setCurrentGiftType(tempArray)
+    };
 
   //Filters.jsx - User Authentication Observer
   //The observer tracks the user authentication token across the different components
@@ -308,6 +323,8 @@ const Filters = ({ handleUserLogin, authentication }) => {
           hasSelectionsHandler={setHasSelections}
           getRandomInterests={getRandomInterests}
           currentInterests={currentInterests}
+          getRandomGiftTypes={getRandomGiftTypes}
+          currentGiftType={currentGiftType}
         />
       </div>
 

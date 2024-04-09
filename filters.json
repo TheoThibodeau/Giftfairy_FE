@@ -61,12 +61,18 @@
     "title": "Gift Type",
     "data":
     [
-      "Jewelry & Accessories",
+      "Jewelry",
+      "Accessories",
       "Home & Living",
-      "Wedding or Party",
-      "Toys, Electronics, or Entertainment",
+      "Wedding",
+      "Party",
+      "Toys",
+      "Electronics",
+      "Entertainment",
       "Art & Collectibles",
-      "Craft Supplies or Tools"
+      "Craft Supplies",
+      "Tools",
+      "Vacation"
   ]},
   "interests":{
     "title": "Interests",

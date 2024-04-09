@@ -139,6 +139,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         signInWithPopup(auth, provider)
             .then((result) => {
                 const user = result.user; // The signed-in user info.
+                console.log("Pop!")
                 axios
                   .get(
                     `https://giftfairy-be-server.onrender.com/api/user/response/${user.email}/`
@@ -150,7 +151,9 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
+                  console.log(errorCode)
                 const errorMessage = error.message;
+                  console.log(errorMessage)
                 const email = error.customData.email; // The email of the user's account used.
                 const credential = GoogleAuthProvider.credentialFromError(error); // The AuthCredential type that was used.
                   axios
