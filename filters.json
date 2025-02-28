@@ -5,8 +5,7 @@
   },
   "age": {
     "title": "Age",
-    "data":
-    [
+    "data": [
       "Baby",
       "Child",
       "Teenager",
@@ -14,30 +13,19 @@
       "Adult",
       "Older Adult",
       "Elderly"
-    ]},
+    ]
+  },
   "gender": {
     "title": "Gender",
-    "data":
-    [
-      "Man",
-      "Woman",
-      "Non-Binary"
-  ]},
+    "data": ["Man", "Woman", "Non-Binary"]
+  },
   "relationship": {
     "title": "Relationship",
-    "data":
-    [
-      "Friend",
-      "Spouse",
-      "Child",
-      "Relative",
-      "Parent", 
-      "Grandparent"
-  ]},
+    "data": ["Friend", "Spouse", "Child", "Relative", "Parent", "Grandparent"]
+  },
   "priceRange": {
     "title": "Price Range",
-    "data":
-    [
+    "data": [
       "$10-$20",
       "$21-$50",
       "$51-$100",
@@ -45,22 +33,22 @@
       "$201-$500",
       "$501-$1,000",
       "$1,000+"
-  ]},
+    ]
+  },
   "occasion": {
-      "title": "Occasion",
-      "data":
-      [
-        "Birthday",
-        "Christmas",
-        "Anniversary",
-        "Wedding",
-        "Mother's Day",
-        "Father's Day"
-    ]},
+    "title": "Occasion",
+    "data": [
+      "Birthday",
+      "Christmas",
+      "Anniversary",
+      "Wedding",
+      "Mother's Day",
+      "Father's Day"
+    ]
+  },
   "giftType": {
     "title": "Gift Type",
-    "data":
-    [
+    "data": [
       "Jewelry",
       "Accessories",
       "Home & Living",
@@ -73,27 +61,28 @@
       "Craft Supplies",
       "Tools",
       "Vacation"
-  ]},
-  "interests":{
+    ]
+  },
+  "interests": {
     "title": "Interests",
-    "data":
-    [
-    "Sports", 
-    "Fashion",
-    "Travel",
-    "Cooking",
-    "Music",
-    "Reading",
-    "Home",
-    "Pets",
-    "Automotive",
-    "Hiking/Camping",
-    "Working Out",
-    "Gaming"
-  ]},
-  "activity":{
+    "data": [
+      "Sports",
+      "Fashion",
+      "Travel",
+      "Cooking",
+      "Music",
+      "Reading",
+      "Home",
+      "Pets",
+      "Automotive",
+      "Hiking/Camping",
+      "Working Out",
+      "Gaming"
+    ]
+  },
+  "activity": {
     "title": "Activity Level",
-    "data":[
+    "data": [
       "Couch potato",
       "Not very active",
       "Somewhat active",
@@ -103,24 +92,16 @@
       "Athlete"
     ]
   },
-  "personality":{
-  "title": "Personality",
-  "data":[
-    "Introvert",
-    "Extrovert"
-  ]
+  "personality": {
+    "title": "Personality",
+    "data": ["Introvert", "Extrovert", "A Mixture Of Introverted & Extroverted"]
   },
-  "nature":{
+  "nature": {
     "title": "Nature",
-    "data":[
-      "Inside",
-      "Outside"
-    ]
+    "data": ["Inside", "Outside", "Both Inside & Outside"]
   },
-  "generate":{
+  "generate": {
     "title": "Generate Button",
-    "data":[
-      
-    ]
+    "data": []
   }
 }
