@@ -12,7 +12,7 @@ import {
   sendEmailVerification,
   sendPasswordResetEmail,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
 } from "firebase/auth";
 import GoogleIcon from "../images/googleIcon.png";
 
@@ -56,7 +56,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
 
   const handleLoginRegisterReturn = () => {
     setCurrentState("login-register");
-  }
+  };
 
   //Creates a new user in backend database for giftfairy (postgreSQL/Render)
   const handleUserPost = () => {
@@ -69,7 +69,8 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         first_name: nameInput,
       })
       .then((response) => {
-        console.log("Your post was successful!");
+        console.log("Your account creation was successful!");
+        alter("Your account creation was successful!");
       })
       .catch((error) => {
         alert("Oops, there was an error when creating your account. (Render)");
@@ -79,14 +80,17 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   // Handle user login through Firebase
   const handleLoginSubmit = (e) => {
     e.preventDefault(); //Prevent browser reload on from submit
-    signInWithEmailAndPassword(authentication, emailInput, password) //Firebase function to sign-in user 
+    signInWithEmailAndPassword(authentication, emailInput, password) //Firebase function to sign-in user
       .then((userCredential) => {
         handleUserLogin(userCredential.user); //Pass user up to parent component
         alert("Successful User Login");
       })
       .catch((error) => {
         const errorMessage = error.message;
-        alert("Incorrect password or email address, please try again. \n" + errorMessage);
+        alert(
+          "Incorrect password or email address, please try again. \n" +
+            errorMessage
+        );
       });
   };
 
@@ -128,7 +132,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   // Handle user password reset!
   const handlePasswordReset = () => {
     sendPasswordResetEmail(auth, emailInput).then(() => {
-      alert("Password reset email sent, please check your email!");// Password reset email sent!
+      alert("Password reset email sent, please check your email!"); // Password reset email sent!
     });
     //MAY WANT TO INCLUDE A ERROR CATCH HERE
   };
@@ -136,62 +140,67 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   // Google Third-Party Authentication Function/handler
   const handleGoogleAuth = () => {
     const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                const user = result.user; // The signed-in user info.
-                console.log("Pop!")
-                axios
-                  .get(
-                    `https://giftfairy-be-server.onrender.com/api/user/response/${user.email}/`
-                  )
-                  .then((response) => {
-                    const items = response.data;
-                    setNameInput(items);
-                  })
-            }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                  console.log(errorCode)
-                const errorMessage = error.message;
-                  console.log(errorMessage)
-                const email = error.customData.email; // The email of the user's account used.
-                const credential = GoogleAuthProvider.credentialFromError(error); // The AuthCredential type that was used.
-                  axios
-                    .post("https://giftfairy-be-server.onrender.com/api/user/generate", {
-                      uid: result.user.uid,
-                      password: " ",
-                      username: result.user.email,  //Get the email from Google Authentication Popup sign in
-                      email: result.user.email,
-                      first_name: result.user.displayName,
-                    })
-                    .then((response) => {
-                      alert("Successfully created a new user account on giftfairy with your gmail!");
-                    })
-                    .catch((error) => {
-                      alert("Oops, there was an error when creating your account with your gmail. (Render db)");
-                    });
-            });
-    }
-
-    // User Authentication Observer
-    // The observer tracks the user authentication token across the different components
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
-          // User is signed in
-          setAuthCurrentUser(user);
-          handleUserLogin(user); // Call the handler to update user state in parent component
-          setUserID(user.uid);
-          setUserEmail(user.email);
-        } else {
-          // No user is signed in
-          setAuthCurrentUser(null);
-        }
-        setLoading(false);
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user; // The signed-in user info.
+        console.log("Pop!");
+        axios
+          .get(
+            `https://giftfairy-be-server.onrender.com/api/user/response/${user.email}/`
+          )
+          .then((response) => {
+            const items = response.data;
+            setNameInput(items);
+          });
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        console.log(errorCode);
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        const email = error.customData.email; // The email of the user's account used.
+        const credential = GoogleAuthProvider.credentialFromError(error); // The AuthCredential type that was used.
+        axios
+          .post("https://giftfairy-be-server.onrender.com/api/user/generate", {
+            uid: result.user.uid,
+            password: " ",
+            username: result.user.email, //Get the email from Google Authentication Popup sign in
+            email: result.user.email,
+            first_name: result.user.displayName,
+          })
+          .then((response) => {
+            alert(
+              "Successfully created a new user account on giftfairy with your gmail!"
+            );
+          })
+          .catch((error) => {
+            alert(
+              "Oops, there was an error when creating your account with your gmail. (Render db)"
+            );
+          });
       });
-  
-      return () => unsubscribe(); // Cleanup function to unsubscribe from the observer
-    }, [handleLoginSubmit, handleLogOut, handleRegisterSubmit]);
+  };
+
+  // User Authentication Observer
+  // The observer tracks the user authentication token across the different components
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        setAuthCurrentUser(user);
+        handleUserLogin(user); // Call the handler to update user state in parent component
+        setUserID(user.uid);
+        setUserEmail(user.email);
+      } else {
+        // No user is signed in
+        setAuthCurrentUser(null);
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe(); // Cleanup function to unsubscribe from the observer
+  }, [handleLoginSubmit, handleLogOut, handleRegisterSubmit]);
 
   //While firebase/third-party is logging in user, current component is in a loading state (very quick).
   // So display nothing.
@@ -203,40 +212,58 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
     <>
       {currentState == "login-register" && !authCurrentUser && (
         <>
-          <button type="submit" onClick={handleLoginClick}>Login</button>
-          <button type="submit" onClick={handleRegisterClick}>Register</button>
+          <button type="submit" onClick={handleLoginClick}>
+            Login
+          </button>
+          <button type="submit" onClick={handleRegisterClick}>
+            Register
+          </button>
 
-          <h5><hr></hr>or<hr></hr></h5>
+          <h5>
+            <hr></hr>or<hr></hr>
+          </h5>
 
           <button type="submit" onClick={handleGoogleAuth}>
-            <img src={GoogleIcon} width={25} height={25} className="googleIcon"></img>
+            <img
+              src={GoogleIcon}
+              width={25}
+              height={25}
+              className="googleIcon"
+            ></img>
             Continue with Google
           </button>
         </>
       )}
 
       {registerSelected && currentState == "login-register-form" && (
-        <RegisterForm 
+        <RegisterForm
           handleRegisterSubmit={handleRegisterSubmit}
-          nameInput={nameInput} handleNameInput={handleNameInput}
-          emailInput={emailInput} handleEmailInput={handleEmailInput}
-          password={password} handlePasswordInput={handlePasswordInput}
+          nameInput={nameInput}
+          handleNameInput={handleNameInput}
+          emailInput={emailInput}
+          handleEmailInput={handleEmailInput}
+          password={password}
+          handlePasswordInput={handlePasswordInput}
           handleLoginRegisterReturn={handleLoginRegisterReturn}
         />
       )}
 
       {loginSelected && currentState == "login-register-form" && (
-        <LoginForm 
-          handleLoginSubmit={handleLoginSubmit} 
-          emailInput={emailInput} handleEmailInput={handleEmailInput}
-          password={password} handlePasswordInput={handlePasswordInput}
+        <LoginForm
+          handleLoginSubmit={handleLoginSubmit}
+          emailInput={emailInput}
+          handleEmailInput={handleEmailInput}
+          password={password}
+          handlePasswordInput={handlePasswordInput}
           handlePasswordReset={handlePasswordReset}
           handleLoginRegisterReturn={handleLoginRegisterReturn}
         />
       )}
 
       {authCurrentUser && (
-        <button type="submit" onClick={handleLogOut}>Logout</button>
+        <button type="submit" onClick={handleLogOut}>
+          Logout
+        </button>
       )}
     </>
   );
