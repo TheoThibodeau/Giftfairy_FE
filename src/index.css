@@ -246,7 +246,7 @@ button:focus-visible {
 }
 
 .userHistoryByDate {
-  padding: 0 2rem;
+  padding: 6px 2rem;
   border: 1px solid transparent;
   border-color: black;
   border-radius: 0.5rem;
@@ -284,14 +284,12 @@ button:focus-visible {
 }
 
 .userHistoryGeneratedGifts a {
-  color: #9e9eff;
+  color: #d00c0c;
 }
 
 .details {
-  color: #9e9eff;
-  font-style: normal;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
+  color: #f06a34;
+  font-weight: bold;
 }
 
 #more-arrows {
