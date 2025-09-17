@@ -95,7 +95,7 @@ h5 {
   padding-top: 1em;
   padding-left: 0.5em;
   width: 40%;
-  }
+}
 
 .navbar-brand {
   display: flex;
@@ -119,7 +119,7 @@ nav a {
 }
 
 nav a img {
-  padding-top: .5rem;
+  padding-top: 0.5rem;
 }
 
 .navbar img {
@@ -237,6 +237,8 @@ button:focus-visible {
 .userProfileHistory {
   display: inline;
   width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .userHistory {
@@ -251,9 +253,9 @@ button:focus-visible {
   margin-bottom: 0.5rem;
 }
 
-.userHistoryByDate h4{
+.userHistoryByDate h4 {
   margin-bottom: 0;
-  text-align: left;;
+  text-align: left;
 }
 
 .userHistoryByDateHeader {
@@ -282,25 +284,24 @@ button:focus-visible {
 }
 
 .userHistoryGeneratedGifts a {
-  color: #9e9EFF;
+  color: #9e9eff;
 }
 
 .details {
-  color: #9e9EFF;
+  color: #9e9eff;
   font-style: normal;
-  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
 }
 
 #more-arrows {
-	width: 45px;
+  width: 45px;
   height: 35px;
-  
+
   &:hover {
-    
     polygon {
       fill: black;
-      transition: all .2s ease-out;
+      transition: all 0.2s ease-out;
 
       &.arrow-bottom {
         transform: translateY(-18px);
@@ -309,25 +310,21 @@ button:focus-visible {
       &.arrow-top {
         transform: translateY(18px);
       }
-      
     }
-  
   }
-  
 }
 
 polygon {
   fill: black;
-  transition: all .2s ease-out;
-    
-  &.arrow-middle {
-	  opacity: 0.75;
-	}
+  transition: all 0.2s ease-out;
 
-	&.arrow-top {
-	  opacity: 0.5
-	}
-	 
+  &.arrow-middle {
+    opacity: 0.75;
+  }
+
+  &.arrow-top {
+    opacity: 0.5;
+  }
 }
 
 .userProfileContainer {
@@ -343,8 +340,12 @@ polygon {
 }
 
 .userProfilePage {
-  background: rgb(177,223,238);
-  background: radial-gradient(circle, rgba(106,181,205,1) 63%, rgba(13,13,57,1) 100%);
+  background: rgb(177, 223, 238);
+  background: radial-gradient(
+    circle,
+    rgba(106, 181, 205, 1) 63%,
+    rgba(13, 13, 57, 1) 100%
+  );
   width: 100%;
   height: 100%;
 }
@@ -353,7 +354,7 @@ polygon {
   margin-bottom: 10px;
 }
 
-a:not([href]):not([tabindex]){
+a:not([href]):not([tabindex]) {
   color: blue;
   font-size: 13px;
   text-decoration: underline;
@@ -481,13 +482,13 @@ hr {
     width: 100%;
   }
 
-  .paramButtonActive{
+  .paramButtonActive {
     border: 3px solid #ffa514;
     opacity: 25%;
     background-color: #ffffff;
   }
 
-  #main-container{
+  #main-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -511,7 +512,7 @@ hr {
     width: 45%;
     margin: 10px;
   }
-  
+
   .nextButton-div {
     width: 45%;
     margin: 15px 10px;
@@ -521,14 +522,14 @@ hr {
     width: 45%;
     margin: 10px;
     position: fixed;
-    bottom: .5rem;
+    bottom: 0.5rem;
   }
 
-  .opacity1{
+  .opacity1 {
     opacity: 25%;
   }
 
-  .opacity2{
+  .opacity2 {
     opacity: 100%;
   }
 
@@ -559,7 +560,6 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
-    
   }
 
   .footer button {
@@ -592,7 +592,7 @@ hr {
     font-style: normal;
   }
 
-  .landingButton{
+  .landingButton {
     margin-bottom: 10px;
     margin-top: 15px;
     width: 22rem;
@@ -675,7 +675,7 @@ hr {
     background-color: #ffa514;
   }
 
-  .carousel-item p:last-child{
+  .carousel-item p:last-child {
     font-size: x-small;
     padding: 0 35px;
     margin-top: 0px;
@@ -691,7 +691,7 @@ hr {
     position: relative;
     top: 0px;
     color: white;
-    background-color: #28A745;
+    background-color: #28a745;
   }
 
   .popup-content {
@@ -767,7 +767,7 @@ hr {
     position: relative;
     top: 0px;
     color: white;
-    background-color: #28A745;
+    background-color: #28a745;
   }
 
   .carousel-control-next-icon {
@@ -829,12 +829,12 @@ hr {
     width: 100%;
   }
 
-  .paramButtonActive{
+  .paramButtonActive {
     border: 3px solid #ffa514;
     opacity: 100%;
   }
 
-  #main-container{
+  #main-container {
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -851,7 +851,7 @@ hr {
     width: 45%;
     margin: 10px;
   }
-  
+
   .nextButton-div {
     width: 45%;
     margin: 15px 10px;
@@ -861,14 +861,14 @@ hr {
     width: 98%;
     margin: 10px;
     position: fixed;
-    bottom: .5rem;
+    bottom: 0.5rem;
   }
 
-  .opacity1{
+  .opacity1 {
     opacity: 25%;
   }
 
-  .opacity2{
+  .opacity2 {
     opacity: 100%;
   }
 
@@ -922,7 +922,7 @@ hr {
     margin-top: 5px;
   }
 
-  .landingButton{
+  .landingButton {
     margin-bottom: 10px;
     border-radius: 50px;
     width: 80vw;
@@ -966,7 +966,7 @@ hr {
   a.navbar-brand {
     margin: 0;
   }
-  
+
   nav a {
     margin: 0;
   }
@@ -983,19 +983,19 @@ hr {
     left: 23.5% !important;
     text-align: center;
   }
-  
+
   .popup-arrow {
     color: rgb(255, 255, 255);
   }
-  [role='tooltip'].popup-content {
+  [role="tooltip"].popup-content {
     width: 200px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
   }
-  
+
   .popup-overlay {
     background: rgba(0, 0, 0, 0.5);
   }
-  [data-popup='tooltip'].popup-overlay {
+  [data-popup="tooltip"].popup-overlay {
     background: transparent;
   }
 }

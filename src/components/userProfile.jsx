@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
 import NavBar from "./navbar";
-import Arrows from './arrows.jsx';
+import Arrows from "./arrows.jsx";
 import UserAuthentication from "./userAuthentication.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import OrangeSwoop from "./Headers and Footers/orangeSwoop.jsx";
@@ -66,8 +66,7 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
   // User Profile Page UI return
   return (
     <>
-      <OrangeSwoop fillOpacity={".75"}/>
-
+      <OrangeSwoop fillOpacity={".75"} />
 
       {/* Navigation bar that includes home button, app title, and profile button */}
       <div className="navbar-ProgressBar-Container" style={{ height: "81px" }}>
@@ -91,13 +90,14 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
         {authCurrentUser && (
           <>
             {/* If able to retrieve user's first name from observer then display */}
-            {userFirstName.length > 0 ? 
-              <h1>{userFirstName[0].first_name}'s Profile</h1> 
-              : 
-              <h1>Profile</h1>}
+            {userFirstName.length > 0 ? (
+              <h1>{userFirstName[0].first_name}'s Profile</h1>
+            ) : (
+              <h1>Profile</h1>
+            )}
 
             <h2>Selection History</h2>
-            
+
             {/* User History Container */}
             <div className="userProfileHistory">
               {/* Map through API GET response for user's selection/gift idea history */}
@@ -107,33 +107,43 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
                   <div key={index} className="userHistoryByDate">
                     <div key={index} className="userHistoryByDateHeader">
                       <h4>Recipient: {item.giftee_name}</h4>
-                      {selectedDate == index ? 
-                      (
-                        <Arrows onClickHandler={handleDateClick} index={index} direction={'up'}/>
-                      ) 
-                        : 
-                      (
-                        <Arrows onClickHandler={handleDateClick} index={index} direction={'down'}/>
-                      )
-                      }
+                      {selectedDate == index ? (
+                        <Arrows
+                          onClickHandler={handleDateClick}
+                          index={index}
+                          direction={"up"}
+                        />
+                      ) : (
+                        <Arrows
+                          onClickHandler={handleDateClick}
+                          index={index}
+                          direction={"down"}
+                        />
+                      )}
+                    </div>
+                    <div>
+                      <h4>
+                        Date:{" "}
+                        {dayjs(item.created_at).format("MM-DD-YY hh:mm A")}
+                      </h4>
                     </div>
                     {selectedDate == index && (
                       <div className="userHistory">
-                        <h4>
-                          Date:{" "}
-                          {dayjs(item.created_at).format("MM-DD-YY hh:mm A")}
-                        </h4>
                         <div className="userHistorySelections">
                           <h4>Selections:</h4>
-                          {selectedItem == index ? 
-                            (
-                              <Arrows onClickHandler={handleSelectionsClick} index={index} direction={'up'}/>
-                            ) 
-                              : 
-                            (
-                               <Arrows onClickHandler={handleSelectionsClick} index={index} direction={'down'}/>
-                            )
-                          }
+                          {selectedItem == index ? (
+                            <Arrows
+                              onClickHandler={handleSelectionsClick}
+                              index={index}
+                              direction={"up"}
+                            />
+                          ) : (
+                            <Arrows
+                              onClickHandler={handleSelectionsClick}
+                              index={index}
+                              direction={"down"}
+                            />
+                          )}
                         </div>
                         {selectedItem === index && (
                           <div className="details">
@@ -151,9 +161,20 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
                         )}
                         <div className="userHistoryGeneratedGifts">
                           <h4>Generated Gift Ideas:</h4>
-                          {item.item_title_string.split(",").map((gift, index) => (
-                              <a key={index} href={`https://www.amazon.com/s?k=${encodeURIComponent(gift)}&tag=${"giftfairy0c9-20"}`} target="_blank" rel="noreferrer">
-                                <h5 key={index}>{index + 1}. {gift}</h5>
+                          {item.item_title_string
+                            .split(",")
+                            .map((gift, index) => (
+                              <a
+                                key={index}
+                                href={`https://www.amazon.com/s?k=${encodeURIComponent(
+                                  gift
+                                )}&tag=${"giftfairy0c9-20"}`}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                <h5 key={index}>
+                                  {index + 1}. {gift}
+                                </h5>
                               </a>
                             ))}
                         </div>
