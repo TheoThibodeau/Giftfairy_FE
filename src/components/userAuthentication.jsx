@@ -143,13 +143,15 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user; // The signed-in user info.
-        console.log("Pop!");
+        console.log(user);
         axios
           .get(
             `https://giftfairy-be-server.onrender.com/api/user/response/${user.email}/`
           )
           .then((response) => {
+            console.log("Hello. Made it to line 152 of userAuth component.");
             const items = response.data;
+            console.log(items);
             setNameInput(items);
           });
       })
