@@ -26,6 +26,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   const [userID, setUserID] = useState(null);
   const [userEmail, setUserEmail] = useState("");
   const [nameInput, setNameInput] = useState("");
+  const [userFirstName, setUserFirstName] = useState("");
   const [currentState, setCurrentState] = useState("login-register");
 
   const auth = getAuth();
@@ -118,7 +119,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
       });
   };
 
-  //Handle user logout! **MAY WANT TO CLEAR OUT FIELDS FOR THIRDPARTY LOGINS/LOGOUTS
+  //Handle user logout! **MAY WANT TO CLEAR OUT FIELDS FOR THIRD-PARTY LOGINS/LOGOUTS
   const handleLogOut = (e) => {
     signOut(authentication)
       .then(() => {
@@ -143,16 +144,16 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user; // The signed-in user info.
-        console.log(user);
+        setUserID(result.uid);
+        setUserEmail(result.email);
+        setUserFirstName(result.displayName);
         axios
           .get(
             `https://giftfairy-be-server.onrender.com/api/user/response/${user.email}/`
           )
           .then((response) => {
             console.log("Hello. Made it to line 152 of userAuth component.");
-            const items = response.data;
-            console.log(items);
-            setNameInput(items);
+            const items = response.data[0];
           });
       })
       .catch((error) => {
@@ -165,11 +166,11 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         const credential = GoogleAuthProvider.credentialFromError(error); // The AuthCredential type that was used.
         axios
           .post("https://giftfairy-be-server.onrender.com/api/user/generate", {
-            uid: result.user.uid,
+            uid: userID,
             password: " ",
-            username: result.user.email, //Get the email from Google Authentication Popup sign in
-            email: result.user.email,
-            first_name: result.user.displayName,
+            username: userEmail, //Get the email from Google Authentication Popup sign in
+            email: userEmail,
+            first_name: userFirstName,
           })
           .then((response) => {
             alert(
