@@ -154,14 +154,15 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
           .then((response) => {
             console.log("Hello. Made it to line 152 of userAuth component.");
             const items = response.data[0];
+            console.log(response.data[0]);
           });
       })
       .catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
-        console.log(errorCode);
+        console.log("Error code: ", errorCode);
         const errorMessage = error.message;
-        console.log(errorMessage);
+        console.log("Error message: ", errorMessage);
         const email = error.customData.email; // The email of the user's account used.
         const credential = GoogleAuthProvider.credentialFromError(error); // The AuthCredential type that was used.
         axios
