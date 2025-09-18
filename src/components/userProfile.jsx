@@ -78,7 +78,7 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
         {/* If user is NOT logged in display userAuthentication component to login. */}
         {!authCurrentUser && (
           <>
-            <h1>User Profile</h1>
+            <h1>User Profile Login</h1>
             <UserAuthentication
               handleUserLogin={handleUserLogin}
               authentication={authentication}
