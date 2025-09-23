@@ -139,7 +139,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   };
 
   // Google Third-Party Authentication Function/handler
-  const handleGoogleAuth = () => {
+  const handleGoogleAuth = async () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -147,7 +147,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         setUserID(result.uid);
         setUserEmail(result.email);
         setUserFirstName(result.displayName);
-        const response = axios.get(
+        const response = await axios.get(
           `https://giftfairy-be-server.onrender.com/api/user/response/${user.email}/`
         );
         console.log(
