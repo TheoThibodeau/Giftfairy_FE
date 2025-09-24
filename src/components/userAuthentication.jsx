@@ -145,6 +145,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
       const provider = new GoogleAuthProvider();
       // The signed-in user info.
       const result = await signInWithPopup(auth, provider);
+      console.log("Result email from Google Auth: ", result.email);
       setUserID(result.uid);
       setUserEmail(result.email);
       setUserFirstName(result.displayName);
