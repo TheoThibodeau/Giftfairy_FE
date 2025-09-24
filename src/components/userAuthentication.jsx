@@ -141,22 +141,21 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   // Google Third-Party Authentication Function/handler
   const handleGoogleAuth = async () => {
     try {
+      // This gives you a Google Access Token. You can use it to access the Google API.
       const provider = new GoogleAuthProvider();
+      // The signed-in user info.
       const result = await signInWithPopup(auth, provider);
-      console.log("Result from Google Auth: ", result);
+      setUserID(result.uid);
+      setUserEmail(result.email);
+      setUserFirstName(result.displayName);
 
-      // .then((result) => {
-      //   const user = result.user; // The signed-in user info.
-      //   setUserID(result.uid);
-      //   setUserEmail(result.email);
-      //   setUserFirstName(result.displayName);
-      //   const response = await axios.get(
-      //     `https://giftfairy-be-server.onrender.com/api/user/response/${user.email}/`
-      //   );
-      //   console.log(
-      //     "Response from line 151 of userAuth component: ",
-      //     response.data
-      //   );
+      const response = await axios.get(
+        `https://giftfairy-be-server.onrender.com/api/user/response/${userEmail}/`
+      );
+      console.log(
+        "Response from line 151 of userAuth component: ",
+        response.data
+      );
       // .then((response) => {
       //   console.log("Hello. Made it to line 152 of userAuth component.");
       //   const items = response.data[0];
