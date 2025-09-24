@@ -152,10 +152,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
       const response = await axios.get(
         `https://giftfairy-be-server.onrender.com/api/user/response/${result.email}/`
       );
-      console.log(
-        "Response from line 151 of userAuth component: ",
-        response.data
-      );
+      console.log("Response from line 151 of userAuth component: ", response);
       // .then((response) => {
       //   console.log("Hello. Made it to line 152 of userAuth component.");
       //   const items = response.data[0];
