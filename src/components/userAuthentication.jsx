@@ -150,7 +150,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
       setUserFirstName(result.displayName);
 
       const response = await axios.get(
-        `https://giftfairy-be-server.onrender.com/api/user/response/${userEmail}/`
+        `https://giftfairy-be-server.onrender.com/api/user/response/${result.email}/`
       );
       console.log(
         "Response from line 151 of userAuth component: ",
