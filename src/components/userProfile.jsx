@@ -26,8 +26,6 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
     setSelectedItem(selectedItem === index ? null : index);
   };
 
-  console.log("Auth Current User from userProfile is: " + authCurrentUser);
-
   //Filters.jsx - User Authentication Observer
   //The observer tracks the user authentication token across the different components
   useEffect(() => {
@@ -36,7 +34,6 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
       if (user) {
         // User is signed in
         setAuthCurrentUser(user);
-        console.log("userProfile Observer: " + user);
         handleUserLogin(user); // Call the handler to update user state in parent component
         axios
           .get(
