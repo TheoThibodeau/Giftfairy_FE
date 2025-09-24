@@ -140,52 +140,52 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
 
   // Google Third-Party Authentication Function/handler
   const handleGoogleAuth = async () => {
-    try {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const provider = new GoogleAuthProvider();
-      // The signed-in user info.
-      const result = await signInWithPopup(auth, provider);
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const provider = new GoogleAuthProvider();
+    // The signed-in user info.
+    signInWithPopup(auth, provider).then((result) => {
       console.log("Result email from Google Auth: ", result);
       setUserID(result.uid);
       setUserEmail(result.email);
       setUserFirstName(result.displayName);
+    });
 
-      const response = await axios.get(
-        `https://giftfairy-be-server.onrender.com/api/user/response/${result.email}/`
-      );
-      console.log("Response from line 151 of userAuth component: ", response);
-      // .then((response) => {
-      //   console.log("Hello. Made it to line 152 of userAuth component.");
-      //   const items = response.data[0];
-      //   console.log(response.data[0]);
-      // });
-    } catch (error) {
-      // Handle Errors here.
-      const errorCode = error.code;
-      console.log("Error code: ", errorCode);
-      const errorMessage = error.message;
-      console.log("Error message: ", errorMessage);
-      const email = error.customData.email; // The email of the user's account used.
-      const credential = GoogleAuthProvider.credentialFromError(error); // The AuthCredential type that was used.
-      axios
-        .post("https://giftfairy-be-server.onrender.com/api/user/generate", {
-          uid: userID,
-          password: " ",
-          username: userEmail, //Get the email from Google Authentication Popup sign in
-          email: userEmail,
-          first_name: userFirstName,
-        })
-        .then((response) => {
-          alert(
-            "Successfully created a new user account on giftfairy with your gmail!"
-          );
-        })
-        .catch((error) => {
-          alert(
-            "Oops, there was an error when creating your account with your gmail. (Render db)"
-          );
-        });
-    }
+    console.log("User uid from Google Auth: ", userID);
+    console.log("User email from Google Auth: ", userEmail);
+    console.log("User first name from Google Auth: ", userFirstName);
+
+    const response = await axios.get(
+      `https://giftfairy-be-server.onrender.com/api/user/response/${result.email}/`
+    );
+    console.log("Response from line 151 of userAuth component: ", response);
+
+    // catch (error) {
+    // // Handle Errors here.
+    // const errorCode = error.code;
+    // console.log("Error code: ", errorCode);
+    // const errorMessage = error.message;
+    // console.log("Error message: ", errorMessage);
+    // const email = error.customData.email; // The email of the user's account used.
+    // const credential = GoogleAuthProvider.credentialFromError(error); // The AuthCredential type that was used.
+    // axios
+    //   .post("https://giftfairy-be-server.onrender.com/api/user/generate", {
+    //     uid: userID,
+    //     password: " ",
+    //     username: userEmail, //Get the email from Google Authentication Popup sign in
+    //     email: userEmail,
+    //     first_name: userFirstName,
+    //   })
+    //   .then((response) => {
+    //     alert(
+    //       "Successfully created a new user account on giftfairy with your gmail!"
+    //     );
+    //   })
+    //   .catch((error) => {
+    //     alert(
+    //       "Oops, there was an error when creating your account with your gmail. (Render db)"
+    //     );
+    //   });
+    // }
   };
 
   // User Authentication Observer
