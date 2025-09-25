@@ -143,12 +143,19 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const provider = new GoogleAuthProvider();
     // The signed-in user info.
-    signInWithPopup(auth, provider).then((result) => {
-      console.log("Result email from Google Auth: ", result);
-      setUserID(result.uid);
-      setUserEmail(result.email);
-      setUserFirstName(result.displayName);
-    });
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log("Result email from Google Auth: ", result);
+        setUserID(result.uid);
+        setUserEmail(result.email);
+        setUserFirstName(result.displayName);
+      })
+      .then(() => {
+        console.log("User successfully signed in with Google Auth");
+        console.log("User ID from Google Auth: ", userID);
+        console.log("User email from Google Auth: ", userEmail);
+        console.log("User first name from Google Auth: ", userFirstName);
+      });
 
     console.log("User uid from Google Auth: ", userID);
     console.log("User email from Google Auth: ", userEmail);
