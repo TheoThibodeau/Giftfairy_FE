@@ -145,10 +145,13 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
     // The signed-in user info.
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log("Result email from Google Auth: ", result);
         setUserID(result.user.uid);
         setUserEmail(result.user.email);
         setUserFirstName(result.user.displayName);
+        const response = axios.get(
+          `https://giftfairy-be-server.onrender.com/api/user/response/${result.user.email}/`
+        );
+        console.log("Response from line 151 of userAuth component: ", response);
       })
       .then(() => {
         console.log("User successfully signed in with Google Auth");
@@ -156,11 +159,6 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         console.log("User email from Google Auth: ", userEmail);
         console.log("User first name from Google Auth: ", userFirstName);
       });
-
-    const response = await axios.get(
-      `https://giftfairy-be-server.onrender.com/api/user/response/${result.email}/`
-    );
-    console.log("Response from line 151 of userAuth component: ", response);
 
     // catch (error) {
     // // Handle Errors here.
