@@ -151,42 +151,22 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         const response = axios.get(
           `https://giftfairy-be-server.onrender.com/api/user/response/${result.user.email}/`
         );
-        console.log("Response from line 151 of userAuth component: ", response);
+        if (response.status === 404) {
+          handleUserPost();
+          alert(
+            "Successfully created a new user account on giftfairy with your gmail!"
+          );
+        }
       })
-      .then(() => {
-        console.log("User successfully signed in with Google Auth");
-        console.log("User ID from Google Auth: ", userID);
-        console.log("User email from Google Auth: ", userEmail);
-        console.log("User first name from Google Auth: ", userFirstName);
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        console.log("Error code: ", errorCode);
+        const errorMessage = error.message;
+        console.log("Error message: ", errorMessage);
+        const email = error.customData.email; // The email of the user's account used.
+        const credential = GoogleAuthProvider.credentialFromError(error); // The AuthCredential type that was used.
       });
-
-    // catch (error) {
-    // // Handle Errors here.
-    // const errorCode = error.code;
-    // console.log("Error code: ", errorCode);
-    // const errorMessage = error.message;
-    // console.log("Error message: ", errorMessage);
-    // const email = error.customData.email; // The email of the user's account used.
-    // const credential = GoogleAuthProvider.credentialFromError(error); // The AuthCredential type that was used.
-    // axios
-    //   .post("https://giftfairy-be-server.onrender.com/api/user/generate", {
-    //     uid: userID,
-    //     password: " ",
-    //     username: userEmail, //Get the email from Google Authentication Popup sign in
-    //     email: userEmail,
-    //     first_name: userFirstName,
-    //   })
-    //   .then((response) => {
-    //     alert(
-    //       "Successfully created a new user account on giftfairy with your gmail!"
-    //     );
-    //   })
-    //   .catch((error) => {
-    //     alert(
-    //       "Oops, there was an error when creating your account with your gmail. (Render db)"
-    //     );
-    //   });
-    // }
   };
 
   // User Authentication Observer
