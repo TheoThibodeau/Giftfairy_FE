@@ -148,18 +148,21 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         setUserID(result.user.uid);
         setUserEmail(result.user.email);
         setUserFirstName(result.user.displayName);
-        const response = axios.get(
+
+        return axios.get(
           `https://giftfairy-be-server.onrender.com/api/user/response/${result.user.email}/`
         );
+      })
+      .then((response) => {
         console.log("Response: ", response);
         console.log("Response data length: ", response.data);
-        if (response.data.length === 0) {
-          console.log("New user, creating account on giftfairy");
-          handleUserPost();
-          alert(
-            "Successfully created a new user account on giftfairy with your gmail!"
-          );
-        }
+        // if (response.data.length === 0) {
+        //   console.log("New user, creating account on giftfairy");
+        //   handleUserPost();
+        //   alert(
+        //     "Successfully created a new user account on giftfairy with your gmail!"
+        //   );
+        // }
       })
       .catch((error) => {
         // Handle Errors here.
