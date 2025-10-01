@@ -123,7 +123,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   const handleLogOut = (e) => {
     signOut(authentication)
       .then(() => {
-        console.log("Your signout was successful"); // Sign-out successful.
+        alert("Your signout was successful"); // Sign-out successful.
       })
       .catch((error) => {
         console.log(error); // An error happened.
@@ -151,12 +151,15 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         const response = axios.get(
           `https://giftfairy-be-server.onrender.com/api/user/response/${result.user.email}/`
         );
-        if (response.status === 404) {
-          handleUserPost();
-          alert(
-            "Successfully created a new user account on giftfairy with your gmail!"
-          );
-        }
+        console.log("Response: ", response);
+        console.log("Response data length: ", length(response.data));
+        // if (response.status === 404) {
+        //   console.log("New user, creating account on giftfairy");
+        //   handleUserPost();
+        //   alert(
+        //     "Successfully created a new user account on giftfairy with your gmail!"
+        //   );
+        // }
       })
       .catch((error) => {
         // Handle Errors here.
