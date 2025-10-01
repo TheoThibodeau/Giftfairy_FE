@@ -152,7 +152,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
           `https://giftfairy-be-server.onrender.com/api/user/response/${result.user.email}/`
         );
         console.log("Response: ", response);
-        console.log("Response data length: ", response.data.length);
+        console.log("Response data length: ", response.data);
         if (response.data.length === 0) {
           console.log("New user, creating account on giftfairy");
           handleUserPost();
