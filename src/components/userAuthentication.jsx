@@ -145,6 +145,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
     // The signed-in user info.
     signInWithPopup(auth, provider)
       .then(async (result) => {
+        setUserFirstName(result.user.displayName.split(" ")[0]);
         const response = await axios.get(
           `https://giftfairy-be-server.onrender.com/api/user/response/${result.user.email}/`
         );
@@ -201,14 +202,10 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   }
 
   return (
-    <>
+    <div style={{ padding: "0px 20px" }}>
       {currentState == "login-register" && !authCurrentUser && (
         <>
-          <button
-            type="submit"
-            onClick={handleLoginClick}
-            style={{ padding: "0px 20px" }}
-          >
+          <button type="submit" onClick={handleLoginClick}>
             Login
           </button>
           <button type="submit" onClick={handleRegisterClick}>
@@ -257,11 +254,15 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
       )}
 
       {authCurrentUser && (
-        <button type="submit" onClick={handleLogOut}>
+        <button
+          type="submit"
+          onClick={handleLogOut}
+          style={{ margin: "0px 10px" }}
+        >
           Logout
         </button>
       )}
-    </>
+    </div>
   );
 };
 
