@@ -156,7 +156,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
           handleUserPost(
             result.user.uid,
             result.user.email,
-            result.user.displayName.split(" ")
+            result.user.displayName.split(" ")[0]
           );
           alert(
             "Successfully created a new user account on giftfairy with your gmail!"
@@ -204,7 +204,11 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
     <>
       {currentState == "login-register" && !authCurrentUser && (
         <>
-          <button type="submit" onClick={handleLoginClick}>
+          <button
+            type="submit"
+            onClick={handleLoginClick}
+            style={{ padding: "0px 20px" }}
+          >
             Login
           </button>
           <button type="submit" onClick={handleRegisterClick}>
