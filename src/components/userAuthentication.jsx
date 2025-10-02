@@ -155,7 +155,8 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
       })
       .then((response) => {
         console.log("Response: ", response);
-        console.log("Response data length: ", response.data);
+        console.log("Response data: ", response.data);
+        console.log("Response data length: ", response.data.length);
         // if (response.data.length === 0) {
         //   console.log("New user, creating account on giftfairy");
         //   handleUserPost();
