@@ -154,16 +154,13 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
         );
       })
       .then((response) => {
-        console.log("Response: ", response);
-        console.log("Response data: ", response.data);
-        console.log("Response data length: ", response.data.length);
-        // if (response.data.length === 0) {
-        //   console.log("New user, creating account on giftfairy");
-        //   handleUserPost();
-        //   alert(
-        //     "Successfully created a new user account on giftfairy with your gmail!"
-        //   );
-        // }
+        if (response.data.length === 0) {
+          console.log("New user, creating account on giftfairy");
+          handleUserPost();
+          alert(
+            "Successfully created a new user account on giftfairy with your gmail!"
+          );
+        }
       })
       .catch((error) => {
         // Handle Errors here.
