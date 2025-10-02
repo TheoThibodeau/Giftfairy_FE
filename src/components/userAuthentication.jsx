@@ -60,14 +60,14 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   };
 
   //Creates a new user in backend database for giftfairy (postgreSQL/Render)
-  const handleUserPost = () => {
+  const handleUserPost = (userID, email, firstname) => {
     axios
       .post("https://giftfairy-be-server.onrender.com/api/user/generate", {
         uid: userID,
         password: " ",
-        username: emailInput,
-        email: emailInput,
-        first_name: nameInput,
+        username: email,
+        email: email,
+        first_name: firstname,
       })
       .then((response) => {
         console.log("Your account creation was successful!");
@@ -98,7 +98,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   // Handle registering new user
   const handleRegisterSubmit = (e) => {
     //Call function that creates new user being registered to giftfairy backend on Render/postgreSQL
-    handleUserPost();
+    handleUserPost(userID, emailInput, nameInput);
     e.preventDefault();
     createUserWithEmailAndPassword(authentication, emailInput, password)
       .then((userCredential) => {
@@ -139,24 +139,25 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   };
 
   // Google Third-Party Authentication Function/handler
-  const handleGoogleAuth = async () => {
+  const handleGoogleAuth = () => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const provider = new GoogleAuthProvider();
     // The signed-in user info.
     signInWithPopup(auth, provider)
-      .then((result) => {
-        setUserID(result.user.uid);
-        setUserEmail(result.user.email);
-        setUserFirstName(result.user.displayName);
-
-        return axios.get(
+      .then(async (result) => {
+        const response = await axios.get(
           `https://giftfairy-be-server.onrender.com/api/user/response/${result.user.email}/`
         );
+        return { result, response };
       })
-      .then((response) => {
+      .then(({ result, response }) => {
         if (response.data.length === 0) {
           console.log("New user, creating account on giftfairy");
-          handleUserPost();
+          handleUserPost(
+            result.user.uid,
+            result.user.email,
+            result.user.displayName.split(" ")
+          );
           alert(
             "Successfully created a new user account on giftfairy with your gmail!"
           );
