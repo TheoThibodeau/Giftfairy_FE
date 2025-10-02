@@ -40,6 +40,7 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
             `https://giftfairy-be-server.onrender.com/api/user/response/${user.email}/`
           )
           .then((response) => {
+            console.log("User's first name response: ", response);
             const items = response.data;
             setUserFirstName(items);
           });

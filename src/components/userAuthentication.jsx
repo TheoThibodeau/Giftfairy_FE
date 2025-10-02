@@ -202,7 +202,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   }
 
   return (
-    <div style={{ padding: "0px 20px" }}>
+    <div style={{ padding: "0px 10px" }}>
       {currentState == "login-register" && !authCurrentUser && (
         <>
           <button type="submit" onClick={handleLoginClick}>
@@ -254,11 +254,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
       )}
 
       {authCurrentUser && (
-        <button
-          type="submit"
-          onClick={handleLogOut}
-          style={{ margin: "0px 10px" }}
-        >
+        <button type="submit" onClick={handleLogOut}>
           Logout
         </button>
       )}
