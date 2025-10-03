@@ -254,7 +254,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
       )}
 
       {authCurrentUser && (
-        <button type="submit" onClick={handleLogOut}>
+        <button type="submit" onClick={handleLogOut} style={{ width: "50%" }}>
           Logout
         </button>
       )}
