@@ -91,7 +91,7 @@ const GetProfileResponse = ({ handleUserLogin, authentication }) => {
             {userFirstName.length > 0 ? (
               <h1>{userFirstName[0].first_name}'s Profile</h1>
             ) : (
-              <h1>Profile</h1>
+              <h1>Your Profile</h1>
             )}
 
             <h2>Selection History</h2>
