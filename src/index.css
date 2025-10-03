@@ -337,6 +337,12 @@ polygon {
   text-align: center;
 }
 
+.login-register-instructions {
+  padding: 0 1rem;
+  width: 50%;
+  text-align: center;
+}
+
 .userProfilePage {
   background: rgb(177, 223, 238);
   background: radial-gradient(

@@ -202,9 +202,9 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
   }
 
   return (
-    <div style={{ padding: "0px 10px" }}>
+    <>
       {currentState == "login-register" && !authCurrentUser && (
-        <>
+        <div className="login-register-instructions">
           <button type="submit" onClick={handleLoginClick}>
             Login
           </button>
@@ -225,7 +225,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
             ></img>
             Continue with Google
           </button>
-        </>
+        </div>
       )}
 
       {registerSelected && currentState == "login-register-form" && (
@@ -258,7 +258,7 @@ const UserAuthentication = ({ handleUserLogin, authentication }) => {
           Logout
         </button>
       )}
-    </div>
+    </>
   );
 };
 
